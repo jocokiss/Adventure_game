@@ -10,6 +10,8 @@
 
 """
 
+#EZT KÉNE ÁTRAKNI
+
 import json
 import random
 from collections import defaultdict
