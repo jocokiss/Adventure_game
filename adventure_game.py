@@ -10,12 +10,6 @@
 
 """
 
-<<<<<<< HEAD
-#NEW BRANCH
-=======
-#EZT KÉNE ÁTRAKNI
->>>>>>> master
-
 import json
 import random
 from collections import defaultdict
