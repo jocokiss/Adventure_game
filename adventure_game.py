@@ -11,6 +11,7 @@
 """
 
 #EZT KÉNE ÁTRAKNI
+#DE KURVÁRA NEM AKARJA
 
 import json
 import random
