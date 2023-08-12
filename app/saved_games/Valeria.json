@@ -1,0 +1,23 @@
+{
+    "name": "Valeria",
+    "class": "Rouge",
+    "sex": "",
+    "experience": 0,
+    "level": 1,
+    "gold_balance": 0,
+    "crystal_balance": 0,
+    "upgrade_materials": 0,
+    "attack": 50,
+    "crit_rate": 20,
+    "defense": 20,
+    "health": 160,
+    "buffs_and_debuffs": [],
+    "status_cooldown": {},
+    "skill_cooldown": {},
+    "info": null,
+    "inventory": null,
+    "equipment": null,
+    "combo_points": {
+        "count": 0
+    }
+}

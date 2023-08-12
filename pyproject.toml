@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "adventure-game"
+version = "0.1.0"
+description = "My first project using python"
+authors = ["Jocokiss <joco.kiss.n@gmail.com>"]
+readme = "README.md"
+packages = [{include = "adventure_game"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pygame = "^2.5.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

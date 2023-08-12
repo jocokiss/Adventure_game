@@ -1,0 +1,19 @@
+{
+    "Rouge": {
+        "name": "",
+        "class": "Rouge",
+        "sex": "",
+        "experience": 0,
+        "level": 1,
+        "gold_balance": 0,
+        "crystal_balance": 0,
+        "upgrade_materials": 0,
+        "attack": 10,
+        "crit_rate": 20,
+        "defense": 20,
+        "health": 160
+    },
+    "Warrior":{
+
+    }
+}
