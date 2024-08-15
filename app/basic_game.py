@@ -11,7 +11,6 @@ class BasicGame:
 
         self.tile_size = self.config.tile_size  # Use the tile size from the config
 
-        self.pygame = None
         self.map_data = None
 
         self.collision_rects = []
@@ -22,22 +21,16 @@ class BasicGame:
         self.__player_x = None
         self.__player_y = None
 
-        # New attributes for continuous movement
-        self.is_moving = False
         self.move_timer = 0  # Timer to control continuous movement
 
-    def __getting_dimensions(self):
-        # Calculate map dimensions
-        map_width = self.map_data.width * self.tile_size
-        map_height = self.map_data.height * self.tile_size
+    def __set_positions(self, tile_x, tile_y):
+        # Set the player's position on the map based on the given tile coordinates
+        self.__player_x = tile_x * self.tile_size
+        self.__player_y = tile_y * self.tile_size
 
-        # Initial offset for the map (start with the map centered)
-        self.__offset_x = (self.config.screen_width - map_width) // 2
-        self.__offset_y = (self.config.screen_height - map_height) // 2
-
-        # Position the player in the center of the screen
-        self.__player_x = self.config.screen_width // 4 - self.tile_size // 2
-        self.__player_y = self.config.screen_height // 4 - self.tile_size // 2
+        # Center the map around the player's position
+        self.__offset_x = self.config.screen_width // 2 - self.__player_x - self.tile_size // 2
+        self.__offset_y = self.config.screen_height // 2 - self.__player_y - self.tile_size // 2
 
     def __load_collision_rects(self):
         for layer in self.map_data.visible_layers:
@@ -48,24 +41,25 @@ class BasicGame:
                     tile_properties = self.map_data.get_tile_properties_by_gid(gid)
                     if tile_properties and 'colliders' in tile_properties:
                         for obj in tile_properties['colliders']:
-                            rect_x = x * self.config.tile_size + obj.x
-                            rect_y = y * self.config.tile_size + obj.y
-                            rect_w = obj.width
-                            rect_h = obj.height
+                            rect_x = x * self.config.tile_size + obj.x * self.config.zoom_factor
+                            rect_y = y * self.config.tile_size + obj.y * self.config.zoom_factor
+                            rect_w = obj.width * self.config.zoom_factor
+                            rect_h = obj.height * self.config.zoom_factor
                             self.collision_rects.append(pygame.Rect(rect_x, rect_y, rect_w, rect_h))
 
     def __preload_tiles(self):
         for gid in range(len(self.map_data.images)):
             image = self.map_data.get_tile_image_by_gid(gid)
             if image:
-                self.tiles[gid] = image
+                scaled_image = pygame.transform.scale(image, (self.tile_size, self.tile_size))  # Scale the tile
+                self.tiles[gid] = scaled_image
 
-    def __draw_map(self, x_offset, y_offset):
+    def __draw_map(self, offset_x, offset_y):
         # Calculate the range of tiles that are visible on the screen
-        start_x = max(0, -x_offset // self.tile_size)
-        end_x = min(self.map_data.width, (self.config.screen_width - x_offset) // self.tile_size + 1)
-        start_y = max(0, -y_offset // self.tile_size)
-        end_y = min(self.map_data.height, (self.config.screen_height - y_offset) // self.tile_size + 1)
+        start_x = max(0, -offset_x // self.tile_size)
+        end_x = min(self.map_data.width, (self.config.screen_width - offset_x) // self.tile_size + 1)
+        start_y = max(0, -offset_y // self.tile_size)
+        end_y = min(self.map_data.height, (self.config.screen_height - offset_y) // self.tile_size + 1)
 
         for layer in self.map_data.visible_layers:
             if isinstance(layer, pytmx.TiledTileLayer):
@@ -75,8 +69,8 @@ class BasicGame:
                         if gid:
                             tile = self.tiles.get(gid)
                             if tile:
-                                self.screen.blit(tile, (x * self.tile_size + x_offset,
-                                                        y * self.tile_size + y_offset))
+                                self.screen.blit(tile, (x * self.tile_size + offset_x,
+                                                        y * self.tile_size + offset_y))
 
     def check_collision(self, new_offset_x, new_offset_y):
         # Adjust player position relative to the new offsets
@@ -101,7 +95,7 @@ class BasicGame:
 
     def run(self):
         self.__initialize_pygame()
-        self.__getting_dimensions()
+        self.__set_positions(tile_x=10, tile_y=5)
         self.__load_collision_rects()
         self.__preload_tiles()
 
@@ -121,22 +115,18 @@ class BasicGame:
 
                 if keys[pygame.K_LEFT]:
                     new_offset_x += self.tile_size
-                    self.is_moving = True
                 elif keys[pygame.K_RIGHT]:
                     new_offset_x -= self.tile_size
-                    self.is_moving = True
                 elif keys[pygame.K_UP]:
                     new_offset_y += self.tile_size
-                    self.is_moving = True
                 elif keys[pygame.K_DOWN]:
                     new_offset_y -= self.tile_size
-                    self.is_moving = True
 
                 # Check collision with updated player position
                 if not self.check_collision(new_offset_x, new_offset_y):
                     self.__offset_x = new_offset_x
                     self.__offset_y = new_offset_y
-                    self.move_timer = 7  # Delay before the next movement
+                    self.move_timer = self.config.movement_speed  # Delay before the next movement
 
             # Decrease the movement timer to allow continuous movement
             if self.move_timer > 0:
@@ -145,8 +135,8 @@ class BasicGame:
             self.__draw_map(self.__offset_x, self.__offset_y)
 
             pygame.draw.rect(self.screen, (255, 0, 0), (
-                self.__player_x + self.tile_size // 2,
-                self.__player_y - self.tile_size // 2,
+                self.config.screen_width // 2 - self.tile_size // 2,
+                self.config.screen_height // 2 - self.tile_size // 2,
                 self.tile_size,
                 self.tile_size))
 
