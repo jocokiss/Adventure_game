@@ -29,7 +29,7 @@
             "scaleInEditor": 2
         }
     },
-    "frame.defaultDuration": 200,
+    "frame.defaultDuration": 100,
     "last.imagePath": "/Users/jocokiss/Projects/Personal/Adventure_game/map/tileset",
     "map.height": 40,
     "map.lastUsedFormat": "tmx",

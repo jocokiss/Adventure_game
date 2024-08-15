@@ -7,10 +7,10 @@
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
-   <frame tileid="0" duration="200"/>
-   <frame tileid="1" duration="200"/>
-   <frame tileid="2" duration="200"/>
-   <frame tileid="3" duration="200"/>
+   <frame tileid="0" duration="100"/>
+   <frame tileid="1" duration="100"/>
+   <frame tileid="2" duration="100"/>
+   <frame tileid="3" duration="100"/>
   </animation>
  </tile>
  <tile id="17">
@@ -19,10 +19,10 @@
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>
-   <frame tileid="17" duration="200"/>
-   <frame tileid="18" duration="200"/>
-   <frame tileid="19" duration="200"/>
-   <frame tileid="20" duration="200"/>
+   <frame tileid="17" duration="100"/>
+   <frame tileid="18" duration="100"/>
+   <frame tileid="19" duration="100"/>
+   <frame tileid="20" duration="100"/>
   </animation>
  </tile>
  <tile id="34">
@@ -31,10 +31,10 @@
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
-   <frame tileid="34" duration="200"/>
-   <frame tileid="35" duration="200"/>
-   <frame tileid="36" duration="200"/>
-   <frame tileid="37" duration="200"/>
+   <frame tileid="34" duration="100"/>
+   <frame tileid="35" duration="100"/>
+   <frame tileid="36" duration="100"/>
+   <frame tileid="37" duration="100"/>
   </animation>
  </tile>
  <tile id="51">
@@ -43,10 +43,10 @@
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>
-   <frame tileid="51" duration="200"/>
-   <frame tileid="52" duration="200"/>
-   <frame tileid="53" duration="200"/>
-   <frame tileid="54" duration="200"/>
+   <frame tileid="51" duration="100"/>
+   <frame tileid="52" duration="100"/>
+   <frame tileid="53" duration="100"/>
+   <frame tileid="54" duration="100"/>
   </animation>
  </tile>
  <tile id="68">
@@ -55,10 +55,10 @@
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
-   <frame tileid="68" duration="200"/>
-   <frame tileid="69" duration="200"/>
-   <frame tileid="70" duration="200"/>
-   <frame tileid="71" duration="200"/>
+   <frame tileid="68" duration="100"/>
+   <frame tileid="69" duration="100"/>
+   <frame tileid="70" duration="100"/>
+   <frame tileid="71" duration="100"/>
   </animation>
  </tile>
  <tile id="85">
@@ -67,10 +67,10 @@
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>
-   <frame tileid="85" duration="200"/>
-   <frame tileid="86" duration="200"/>
-   <frame tileid="87" duration="200"/>
-   <frame tileid="88" duration="200"/>
+   <frame tileid="85" duration="100"/>
+   <frame tileid="86" duration="100"/>
+   <frame tileid="87" duration="100"/>
+   <frame tileid="88" duration="100"/>
   </animation>
  </tile>
  <tile id="102">
@@ -79,10 +79,10 @@
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
-   <frame tileid="102" duration="200"/>
-   <frame tileid="103" duration="200"/>
-   <frame tileid="104" duration="200"/>
-   <frame tileid="105" duration="200"/>
+   <frame tileid="102" duration="100"/>
+   <frame tileid="103" duration="100"/>
+   <frame tileid="104" duration="100"/>
+   <frame tileid="105" duration="100"/>
   </animation>
  </tile>
  <tile id="119">
@@ -91,10 +91,10 @@
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>
-   <frame tileid="119" duration="200"/>
-   <frame tileid="120" duration="200"/>
-   <frame tileid="121" duration="200"/>
-   <frame tileid="122" duration="200"/>
+   <frame tileid="119" duration="100"/>
+   <frame tileid="120" duration="100"/>
+   <frame tileid="121" duration="100"/>
+   <frame tileid="122" duration="100"/>
   </animation>
  </tile>
  <tile id="136">

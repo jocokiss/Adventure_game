@@ -46,27 +46,35 @@ class BasicGame:
         tree = ET.parse(tsx_file)
         root = tree.getroot()
 
-        # Get the image source and tile size information
-        image_source = root.find("image").attrib['source']
         tile_width = int(root.attrib['tilewidth']) * self.config.zoom_factor
         tile_height = int(root.attrib['tileheight']) * self.config.zoom_factor
         image_width = int(root.find("image").attrib['width'])
-        image_height = int(root.find("image").attrib['height'])
 
         # Load the tileset image
         tileset_image = pygame.image.load(self.config.character_png_location).convert_alpha()
 
         # Initialize frames storage
         self.character_frames = {
-            'down': [],
-            'left': [],
-            'right': [],
-            'up': [],
+            'down': {
+                "1": [],
+                "2": []
+            },
+            'left': {
+                "1": [],
+                "2": []
+            },
+            'right': {
+                "1": [],
+                "2": []
+            },
+            'up': {
+                "1": [],
+                "2": []
+            },
         }
 
         # Iterate through each tile element
         for tile in root.findall("tile"):
-            tile_id = int(tile.attrib['id'])
             properties_element = tile.find('properties')
             if properties_element is not None:
                 properties = {prop.attrib['name']: prop.attrib['value'] for prop in
@@ -93,34 +101,21 @@ class BasicGame:
                             scaled_tile_image = pygame.transform.scale(tile_image, (tile_width, tile_height))
 
                             # Append the frame to the direction's list
-                            self.character_frames[direction].append((scaled_tile_image, duration))
-
-                    else:
-                        # Handle non-animated tiles (static frames)
-                        tile_x = (tile_id % (image_width // (tile_width // self.config.zoom_factor))) * (
-                                    tile_width // self.config.zoom_factor)
-                        tile_y = (tile_id // (image_width // (tile_width // self.config.zoom_factor))) * (
-                                    tile_height // self.config.zoom_factor)
-                        tile_image = tileset_image.subsurface(
-                            pygame.Rect(tile_x, tile_y, tile_width // self.config.zoom_factor,
-                                        tile_height // self.config.zoom_factor))
-
-                        # Scale the tile_image according to the zoom factor
-                        scaled_tile_image = pygame.transform.scale(tile_image, (tile_width, tile_height))
-
-                        self.character_frames[direction].append((scaled_tile_image, 100))  # Assume a default duration
+                            self.character_frames[direction][part].append((scaled_tile_image, duration))
 
         # Combine head and body for each direction
-        for direction, frames in self.character_frames.items():
-            if frames:
-                combined_frames = []
-                for frame, duration in frames:
-                    combined_surface = pygame.Surface((tile_width, tile_height * 2), pygame.SRCALPHA)
-                    combined_surface.blit(frame, (0, 0))
-                    combined_frames.append((combined_surface, duration))
-                self.character_frames[direction] = combined_frames
-            else:
-                print(f"Warning: Missing parts for direction {direction}")
+        for direction, parts in self.character_frames.items():
+            for part, frames in parts.items():
+                if frames:
+                    combined_frames = []
+                    for frame, duration in frames:
+                        combined_surface = pygame.Surface((tile_width, tile_height), pygame.SRCALPHA)
+                        combined_surface.blit(frame, (0, 0))
+                        combined_frames.append((combined_surface, duration))
+                    self.character_frames[direction][part] = combined_frames
+                else:
+                    print(f"Warning: Missing parts for direction {direction}")
+        print(self.character_frames)
 
     def __load_collision_rects(self):
         for layer in self.map_data.visible_layers:
@@ -187,18 +182,50 @@ class BasicGame:
         self.map_data = pytmx.load_pygame(self.config.map_location)
         pygame.display.set_caption(title)
 
+    def __update_animation(self, moving):
+        # Handle animation for both parts (head and body)
+        current_frames_head = self.character_frames[self.current_direction]["1"]
+        current_frames_body = self.character_frames[self.current_direction]["2"]
+
+        # Ensure both parts have the same number of frames
+        if len(current_frames_head) == len(current_frames_body):
+            if moving:
+                # Cycle through the frames
+                self.frame_timer += 1
+                if self.frame_timer >= current_frames_head[self.current_frame][1] // 16:  # Adjust timing as needed
+                    self.frame_timer = 0
+                    self.current_frame = (self.current_frame + 1) % len(current_frames_head)
+            else:
+                self.current_frame = 0  # If not moving, show the first frame
+
+        # Combine head and body into one surface
+        current_head_image = current_frames_head[self.current_frame][0]
+        current_body_image = current_frames_body[self.current_frame][0]
+
+        # Adjusted Surface to fit exactly both head and body
+        self.combined_surface = pygame.Surface(
+            (current_head_image.get_width(), current_head_image.get_height() * 2),
+            pygame.SRCALPHA
+        )
+
+        # Blit the head at the top of the combined surface
+        self.combined_surface.blit(current_head_image, (0, 0))
+
+        # Blit the body directly below the head
+        self.combined_surface.blit(current_body_image, (0, current_head_image.get_height()))
+
     def run(self):
         self.__initialize_pygame()
         self.__set_positions(tile_x=10, tile_y=5)
-        self.__load_character_from_tiled(self.config.character_location)  # Replace with the actual path
+        self.__load_character_from_tiled(self.config.character_location)
         self.__preload_tiles()  # Load the tiles for drawing the map
 
         running = True
-        elapsed_time = 0  # Track the elapsed time for animation
+        move_timer = 0  # Timer to control movement speed
 
         while running:
-            dt = pygame.time.Clock().tick(60)  # Time in milliseconds since last frame
-            elapsed_time += dt
+            dt = pygame.time.Clock().tick(60)  # Time in milliseconds since the last frame
+            move_timer += dt  # Increment the movement timer
 
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -207,53 +234,76 @@ class BasicGame:
 
             keys = pygame.key.get_pressed()
 
-            if self.move_timer == 0:
-                new_offset_x = self.__offset_x
-                new_offset_y = self.__offset_y
+            new_offset_x = self.__offset_x
+            new_offset_y = self.__offset_y
+            moving = False
 
-                if keys[pygame.K_LEFT]:
+            if keys[pygame.K_LEFT]:
+                moving = True
+                if move_timer >= 200:  # Control the movement speed with a timer
                     new_offset_x += self.tile_size
-                    self.current_direction = 'left'
-                elif keys[pygame.K_RIGHT]:
+                    move_timer = 0  # Reset the movement timer
+                if self.current_direction != 'left':
+                    self.current_frame = 0
+                self.current_direction = 'left'
+            elif keys[pygame.K_RIGHT]:
+                moving = True
+                if move_timer >= 200:  # Control the movement speed with a timer
                     new_offset_x -= self.tile_size
-                    self.current_direction = 'right'
-                elif keys[pygame.K_UP]:
+                    move_timer = 0  # Reset the movement timer
+                if self.current_direction != 'right':
+                    self.current_frame = 0
+                self.current_direction = 'right'
+            elif keys[pygame.K_UP]:
+                moving = True
+                if move_timer >= 200:  # Control the movement speed with a timer
                     new_offset_y += self.tile_size
-                    self.current_direction = 'up'
-                elif keys[pygame.K_DOWN]:
+                    move_timer = 0  # Reset the movement timer
+                if self.current_direction != 'up':
+                    self.current_frame = 0
+                self.current_direction = 'up'
+            elif keys[pygame.K_DOWN]:
+                moving = True
+                if move_timer >= 200:  # Control the movement speed with a timer
                     new_offset_y -= self.tile_size
-                    self.current_direction = 'down'
+                    move_timer = 0  # Reset the movement timer
+                if self.current_direction != 'down':
+                    self.current_frame = 0
+                self.current_direction = 'down'
 
+            if moving:
+                # Only update the position if the player is moving and no collision
                 if not self.check_collision(new_offset_x, new_offset_y):
                     self.__offset_x = new_offset_x
                     self.__offset_y = new_offset_y
-                    self.move_timer = self.config.movement_speed
 
-            if self.move_timer > 0:
-                self.move_timer -= 1
+                # Cycle through the frames when moving
+                self.frame_timer += 1
+                if self.frame_timer >= 8:  # Adjust timing as needed for animation speed
+                    self.frame_timer = 0
+                    self.current_frame = (self.current_frame + 1) % len(
+                        self.character_frames[self.current_direction]["1"])
+            else:
+                # If not moving, reset to the first frame
+                self.current_frame = 0
 
-            # Animation: Switch frames based on elapsed time
-            current_frames = self.character_frames[self.current_direction]
-            total_duration = sum(frame[1] for frame in current_frames)
-            current_time = elapsed_time % total_duration
+            # Combine head and body into one surface
+            current_head_image = self.character_frames[self.current_direction]["1"][self.current_frame][0]
+            current_body_image = self.character_frames[self.current_direction]["2"][self.current_frame][0]
 
-            frame_index = 0
-            accumulated_time = 0
+            combined_surface = pygame.Surface(
+                (current_head_image.get_width(), current_head_image.get_height() * 2),
+                pygame.SRCALPHA
+            )
+            combined_surface.blit(current_head_image, (0, 0))
+            combined_surface.blit(current_body_image, (0, current_head_image.get_height()))
 
-            for frame, duration in current_frames:
-                accumulated_time += duration
-                if current_time <= accumulated_time:
-                    break
-                frame_index += 1
-
-            # Extract the surface (image) from the tuple before blitting
-            current_frame_image = current_frames[frame_index][0]
-
-            self.__draw_map(self.__offset_x, self.__offset_y)  # Ensure map is drawn
+            # Draw the map and character
+            self.__draw_map(self.__offset_x, self.__offset_y)
 
             screen_x = self.config.screen_width // 2 - self.tile_size // 2
             screen_y = self.config.screen_height // 2 - self.tile_size // 2
-            self.screen.blit(current_frame_image, (screen_x, screen_y))
+            self.screen.blit(combined_surface, (screen_x, screen_y))
 
             pygame.display.flip()
 
