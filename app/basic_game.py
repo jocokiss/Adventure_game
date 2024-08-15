@@ -20,7 +20,7 @@ class BasicGame:
         self.__player_x = None
         self.__player_y = None
         
-    def getting_dimensions(self):
+    def __getting_dimensions(self):
         # Calculate map dimensions
         map_width = self.map_data.width * self.config.tile_size
         map_height = self.map_data.height * self.config.tile_size
@@ -79,28 +79,29 @@ class BasicGame:
         return False
                             
     def __initialize_pygame(self, title: str = "AdventureGame"):
-        self.pygame = pygame.init
-        self.screen = pygame.display.set_mode(self.config.screen_width, self.config.screen_height)
+        pygame.init()
+        self.screen = pygame.display.set_mode((self.config.screen_width, self.config.screen_height))
         self.map_data = pytmx.load_pygame(self.config.map_location)
         pygame.display.set_caption(title)
-        
+
     def run(self):
         self.__initialize_pygame()
+        self.__getting_dimensions()
         self.__load_collision_rects()
         self.__preload_tiles()
 
         running = True
         while running:
-            for event in self.pygame.event.get():
+            for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
 
-            keys = self.pygame.key.get_pressed()
+            keys = pygame.key.get_pressed()
 
             # Calculate potential new player position
-            new_offset_x = offset_x
-            new_offset_y = offset_y
+            new_offset_x = self.__offset_x
+            new_offset_y = self.__offset_y
 
             if keys[pygame.K_LEFT]:
                 new_offset_x += self.config.movement_speed
@@ -117,16 +118,12 @@ class BasicGame:
                                       self.config.tile_size,
                                       self.config.tile_size)
 
-            # Move the player if no collision occurs
             if not self.check_collision(player_rect):
-                offset_x = new_offset_x
-                offset_y = new_offset_y
+                self.__offset_x = new_offset_x
+                self.__offset_y = new_offset_y
 
-            # Draw the map with the updated offsets
-            self.__draw_map(offset_x, offset_y)
+            self.__draw_map(self.__offset_x, self.__offset_y)
 
-            # draw_collision_borders(offset_x, offset_y)
-            # Draw the player (for simplicity, a red square)
             pygame.draw.rect(self.screen, (255, 0, 0), (
                 self.__player_x,
                 self.__player_y,
@@ -134,16 +131,8 @@ class BasicGame:
                 self.config.tile_size))
 
             # Update the display
-            self.pygame.display.flip()
-
-            # Frame rate
-            self.pygame.time.Clock().tick(60)
-
-
-# def draw_collision_borders(offset_x, offset_y):
-#     for rect in collision_rects:
-#         adjusted_rect = pygame.Rect(rect.x + offset_x, rect.y + offset_y, rect.width, rect.height)
-#         pygame.draw.rect(screen, (255, 0, 0), adjusted_rect, 2)
+            pygame.display.flip()
+            pygame.time.Clock().tick(60)
 
 
 if __name__ == "__main__":
