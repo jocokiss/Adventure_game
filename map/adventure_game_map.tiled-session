@@ -6,10 +6,19 @@
     "activeFile": "Overworld.tsx",
     "expandedProjectPaths": [
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "Overworld.tsx": {
-            "scaleInDock": 1.5,
-            "scaleInEditor": 1.5
+            "scaleInDock": 2,
+            "scaleInEditor": 2
+        },
+        "game_map.tmx": {
+            "scale": 2.015,
+            "selectedLayer": -1,
+            "viewCenter": {
+                "x": 325.0620347394541,
+                "y": 154.09429280397023
+            }
         },
         "objects.tsx": {
             "scaleInDock": 1,
@@ -28,8 +37,9 @@
     ],
     "project": "adventure_game_map.tiled-project",
     "recentFiles": [
-        "objects.tsx",
-        "Overworld.tsx"
+        "game_map.tmx",
+        "Overworld.tsx",
+        "objects.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
