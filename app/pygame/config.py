@@ -1,6 +1,4 @@
-from dotenv import dotenv_values
-
-from app.utilities import ArgParser
+from app.utilities.arg_parser import ArgParser
 
 
 class Config:
