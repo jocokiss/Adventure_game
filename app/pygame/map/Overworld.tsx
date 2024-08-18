@@ -1,75 +1,140 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.11.0" name="Overworld" tilewidth="16" tileheight="16" tilecount="1440" columns="40">
  <image source="tileset/Overworld.png" width="640" height="576"/>
+ <tile id="0" type="grass"/>
+ <tile id="120" type="grass"/>
+ <tile id="121" type="grass"/>
+ <tile id="122" type="grass"/>
+ <tile id="160" type="grass"/>
+ <tile id="162" type="grass"/>
  <tile id="163">
   <objectgroup draworder="index" id="2">
    <object id="1" x="6.99051" y="8.08185" width="2.15319" height="1.20933"/>
    <object id="2" x="6.04664" y="-1.15034"/>
   </objectgroup>
  </tile>
- <tile id="242">
-  <objectgroup draworder="index" id="3">
-   <object id="2" x="10.9963" y="15.6638">
-    <polygon points="0,0 -0.553771,-5.77504 5.14216,-5.53771 5.06305,0.0791102 0.949322,0.237331"/>
-   </object>
+ <tile id="200" type="grass"/>
+ <tile id="201" type="grass"/>
+ <tile id="202" type="grass"/>
+ <tile id="242" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="243" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="244" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="1.61439e-06" y="9.0356" width="5.12098" height="6.94284"/>
   </objectgroup>
  </tile>
- <tile id="243">
+ <tile id="282" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0.0791102" y="10.1261">
-    <polygon points="0,0 15.9803,-0.15822 16.0594,5.53771 -0.0791102,5.69593"/>
-   </object>
-  </objectgroup>
- </tile>
- <tile id="244">
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="0.0791102" y="10.6008">
-    <polygon points="0,0 4.90483,-0.15822 5.14216,5.53771 -0.632881,5.37949"/>
-   </object>
-  </objectgroup>
- </tile>
- <tile id="282">
-  <objectgroup draworder="index" id="2">
-   <object id="1" x="11.1545" y="0.0791102">
-    <polygon points="0,0 0.632881,15.9011 4.74661,15.822 4.98394,-0.15822"/>
-   </object>
+   <object id="2" x="10.9806" y="1.77636e-15" width="4.97326" height="15.9538"/>
   </objectgroup>
  </tile>
  <tile id="283">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="0.125">
-    <polygon points="0,0 16,-0.125 16,15.625 -0.125,15.75"/>
-   </object>
+   <object id="2" x="6.40665e-06" y="1.39104e-06" width="16.0523" height="15.9538"/>
   </objectgroup>
  </tile>
- <tile id="284">
+ <tile id="284" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="4.6675" y="0.0791102">
-    <polygon points="0,0 0.395551,16.1385 -4.43017,15.5847 -4.58839,0.237331"/>
-   </object>
+   <object id="2" x="-2.22045e-16" y="1.77636e-15" width="4.97326" height="16.0031"/>
   </objectgroup>
  </tile>
- <tile id="322">
+ <tile id="322" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="10.759" y="0.0791102">
-    <polygon points="0,0 0.237331,4.50928 5.30038,4.82572 5.22127,0.0791102"/>
-   </object>
+   <object id="1" x="10.9067" y="1.61833e-05" width="5.12098" height="4.97323"/>
   </objectgroup>
  </tile>
- <tile id="323">
+ <tile id="323" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0" y="5.22127">
-    <polygon points="0,0 16.1385,-0.0791102 15.9803,-4.98394 0.0791102,-5.06305"/>
-   </object>
+   <object id="1" x="-0.0492338" y="0.0246359" width="16.0523" height="5.02247"/>
   </objectgroup>
  </tile>
- <tile id="324">
+ <tile id="324" type="grass">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="4.875" y="-0.125">
-    <polygon points="0,0 0.125,5.375 -4.625,5.25 -5,0.375"/>
-   </object>
+   <object id="1" x="1.61439e-06" y="0.0246359" width="5.12098" height="4.97323"/>
   </objectgroup>
  </tile>
+ <tile id="360" type="grass"/>
+ <tile id="361" type="grass"/>
+ <tile id="362">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="-0.0246186" y="0.0246064" width="5.07174" height="16.0031"/>
+   <object id="2" x="-0.0492338" y="1.39104e-06" width="16.0523" height="5.0225"/>
+  </objectgroup>
+ </tile>
+ <tile id="363">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="-0.0492402" y="0" width="16.0523" height="5.0225"/>
+   <object id="2" x="11.0791" y="-0.0492402" width="4.92402" height="16.0031"/>
+  </objectgroup>
+ </tile>
+ <tile id="364" type="grass"/>
+ <tile id="365" type="grass"/>
+ <tile id="366" type="grass"/>
+ <tile id="367" type="grass"/>
+ <tile id="368" type="grass"/>
+ <tile id="400" type="grass"/>
+ <tile id="401" type="grass"/>
+ <tile id="402">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0.0246216" y="-0.0246338" width="5.07174" height="16.0031"/>
+   <object id="2" x="-0.0492338" y="10.9806" width="16.0523" height="5.0225"/>
+  </objectgroup>
+ </tile>
+ <tile id="403">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="-2.36934e-05" y="10.9559" width="16.0523" height="5.0225"/>
+   <object id="2" x="11.0298" y="-0.0246338" width="5.07174" height="16.0031"/>
+  </objectgroup>
+ </tile>
+ <tile id="404" type="grass"/>
+ <tile id="405" type="grass"/>
+ <tile id="406" type="grass"/>
+ <tile id="407" type="grass"/>
+ <tile id="408" type="grass"/>
+ <tile id="444" type="grass"/>
+ <tile id="445" type="grass"/>
+ <tile id="446" type="grass"/>
  <wangsets>
   <wangset name="Unnamed Set" type="corner" tile="-1">
    <wangcolor name="Water-edge" color="#ff0000" tile="-1" probability="1"/>
