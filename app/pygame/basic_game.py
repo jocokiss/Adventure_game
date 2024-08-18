@@ -80,6 +80,21 @@ class BasicGame:
             return True
         return False
 
+    def __update_position_and_offset(self, move, offset, surplus, spawn, rect_pos, screen_size, map_size, rect_size):
+        if offset + move <= 0:  # Reached edge (left or top)
+            surplus += abs(move)
+            rect_pos = max(0, rect_pos + move)
+        elif offset + screen_size + move >= map_size:  # Reached edge (right or bottom)
+            surplus += abs(move)
+            rect_pos = min(screen_size - rect_size, rect_pos + move)
+        elif surplus > 0:  # Moving in the opposite direction while surplus exists
+            surplus_move = min(abs(move), surplus)
+            surplus -= surplus_move
+            rect_pos += move
+        else:  # Normal movement, update spawn
+            spawn += move // self.config.tile_size
+        return rect_pos, surplus, spawn
+
     def __handle_movement(self, keys, dt):
         move_x, move_y = 0, 0
         moving = False
@@ -116,14 +131,12 @@ class BasicGame:
             new_y = self.character.rect.y + move_y
 
             if not self.check_collision():
-                map_width = self.config.map_data.width * self.config.tile_size
-                map_height = self.config.map_data.height * self.config.tile_size
 
                 # Update map offsets and character position based on the map edges
                 if self.__offset_x + move_x <= 0:  # Reached left edge
                     self.x_surplus += abs(move_x)  # Increment surplus by the absolute value of move_x
                     self.character.rect.x = max(0, new_x)
-                elif self.__offset_x + self.config.screen_width + move_x >= map_width:  # Reached right edge
+                elif self.__offset_x + self.config.screen_width + move_x >= self.config.map_width:  # Reached right edge
                     self.x_surplus += abs(move_x)  # Increment surplus by the absolute value of move_x
                     self.character.rect.x = min(self.config.screen_width - self.character.rect.width, new_x)
                 elif self.x_surplus > 0:  # Moving in the opposite direction while surplus exists
@@ -133,11 +146,17 @@ class BasicGame:
                 else:  # Normal movement, update spawn_x
                     self.config.spawn_x += move_x // self.config.tile_size
 
-                if self.__offset_y + move_y <= 0:  # Reached top edge
+                if self.__offset_y + move_y <= 0:  # Reached left edge
+                    self.y_surplus += abs(move_y)  # Increment surplus by the absolute value of move_y
                     self.character.rect.y = max(0, new_y)
-                elif self.__offset_y + self.config.screen_height + move_y >= map_height:  # Reached bottom edge
+                elif self.__offset_y + self.config.screen_height + move_y >= self.config.map_height:  # Reached right edge
+                    self.y_surplus += abs(move_y)  # Increment surplus by the absolute value of move_y
                     self.character.rect.y = min(self.config.screen_height - self.character.rect.height, new_y)
-                else:
+                elif self.y_surplus > 0:  # Moving in the opposite direction while surplus exists
+                    surplus_move = min(abs(move_y), self.y_surplus)  # Determine how much surplus to reduce
+                    self.y_surplus -= surplus_move  # Decrease the surplus
+                    self.character.rect.y = new_y
+                else:  # Normal movement, update spawn_y
                     self.config.spawn_y += move_y // self.config.tile_size
 
                 # Handle animation

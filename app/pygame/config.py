@@ -8,14 +8,17 @@ class Config:
     def __init__(self):
         self.args = ArgParser().run()
         self.zoom_factor = int(self.args.zoom_factor)
+        self.tile_size = int(self.args.tile_size) * self.zoom_factor
 
-        self.map_data = None
+        self.map_data: pytmx.TiledMap
         self.__initialize_pygame()
 
         self.screen_width = int(self.args.screen_width)
         self.screen_height = int(self.args.screen_height)
 
-        self.tile_size = int(self.args.tile_size) * self.zoom_factor
+        self.map_width = self.map_data.width * self.tile_size
+        self.map_height = self.map_data.height * self.tile_size
+
         self.map_location = self.args.map_location
         self.character_location = self.args.character_location
         self.character_png_location = self.args.character_png_location
