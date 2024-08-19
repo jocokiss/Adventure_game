@@ -80,93 +80,72 @@ class BasicGame:
             return True
         return False
 
-    def __update_position_and_offset(self, move, offset, surplus, spawn, rect_pos, screen_size, map_size, rect_size):
-        if offset + move <= 0:  # Reached edge (left or top)
-            surplus += abs(move)
-            rect_pos = max(0, rect_pos + move)
-        elif offset + screen_size + move >= map_size:  # Reached edge (right or bottom)
-            surplus += abs(move)
-            rect_pos = min(screen_size - rect_size, rect_pos + move)
-        elif surplus > 0:  # Moving in the opposite direction while surplus exists
-            surplus_move = min(abs(move), surplus)
-            surplus -= surplus_move
-            rect_pos += move
-        else:  # Normal movement, update spawn
-            spawn += move // self.config.tile_size
-        return rect_pos, surplus, spawn
-
     def __handle_movement(self, keys, dt):
         move_x, move_y = 0, 0
         moving = False
 
         self.move_timer += dt
 
-        if keys[pygame.K_LEFT]:
-            moving = True
-            if self.move_timer >= self.config.movement_speed:
-                move_x = -self.config.tile_size
-                self.move_timer = 0
-            self.character.current_direction = 'left'
-        elif keys[pygame.K_RIGHT]:
-            moving = True
-            if self.move_timer >= self.config.movement_speed:
-                move_x = self.config.tile_size
-                self.move_timer = 0
-            self.character.current_direction = 'right'
-        elif keys[pygame.K_UP]:
-            moving = True
-            if self.move_timer >= self.config.movement_speed:
-                move_y = -self.config.tile_size
-                self.move_timer = 0
-            self.character.current_direction = 'up'
-        elif keys[pygame.K_DOWN]:
-            moving = True
-            if self.move_timer >= self.config.movement_speed:
-                move_y = self.config.tile_size
-                self.move_timer = 0
-            self.character.current_direction = 'down'
+        direction_map = {
+            pygame.K_LEFT: ('left', -self.config.tile_size, 0),
+            pygame.K_RIGHT: ('right', self.config.tile_size, 0),
+            pygame.K_UP: ('up', 0, -self.config.tile_size),
+            pygame.K_DOWN: ('down', 0, self.config.tile_size)
+        }
+
+        for key, (direction, dx, dy) in direction_map.items():
+            if keys[key]:
+                moving = True
+                if self.move_timer >= self.config.movement_speed:
+                    move_x, move_y = dx, dy
+                    self.move_timer = 0
+                self.character.current_direction = direction
+                break
 
         if moving:
             new_x = self.character.rect.x + move_x
             new_y = self.character.rect.y + move_y
 
             if not self.check_collision():
-
-                # Update map offsets and character position based on the map edges
-                if self.__offset_x + move_x <= 0:  # Reached left edge
-                    self.x_surplus += abs(move_x)  # Increment surplus by the absolute value of move_x
-                    self.character.rect.x = max(0, new_x)
-                elif self.__offset_x + self.config.screen_width + move_x >= self.config.map_width:  # Reached right edge
-                    self.x_surplus += abs(move_x)  # Increment surplus by the absolute value of move_x
-                    self.character.rect.x = min(self.config.screen_width - self.character.rect.width, new_x)
-                elif self.x_surplus > 0:  # Moving in the opposite direction while surplus exists
-                    surplus_move = min(abs(move_x), self.x_surplus)  # Determine how much surplus to reduce
-                    self.x_surplus -= surplus_move  # Decrease the surplus
-                    self.character.rect.x = new_x
-                else:  # Normal movement, update spawn_x
-                    self.config.spawn_x += move_x // self.config.tile_size
-
-                if self.__offset_y + move_y <= 0:  # Reached left edge
-                    self.y_surplus += abs(move_y)  # Increment surplus by the absolute value of move_y
-                    self.character.rect.y = max(0, new_y)
-                elif self.__offset_y + self.config.screen_height + move_y >= self.config.map_height:  # Reached right edge
-                    self.y_surplus += abs(move_y)  # Increment surplus by the absolute value of move_y
-                    self.character.rect.y = min(self.config.screen_height - self.character.rect.height, new_y)
-                elif self.y_surplus > 0:  # Moving in the opposite direction while surplus exists
-                    surplus_move = min(abs(move_y), self.y_surplus)  # Determine how much surplus to reduce
-                    self.y_surplus -= surplus_move  # Decrease the surplus
-                    self.character.rect.y = new_y
-                else:  # Normal movement, update spawn_y
-                    self.config.spawn_y += move_y // self.config.tile_size
+                self.__handle_x_movement(new_x, move_x)
+                self.__handle_y_movement(new_y, move_y)
 
                 # Handle animation
                 self.character.frame_timer += 1
-                if self.character.frame_timer >= 8:
+                if self.character.frame_timer >= 7:
                     self.character.frame_timer = 0
                     self.character.current_frame = (self.character.current_frame + 1) % len(
                         self.character.character_frames[self.character.current_direction]["1"])
             else:
                 self.character.current_frame = 0
+
+    def __handle_x_movement(self, new_x, move_x):
+        if self.__offset_x + move_x <= 0:
+            self.x_surplus += abs(move_x)
+            self.character.rect.x = max(0, new_x)
+        elif self.__offset_x + self.config.screen_width + move_x >= self.config.map_width:
+            self.x_surplus += abs(move_x)
+            self.character.rect.x = min(self.config.screen_width - self.character.rect.width, new_x)
+        elif self.x_surplus > 0:
+            surplus_move = min(abs(move_x), self.x_surplus)
+            self.x_surplus -= surplus_move
+            self.character.rect.x = new_x
+        else:
+            self.config.spawn_x += move_x // self.config.tile_size
+
+    def __handle_y_movement(self, new_y, move_y):
+        if self.__offset_y + move_y <= 0:
+            self.y_surplus += abs(move_y)
+            self.character.rect.y = max(0, new_y)
+        elif self.__offset_y + self.config.screen_height + move_y >= self.config.map_height:
+            self.y_surplus += abs(move_y)
+            self.character.rect.y = min(self.config.screen_height - self.character.rect.height, new_y)
+        elif self.y_surplus > 0:
+            surplus_move = min(abs(move_y), self.y_surplus)
+            self.y_surplus -= surplus_move
+            self.character.rect.y = new_y
+        else:
+            self.config.spawn_y += move_y // self.config.tile_size
 
     def run(self):
         self.__preload_tiles()
