@@ -9,16 +9,8 @@ from app.pygame.character import Sprites
 
 class BasicGame:
     def __init__(self):
-        self.x_surplus = 0
-        self.y_surplus = 0
-
         self.config = Config()
         self.character = Sprites(self.config)
-
-        self.__offset_x = 0
-        self.__offset_y = 0
-        self.__player_x = 0
-        self.__player_y = 0
 
         self.no_go_zone = []
         self.tiles = {}
@@ -27,20 +19,20 @@ class BasicGame:
 
     def __draw_map(self):
         # Calculate half of the screen width and height in tiles
-        half_screen_tiles_x = (self.config.screen_width // self.config.tile_size) // 2
-        half_screen_tiles_y = (self.config.screen_height // self.config.tile_size) // 2
+        half_screen_tiles_x = (self.config.screen_size.x // self.config.tile_size) // 2
+        half_screen_tiles_y = (self.config.screen_size.y // self.config.tile_size) // 2
 
         # Calculate the offsets to center the specific tile
-        self.__offset_x = (self.config.spawn_x * self.config.tile_size) - (self.config.screen_width // 2) + (
+        self.config.offset.x = (self.config.spawn.x * self.config.tile_size) - (self.config.screen_size.x // 2) + (
                     self.config.tile_size // 2)
-        self.__offset_y = (self.config.spawn_y * self.config.tile_size) - (self.config.screen_height // 2) + (
+        self.config.offset.y = (self.config.spawn.y * self.config.tile_size) - (self.config.screen_size.y // 2) + (
                     self.config.tile_size // 2)
 
         # Calculate the start and end positions for tiles to draw
-        start_x = max(0, self.config.spawn_x - half_screen_tiles_x)
-        end_x = min(self.config.map_data.width, self.config.spawn_x + half_screen_tiles_x + 1)
-        start_y = max(0, self.config.spawn_y - half_screen_tiles_y)
-        end_y = min(self.config.map_data.height, self.config.spawn_y + half_screen_tiles_y + 1)
+        start_x = max(0, self.config.spawn.x - half_screen_tiles_x)
+        end_x = min(self.config.map_data.width, self.config.spawn.x + half_screen_tiles_x + 1)
+        start_y = max(0, self.config.spawn.y - half_screen_tiles_y)
+        end_y = min(self.config.map_data.height, self.config.spawn.y + half_screen_tiles_y + 1)
 
         for layer in self.config.map_data.visible_layers:
             if isinstance(layer, pytmx.TiledTileLayer):
@@ -54,6 +46,7 @@ class BasicGame:
                                 blit_x = (x - start_x) * self.config.tile_size
                                 blit_y = (y - start_y) * self.config.tile_size
                                 self.config.screen.blit(tile, (blit_x, blit_y))
+
     def __load_collision_rects(self):
         for layer in self.config.map_data.visible_layers:
             if isinstance(layer, pytmx.TiledTileLayer):
@@ -61,9 +54,7 @@ class BasicGame:
                     tile_properties = self.config.map_data.get_tile_properties_by_gid(gid)
                     if tile_properties and 'can_reach' in tile_properties:
                         if not tile_properties['can_reach']:
-                            rect_x = x * self.config.tile_size
-                            rect_y = y * self.config.tile_size
-                            self.no_go_zone.append((rect_x, rect_y))
+                            self.no_go_zone.append((x, y))
 
     def __preload_tiles(self):
         for gid in range(len(self.config.map_data.images)):
@@ -74,13 +65,12 @@ class BasicGame:
                 self.tiles[gid] = scaled_image
 
     def check_collision(self):
-        # Calculate the player's new position on the map based on the proposed offsets
         if None in self.no_go_zone:
             print("True")
             return True
         return False
 
-    def __handle_movement(self, keys, dt):
+    def __process_movement(self, keys, dt):
         move_x, move_y = 0, 0
         moving = False
 
@@ -107,8 +97,8 @@ class BasicGame:
             new_y = self.character.rect.y + move_y
 
             if not self.check_collision():
-                self.__handle_x_movement(new_x, move_x)
-                self.__handle_y_movement(new_y, move_y)
+                self.__adjust_position(new_x, move_x, 'x')
+                self.__adjust_position(new_y, move_y, 'y')
 
                 # Handle animation
                 self.character.frame_timer += 1
@@ -119,40 +109,41 @@ class BasicGame:
             else:
                 self.character.current_frame = 0
 
-    def __handle_x_movement(self, new_x, move_x):
-        if self.__offset_x + move_x <= 0:
-            self.x_surplus += abs(move_x)
-            self.character.rect.x = max(0, new_x)
-        elif self.__offset_x + self.config.screen_width + move_x >= self.config.map_width:
-            self.x_surplus += abs(move_x)
-            self.character.rect.x = min(self.config.screen_width - self.character.rect.width, new_x)
-        elif self.x_surplus > 0:
-            surplus_move = min(abs(move_x), self.x_surplus)
-            self.x_surplus -= surplus_move
-            self.character.rect.x = new_x
-        else:
-            self.config.spawn_x += move_x // self.config.tile_size
+    def __adjust_position(self, new_pos, move, axis):
+        config = self.config
+        character = self.character
 
-    def __handle_y_movement(self, new_y, move_y):
-        if self.__offset_y + move_y <= 0:
-            self.y_surplus += abs(move_y)
-            self.character.rect.y = max(0, new_y)
-        elif self.__offset_y + self.config.screen_height + move_y >= self.config.map_height:
-            self.y_surplus += abs(move_y)
-            self.character.rect.y = min(self.config.screen_height - self.character.rect.height, new_y)
-        elif self.y_surplus > 0:
-            surplus_move = min(abs(move_y), self.y_surplus)
-            self.y_surplus -= surplus_move
-            self.character.rect.y = new_y
+        offset = getattr(config.offset, axis)
+        surplus = getattr(config.surplus, axis)
+        screen_size = getattr(config.screen_size, axis)
+        map_size = getattr(config.map_size, axis)
+        spawn_value = getattr(config.spawn, axis)
+
+        if offset + move <= 0:
+            new_surplus = surplus + abs(move)
+            self.config.set_surplus(axis, new_surplus)
+            setattr(character.rect, axis, max(0, new_pos))
+        elif offset + screen_size + move >= map_size:
+            new_surplus = surplus + abs(move)
+            self.config.set_surplus(axis, new_surplus)
+            setattr(character.rect, axis, min(screen_size - self.config.tile_size, new_pos))
+        elif surplus > 0:
+            surplus_move = min(abs(move), surplus)
+            new_surplus = surplus - surplus_move
+            self.config.set_surplus(axis, new_surplus)
+            setattr(character.rect, axis, new_pos)
         else:
-            self.config.spawn_y += move_y // self.config.tile_size
+            new_spawn = spawn_value + move // config.tile_size
+            setattr(config.spawn, axis, new_spawn)
+
+
+        # TODO: character coordinates
 
     def run(self):
         self.__preload_tiles()
         self.__load_collision_rects()
 
         running = True
-
         while running:
             dt = pygame.time.Clock().tick(60)  # Time in milliseconds since the last frame
 
@@ -162,13 +153,15 @@ class BasicGame:
                     sys.exit()
 
             keys = pygame.key.get_pressed()
-            self.__handle_movement(keys, dt)
+            self.__process_movement(keys, dt)
             self.character.update()
-            print(self.x_surplus)
-            print(self.config.spawn_x, self.config.spawn_y)
+            #print(f"surplus: {self.config.surplus}")
+            print(self.character.rect.x, self.character.rect.y)
+            #print(self.config.spawn.x, self.config.spawn.y)
             self.__draw_map()
 
             # Draw the character
+            # Blit the character's image onto the screen
             self.config.screen.blit(self.character.image, self.character.rect.topleft)
 
             pygame.display.flip()

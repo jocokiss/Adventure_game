@@ -1,21 +1,27 @@
+from typing import Optional
+
 import pygame
 import xml.etree.ElementTree as ET
+
+from pydantic import Field
+
+from app.pygame.config import Config
 
 
 class Sprites(pygame.sprite.Sprite):
     def __init__(self, config):
         super().__init__()
-        self.config = config
+        self.config: Config = config
 
         self.rect = pygame.Rect(0, 0, 0, 0)
 
-        self.image = None
-        self.current_direction = "down"
-        self.current_frame = 0
-        self.frame_timer = 0
-        self.move_timer = 0
+        self.image: Optional[pygame.Surface] = Field(default=None)
+        self.current_direction: str = "down"
+        self.current_frame: int = 0
+        self.frame_timer: int = 0
+        self.move_timer: int = 0
 
-        self.character_frames = {
+        self.character_frames: dict = {
             'down': {"1": [], "2": []},
             'left': {"1": [], "2": []},
             'right': {"1": [], "2": []},
@@ -25,8 +31,8 @@ class Sprites(pygame.sprite.Sprite):
         # Load character frames
         self.load_character_from_tiled()
 
-        self.rect.x = (self.config.screen_width / 2)
-        self.rect.y = (self.config.screen_height / 2) - self.config.tile_size
+        self.rect.x = (self.config.screen_size.x / 2)
+        self.rect.y = (self.config.screen_size.y / 2) - self.config.tile_size
 
         # Initialize rect position based on the loaded image size
         self.rect.size = self.image.get_size()
@@ -92,3 +98,6 @@ class Sprites(pygame.sprite.Sprite):
         # Update the rect size based on the combined image
         self.rect.size = self.image.get_size()
 
+    @property
+    def char_coord(self):
+        return self.rect.x, self.rect.y
