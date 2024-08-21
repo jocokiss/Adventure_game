@@ -26,10 +26,13 @@ class Config:
         self.map_size: Coordinates = Coordinates(x=self.map_data.width * self.tile_size,
                                                  y=self.map_data.height * self.tile_size)
 
+        print(f"*** Map size: {self.map_size} ***")
+        print(f"*** Screen size: {self.screen_size} ***")
+
         self.character_png_location = self.args.character_png_location
         self.movement_speed = int(self.args.movement_speed)
 
-        self.spawn = Coordinates(x=self.rect.x // self.tile_size, y=self.rect.y // self.tile_size)
+        self.map_center = Coordinates(x=self.rect.x // self.tile_size, y=self.rect.y // self.tile_size)
 
         self.char_coord: Coordinates = Coordinates(x=self.rect.x // self.tile_size, y=self.rect.y // self.tile_size)
 
@@ -73,7 +76,7 @@ class Config:
         absolute_max_value = getattr(self.screen_size, axis) // 2
 
         # Calculate spawn position and determine the maximum surplus value based on the map center
-        spawn_x = getattr(self.spawn, axis) * self.tile_size
+        spawn_x = getattr(self.map_center, axis) * self.tile_size
         max_value = min(spawn_x, getattr(self.map_size, axis) - spawn_x) if spawn_x < self.map_size.x // 2 \
             else getattr(self.map_size, axis) - spawn_x
 

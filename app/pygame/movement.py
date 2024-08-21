@@ -14,32 +14,31 @@ class MovementHandler:
             return True
         return False
 
-    def __adjust_position(self, new_pos, move, axis):
-        config = self.config
-        character = self.character
+    def __adjust_position(self, x, y):
 
-        offset = getattr(config.offset, axis)
-        surplus = getattr(config.surplus, axis)
-        screen_size = getattr(config.screen_size, axis)
-        map_size = getattr(config.map_size, axis)
-        spawn_value = getattr(config.spawn, axis)
+        for move in x, y:
+            axis = "x" if x else "y"
+            new_coord = getattr(self.character.body_rect, axis) + move
 
-        if offset + move <= 0:
-            new_surplus = surplus + abs(move)
-            self.config.set_surplus(axis, new_surplus)
-            setattr(character.body_rect, axis, max(0, new_pos))
-        elif offset + screen_size + move >= map_size + self.config.tile_size:
-            new_surplus = surplus + abs(move)
-            self.config.set_surplus(axis, new_surplus)
-            setattr(character.body_rect, axis, min(screen_size - self.config.tile_size, new_pos))
-        elif surplus > 0:
-            surplus_move = min(abs(move), surplus)
-            new_surplus = surplus - surplus_move
-            self.config.set_surplus(axis, new_surplus)
-            setattr(character.body_rect, axis, new_pos)
-        else:
-            new_spawn = spawn_value + move // config.tile_size
-            setattr(config.spawn, axis, new_spawn)
+            offset = getattr(self.config.offset, axis)
+            screen_size = getattr(self.config.screen_size, axis)
+            map_size = getattr(self.config.map_size, axis)
+            map_center = getattr(self.config.map_center, axis)
+
+            negative_border, positive_border = 0, ((map_size // self.config.tile_size) - 1)
+            char_coord = getattr(self.character.coordinate, axis)
+
+            if (char_coord == negative_border and move < 0) or (char_coord == positive_border and move > 0):
+                return
+
+            if offset + move <= 0:
+                setattr(self.character.body_rect, axis, max(0, new_coord))
+            elif offset + screen_size + move >= map_size + self.config.tile_size:
+                setattr(self.character.body_rect, axis, min(screen_size - self.config.tile_size, new_coord))
+            elif (char_coord / map_center) != 1:
+                setattr(self.character.body_rect, axis, new_coord)
+            else:
+                setattr(self.config.map_center, axis, map_center + move // self.config.tile_size)
 
     def process_movement(self, keys, dt):
         move_x, move_y = 0, 0
@@ -63,19 +62,13 @@ class MovementHandler:
                 self.character.current_direction = direction
                 break
 
-        if moving:
-            new_x = self.character.body_rect.x + move_x
-            new_y = self.character.body_rect.y + move_y
-
-            if not self.__check_collision(move_x, move_y):
-                self.__adjust_position(new_x, move_x, 'x')
-                self.__adjust_position(new_y, move_y, 'y')
-
-                # Handle animation
-                self.character.frame_timer += 1
-                if self.character.frame_timer >= 7:
-                    self.character.frame_timer = 0
-                    self.character.current_frame = (self.character.current_frame + 1) % len(
-                        self.character.character_frames[self.character.current_direction]["1"])
-            else:
-                self.character.current_frame = 0
+        if moving and not self.__check_collision(move_x, move_y):
+            self.__adjust_position(move_x, move_y)
+            # Handle animation
+            self.character.frame_timer += 1
+            if self.character.frame_timer >= 7:
+                self.character.frame_timer = 0
+                self.character.current_frame = (self.character.current_frame + 1) % len(
+                    self.character.character_frames[self.character.current_direction]["1"])
+        else:
+            self.character.current_frame = 0
