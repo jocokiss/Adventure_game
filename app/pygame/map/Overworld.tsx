@@ -2,9 +2,84 @@
 <tileset version="1.10" tiledversion="1.11.0" name="Overworld" tilewidth="16" tileheight="16" tilecount="1440" columns="40">
  <image source="tileset/Overworld.png" width="640" height="576"/>
  <tile id="0" type="grass"/>
+ <tile id="46">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="47">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="48">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="49">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="50">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="86">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="87">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="88">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="89">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="90">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="120" type="grass"/>
  <tile id="121" type="grass"/>
  <tile id="122" type="grass"/>
+ <tile id="126">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="127">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="128">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="129">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="130">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="160" type="grass"/>
  <tile id="162" type="grass"/>
  <tile id="163">
@@ -12,6 +87,31 @@
    <object id="1" x="6.99051" y="8.08185" width="2.15319" height="1.20933"/>
    <object id="2" x="6.04664" y="-1.15034"/>
   </objectgroup>
+ </tile>
+ <tile id="166">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="167">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="168">
+  <properties>
+   <property name="can_reach" type="bool" value="true"/>
+  </properties>
+ </tile>
+ <tile id="169">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="170">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
  </tile>
  <tile id="200" type="grass"/>
  <tile id="201" type="grass"/>
@@ -42,7 +142,7 @@
    <object id="2" x="10.9806" y="1.77636e-15" width="4.97326" height="15.9538"/>
   </objectgroup>
  </tile>
- <tile id="283">
+ <tile id="283" type="water">
   <properties>
    <property name="can_reach" type="bool" value="false"/>
   </properties>
@@ -135,6 +235,81 @@
  <tile id="444" type="grass"/>
  <tile id="445" type="grass"/>
  <tile id="446" type="grass"/>
+ <tile id="484" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="485" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="486" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="524" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="525" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="526" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="564" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="565" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="566" type="rock">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="729">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="730">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="769">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="770">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="809">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="810">
+  <properties>
+   <property name="can_reach" type="bool" value="false"/>
+  </properties>
+ </tile>
  <wangsets>
   <wangset name="Unnamed Set" type="corner" tile="-1">
    <wangcolor name="Water-edge" color="#ff0000" tile="-1" probability="1"/>
