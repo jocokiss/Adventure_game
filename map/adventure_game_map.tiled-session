@@ -40,6 +40,7 @@
             "scaleInEditor": 2
         }
     },
+    "frame.defaultDuration": 100,
     "openFiles": [
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx"

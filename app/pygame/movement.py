@@ -56,7 +56,7 @@ class MovementHandler:
         for key, (direction, dx, dy) in direction_map.items():
             if keys[key]:
                 moving = True
-                if self.config.move_timer >= self.config.movement_speed:
+                if self.config.move_timer >= int(self.config.args.movement_speed):
                     move_x, move_y = dx, dy
                     self.config.move_timer = 0
                 self.character.current_direction = direction

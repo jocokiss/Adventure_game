@@ -134,6 +134,13 @@
    <object id="1" x="1.61439e-06" y="9.0356" width="5.12098" height="6.94284"/>
   </objectgroup>
  </tile>
+ <tile id="258">
+  <animation>
+   <frame tileid="258" duration="100"/>
+   <frame tileid="259" duration="100"/>
+   <frame tileid="260" duration="100"/>
+  </animation>
+ </tile>
  <tile id="282" type="grass">
   <properties>
    <property name="can_reach" type="bool" value="true"/>
@@ -158,6 +165,13 @@
    <object id="2" x="-2.22045e-16" y="1.77636e-15" width="4.97326" height="16.0031"/>
   </objectgroup>
  </tile>
+ <tile id="298">
+  <animation>
+   <frame tileid="298" duration="100"/>
+   <frame tileid="299" duration="100"/>
+   <frame tileid="300" duration="100"/>
+  </animation>
+ </tile>
  <tile id="322" type="grass">
   <properties>
    <property name="can_reach" type="bool" value="true"/>
@@ -181,6 +195,13 @@
   <objectgroup draworder="index" id="2">
    <object id="1" x="1.61439e-06" y="0.0246359" width="5.12098" height="4.97323"/>
   </objectgroup>
+ </tile>
+ <tile id="338">
+  <animation>
+   <frame tileid="338" duration="100"/>
+   <frame tileid="339" duration="100"/>
+   <frame tileid="340" duration="100"/>
+  </animation>
  </tile>
  <tile id="360" type="grass"/>
  <tile id="361" type="grass"/>
@@ -207,6 +228,27 @@
  <tile id="366" type="grass"/>
  <tile id="367" type="grass"/>
  <tile id="368" type="grass"/>
+ <tile id="377">
+  <animation>
+   <frame tileid="377" duration="100"/>
+   <frame tileid="417" duration="100"/>
+   <frame tileid="458" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="378">
+  <animation>
+   <frame tileid="378" duration="100"/>
+   <frame tileid="418" duration="100"/>
+   <frame tileid="459" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="379">
+  <animation>
+   <frame tileid="379" duration="100"/>
+   <frame tileid="419" duration="100"/>
+   <frame tileid="460" duration="100"/>
+  </animation>
+ </tile>
  <tile id="400" type="grass"/>
  <tile id="401" type="grass"/>
  <tile id="402">

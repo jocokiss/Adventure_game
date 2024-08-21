@@ -59,7 +59,7 @@ class Sprites(pygame.sprite.Sprite):
         image_width = int(root.find("image").attrib['width'])
 
         # Load the tileset image
-        tileset_image = pygame.image.load(self.config.character_png_location).convert_alpha()
+        tileset_image = pygame.image.load(self.config.args.character_png_location).convert_alpha()
 
         # Iterate through each tile element in the .tsx file
         for tile in root.findall("tile"):
