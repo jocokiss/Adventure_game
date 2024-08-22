@@ -1,22 +1,22 @@
 {
-    "activeFile": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
+    "activeFile": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx": {
-            "scaleInDock": 2.3899,
-            "scaleInEditor": 2.58
+            "scaleInDock": 5.318,
+            "scaleInEditor": 4.51
         },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx": {
             "scaleInDock": 1
         },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx": {
-            "scale": 7.2056,
-            "selectedLayer": 2,
+            "scale": 3.7725,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 393.72154990562893,
-                "y": 250.36083046519371
+                "x": 384.493041749503,
+                "y": 371.1066931742876
             }
         },
         "Overworld.tsx": {
@@ -40,7 +40,7 @@
             "scaleInEditor": 2
         }
     },
-    "frame.defaultDuration": 100,
+    "frame.defaultDuration": 300,
     "openFiles": [
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx"
@@ -48,8 +48,8 @@
     "project": "adventure_game_map.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
         "game_map.tmx",
         "character.tsx",
         "Overworld.tsx",

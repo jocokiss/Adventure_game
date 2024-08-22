@@ -14,16 +14,16 @@ class BasicGame:
         self.character = Sprites(self.config)
         self.movement = MovementHandler(self.config, self.character)
 
-    def __draw_map(self):
+    def __draw_map(self, dt: int):
         # Calculate half of the screen width and height in tiles
         half_screen_tiles_x = (self.config.screen_size.x // self.config.tile_size) // 2
         half_screen_tiles_y = (self.config.screen_size.y // self.config.tile_size) // 2
 
         # Calculate the offsets to center the specific tile
         self.config.offset.x = (self.config.map_center.x * self.config.tile_size) - (self.config.screen_size.x // 2) + (
-                    self.config.tile_size // 2)
+                self.config.tile_size // 2)
         self.config.offset.y = (self.config.map_center.y * self.config.tile_size) - (self.config.screen_size.y // 2) + (
-                    self.config.tile_size // 2)
+                self.config.tile_size // 2)
 
         # Calculate the start and end positions for tiles to draw
         start_x = max(0, self.config.map_center.x - half_screen_tiles_x)
@@ -37,7 +37,7 @@ class BasicGame:
                     for x in range(start_x, end_x):
                         gid = layer.data[y][x]
                         if gid:
-                            tile = self.config.tiles.get(gid)
+                            tile = self.config.get_animated_tile(gid, dt)
                             if tile:
                                 # Calculate where to draw the tile on the screen
                                 blit_x = (x - start_x) * self.config.tile_size
@@ -57,7 +57,7 @@ class BasicGame:
 
             keys = pygame.key.get_pressed()
             self.movement.process_movement(keys, dt)
-            self.__draw_map()
+            self.__draw_map(dt)
 
             self.character.update()
             self.character.draw(self.config.screen)
