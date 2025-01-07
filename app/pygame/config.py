@@ -15,7 +15,8 @@ class Config:
         self.tiles: dict = {}
 
         self.rect = pygame.Rect(0, 0, 0, 0)
-        self.no_go_zone = []
+        self.no_go_zone = set()
+        self.border_tiles = {}
 
         self.move_timer = 0
         self.animation_timer = 0
@@ -82,14 +83,24 @@ class Config:
         return self.tiles.get(gid)[0]
 
     def __load_collision_rects(self):
-        unreachable_tiles = ["water", "rock"]
+        unreachable_tiles = {"water", "rock"}
 
         for layer in self.map_data.visible_layers:
-            if isinstance(layer, pytmx.TiledTileLayer):
-                for x, y, gid in layer:
-                    tile_properties = self.map_data.get_tile_properties_by_gid(gid)
-                    if tile_properties and tile_properties.get("type") in unreachable_tiles:
-                        self.no_go_zone.append((x, y))
+
+            if not isinstance(layer, pytmx.TiledTileLayer):
+                continue
+
+            for x, y, gid in layer:
+                props = self.map_data.get_tile_properties_by_gid(gid) or {}
+
+                if props.get("type") in unreachable_tiles:
+                    self.no_go_zone.add((x, y))
+
+                if props.get("border"):
+                    borders = {side.strip() for side in props["border"].split(",")}
+                    self.border_tiles[(x, y)] = borders
+
+        print(self.border_tiles)
 
     def __set_coordinates(self):
         self.screen_size.x, self.screen_size.y = int(self.args.screen_width), int(self.args.screen_height)

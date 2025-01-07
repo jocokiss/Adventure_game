@@ -1,22 +1,23 @@
 {
-    "activeFile": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
+    "activeFile": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx": {
-            "scaleInDock": 5.318,
+            "scaleInDock": 1.4291,
             "scaleInEditor": 4.51
         },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 3.53
         },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx": {
-            "scale": 3.7725,
-            "selectedLayer": 0,
+            "scale": 2.5299,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 384.493041749503,
-                "y": 371.1066931742876
+                "x": 374.1254595043282,
+                "y": 304.35985612079526
             }
         },
         "Overworld.tsx": {
@@ -40,14 +41,16 @@
             "scaleInEditor": 2
         }
     },
-    "frame.defaultDuration": 300,
+    "frame.defaultDuration": 100,
+    "last.objectTemplatePath": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map",
     "openFiles": [
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
-        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx"
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx"
     ],
     "project": "adventure_game_map.tiled-project",
-    "property.type": "bool",
+    "property.type": "string",
     "recentFiles": [
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
         "game_map.tmx",

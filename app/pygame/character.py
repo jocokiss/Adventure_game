@@ -131,3 +131,11 @@ class Sprites(pygame.sprite.Sprite):
 
         # Optional: Draw the outline around the head's rect
         pygame.draw.rect(screen, (0, 0, 255), self.head_rect, 2)
+
+    def walking_animation(self):
+        """Helper to increment frame timers and cycle frames."""
+        self.frame_timer += 1
+        if self.frame_timer >= 7:
+            self.frame_timer = 0
+            frames = self.character_frames[self.current_direction]["1"]
+            self.current_frame = (self.current_frame + 1) % len(frames)

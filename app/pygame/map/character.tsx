@@ -97,7 +97,11 @@
    <frame tileid="122" duration="100"/>
   </animation>
  </tile>
- <tile id="136">
+ <tile id="136" type="sword">
+  <properties>
+   <property name="direction" value="down"/>
+   <property name="part" type="int" value="1"/>
+  </properties>
   <animation>
    <frame tileid="136" duration="200"/>
    <frame tileid="138" duration="200"/>
@@ -105,7 +109,11 @@
    <frame tileid="142" duration="200"/>
   </animation>
  </tile>
- <tile id="137">
+ <tile id="137" type="sword">
+  <properties>
+   <property name="direction" value="down"/>
+   <property name="part" type="int" value="2"/>
+  </properties>
   <animation>
    <frame tileid="137" duration="200"/>
    <frame tileid="139" duration="200"/>
@@ -113,7 +121,11 @@
    <frame tileid="143" duration="200"/>
   </animation>
  </tile>
- <tile id="153">
+ <tile id="153" type="sword">
+  <properties>
+   <property name="direction" value="down"/>
+   <property name="part" type="int" value="3"/>
+  </properties>
   <animation>
    <frame tileid="153" duration="200"/>
    <frame tileid="155" duration="200"/>
@@ -121,12 +133,160 @@
    <frame tileid="159" duration="200"/>
   </animation>
  </tile>
- <tile id="154">
+ <tile id="154" type="sword">
+  <properties>
+   <property name="direction" value="down"/>
+   <property name="part" type="int" value="4"/>
+  </properties>
   <animation>
    <frame tileid="154" duration="200"/>
    <frame tileid="156" duration="200"/>
    <frame tileid="158" duration="200"/>
    <frame tileid="160" duration="200"/>
+  </animation>
+ </tile>
+ <tile id="170" type="sword">
+  <properties>
+   <property name="direction" value="up"/>
+   <property name="part" type="int" value="1"/>
+  </properties>
+  <animation>
+   <frame tileid="170" duration="100"/>
+   <frame tileid="172" duration="100"/>
+   <frame tileid="174" duration="100"/>
+   <frame tileid="176" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="171" type="sword">
+  <properties>
+   <property name="direction" value="up"/>
+   <property name="part" type="int" value="2"/>
+  </properties>
+  <animation>
+   <frame tileid="171" duration="100"/>
+   <frame tileid="173" duration="100"/>
+   <frame tileid="175" duration="100"/>
+   <frame tileid="177" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="187" type="sword">
+  <properties>
+   <property name="direction" value="up"/>
+   <property name="part" type="int" value="3"/>
+  </properties>
+  <animation>
+   <frame tileid="187" duration="100"/>
+   <frame tileid="189" duration="100"/>
+   <frame tileid="191" duration="100"/>
+   <frame tileid="193" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="188" type="sword">
+  <properties>
+   <property name="direction" value="up"/>
+   <property name="part" type="int" value="4"/>
+  </properties>
+  <animation>
+   <frame tileid="188" duration="100"/>
+   <frame tileid="190" duration="100"/>
+   <frame tileid="192" duration="100"/>
+   <frame tileid="194" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="204" type="sword">
+  <properties>
+   <property name="direction" value="right"/>
+   <property name="part" type="int" value="1"/>
+  </properties>
+  <animation>
+   <frame tileid="204" duration="100"/>
+   <frame tileid="206" duration="100"/>
+   <frame tileid="208" duration="100"/>
+   <frame tileid="210" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="205" type="sword">
+  <properties>
+   <property name="direction" value="right"/>
+   <property name="part" type="int" value="2"/>
+  </properties>
+  <animation>
+   <frame tileid="205" duration="100"/>
+   <frame tileid="207" duration="100"/>
+   <frame tileid="209" duration="100"/>
+   <frame tileid="211" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="221" type="sword">
+  <properties>
+   <property name="direction" value="right"/>
+   <property name="part" type="int" value="3"/>
+  </properties>
+  <animation>
+   <frame tileid="221" duration="100"/>
+   <frame tileid="223" duration="100"/>
+   <frame tileid="225" duration="100"/>
+   <frame tileid="227" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="222" type="sword">
+  <properties>
+   <property name="direction" value="right"/>
+   <property name="part" type="int" value="4"/>
+  </properties>
+  <animation>
+   <frame tileid="222" duration="100"/>
+   <frame tileid="224" duration="100"/>
+   <frame tileid="226" duration="100"/>
+   <frame tileid="228" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="238" type="sword">
+  <properties>
+   <property name="direction" value="left"/>
+   <property name="part" type="int" value="1"/>
+  </properties>
+  <animation>
+   <frame tileid="238" duration="100"/>
+   <frame tileid="240" duration="100"/>
+   <frame tileid="242" duration="100"/>
+   <frame tileid="244" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="239" type="sword">
+  <properties>
+   <property name="direction" value="left"/>
+   <property name="part" type="int" value="2"/>
+  </properties>
+  <animation>
+   <frame tileid="239" duration="100"/>
+   <frame tileid="241" duration="100"/>
+   <frame tileid="243" duration="100"/>
+   <frame tileid="245" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="255" type="sword">
+  <properties>
+   <property name="direction" value="left"/>
+   <property name="part" type="int" value="3"/>
+  </properties>
+  <animation>
+   <frame tileid="255" duration="100"/>
+   <frame tileid="257" duration="100"/>
+   <frame tileid="259" duration="100"/>
+   <frame tileid="261" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="256" type="sword">
+  <properties>
+   <property name="direction" value="left"/>
+   <property name="part" type="int" value="4"/>
+  </properties>
+  <animation>
+   <frame tileid="256" duration="100"/>
+   <frame tileid="258" duration="100"/>
+   <frame tileid="260" duration="100"/>
+   <frame tileid="262" duration="100"/>
   </animation>
  </tile>
 </tileset>

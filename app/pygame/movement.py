@@ -7,11 +7,19 @@ class MovementHandler:
         self.character = character
 
     def __check_collision(self, move_x: int = 0, move_y: int = 0) -> bool:
-        new_x, new_y = move_x // self.config.tile_size, move_y // self.config.tile_size
+        current_position = (self.character.coordinate.x, self.character.coordinate.y)
+        future_position = (
+            current_position[0] + move_x // self.config.tile_size,
+            current_position[1] + move_y // self.config.tile_size
+        )
 
-        current_x, current_y = self.character.coordinate.x, self.character.coordinate.y
-        if ((current_x + new_x), (current_y + new_y)) in self.config.no_go_zone:
+        if (current_position in self.config.border_tiles
+                and self.character.current_direction in self.config.border_tiles[current_position]):
             return True
+
+        if future_position in self.config.no_go_zone:
+            return True
+
         return False
 
     def __adjust_position(self, x, y):
@@ -62,13 +70,11 @@ class MovementHandler:
                 self.character.current_direction = direction
                 break
 
-        if moving and not self.__check_collision(move_x, move_y):
-            self.__adjust_position(move_x, move_y)
-            # Handle animation
-            self.character.frame_timer += 1
-            if self.character.frame_timer >= 7:
-                self.character.frame_timer = 0
-                self.character.current_frame = (self.character.current_frame + 1) % len(
-                    self.character.character_frames[self.character.current_direction]["1"])
+        if moving:
+            if not self.__check_collision(move_x, move_y):
+                self.__adjust_position(move_x, move_y)
+            self.character.walking_animation()
+
         else:
+            # No movement key is pressed; reset animation
             self.character.current_frame = 0
