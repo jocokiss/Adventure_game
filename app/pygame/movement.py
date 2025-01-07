@@ -57,11 +57,11 @@ class MovementHandler:
             else:
                 setattr(self.config.map_center, axis, map_center + move // self.config.tile_size)
 
-    def process_movement(self, keys, dt):
+    def process_movement(self, keys):
         move_x, move_y = 0, 0
         moving = False
 
-        self.config.move_timer += dt
+        self.config.move_timer += self.config.dt
 
         direction_map = {
             pygame.K_LEFT: ('left', -self.config.tile_size, 0),

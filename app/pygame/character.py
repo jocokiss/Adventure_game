@@ -119,18 +119,21 @@ class Sprites(pygame.sprite.Sprite):
         # Position the head_rect relative to the body_rect
         self.head_rect.midbottom = self.body_rect.midtop  # Align head's bottom center to body's top center
 
-    def draw(self, screen):
+    def draw(self):
         # Draw the body using body_rect
-        screen.blit(self.image, self.body_rect.topleft)
+        self.config.screen.blit(self.image, self.body_rect.topleft)
 
         # Now draw the head using head_rect
-        screen.blit(self.character_frames[self.current_direction]["1"][self.current_frame][0], self.head_rect.topleft)
+        self.config.screen.blit(
+            self.character_frames[self.current_direction]["1"][self.current_frame][0],
+            self.head_rect.topleft
+        )
 
         # Optional: Draw the outline around the body's rect
-        pygame.draw.rect(screen, (255, 0, 0), self.body_rect, 2)
+        # pygame.draw.rect(self.config.screen, (255, 0, 0), self.body_rect, 2)
 
         # Optional: Draw the outline around the head's rect
-        pygame.draw.rect(screen, (0, 0, 255), self.head_rect, 2)
+        # pygame.draw.rect(self.config.screen, (0, 0, 255), self.head_rect, 2)
 
     def walking_animation(self):
         """Helper to increment frame timers and cycle frames."""

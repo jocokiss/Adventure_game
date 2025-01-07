@@ -2,6 +2,7 @@ import pygame
 import pytmx
 
 from app.utilities.arg_parser import ArgParser
+from app.utilities.common_utils import half_coordinates
 from app.utilities.dataclasses import Coordinates
 
 
@@ -27,7 +28,14 @@ class Config:
         self.map_center: Coordinates = Coordinates()
 
         self.map_data: pytmx.TiledMap
+
+        self.background_layers = None
+        self.foreground_layers: set = set()
+
         self.__initialize_pygame()
+        self.__sort_layers()
+
+        self.dt: int = 0
 
     def __initialize_pygame(self, title: str = "AdventureGame"):
         pygame.init()
@@ -108,3 +116,29 @@ class Config:
                                             (self.map_data.height * self.tile_size))
 
         self.map_center.x, self.map_center.y = self.rect.x // self.tile_size, self.rect.y // self.tile_size
+
+    def calculate_offsets(self):
+        # Calculate the offsets to center a specific tile
+        self.offset.x = (self.map_center.x * self.tile_size) - (self.screen_size.x // 2) + (self.tile_size // 2)
+        self.offset.y = (self.map_center.y * self.tile_size) - (self.screen_size.y // 2) + (self.tile_size // 2)
+
+    def calculate_positions(self):
+        hx, hy = half_coordinates(self.screen_size, self.tile_size)
+        # Calculate the start and end positions for tiles to draw
+        return (
+            (max(0, self.map_center.x - hx), min(self.map_data.width, self.map_center.x + hx + 3)),
+            (max(0, self.map_center.y - hy), min(self.map_data.height, self.map_center.y + hy + 3))
+        )
+
+    def __sort_layers(self):
+        self.background_layers = [
+            layer for layer in self.map_data.visible_layers if isinstance(layer, pytmx.TiledTileLayer)
+        ]
+
+        foreground_layers = {
+            layer for layer in self.background_layers if layer.properties["Position"].lower() == "foreground"
+        }
+        if foreground_layers:
+            for layer in foreground_layers:
+                self.background_layers.remove(layer)
+            self.foreground_layers = foreground_layers
