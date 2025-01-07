@@ -1,10 +1,19 @@
 import pygame
 
+from app.utilities.constants import OPPOSITE_DIRECTION
+
 
 class MovementHandler:
     def __init__(self, config, character):
         self.config = config
         self.character = character
+
+    def tile_has_border(self, tile_position, direction):
+        """Return True if tile at tile_position has a border in the given direction."""
+        return (
+                tile_position in self.config.border_tiles
+                and direction in self.config.border_tiles[tile_position]
+        )
 
     def __check_collision(self, move_x: int = 0, move_y: int = 0) -> bool:
         current_position = (self.character.coordinate.x, self.character.coordinate.y)
@@ -13,14 +22,14 @@ class MovementHandler:
             current_position[1] + move_y // self.config.tile_size
         )
 
-        if (current_position in self.config.border_tiles
-                and self.character.current_direction in self.config.border_tiles[current_position]):
-            return True
+        facing_direction = self.character.current_direction
+        opposite_direction = OPPOSITE_DIRECTION[facing_direction]
 
-        if future_position in self.config.no_go_zone:
-            return True
-
-        return False
+        return (
+                self.tile_has_border(current_position, facing_direction) or
+                self.tile_has_border(future_position, opposite_direction) or
+                future_position in self.config.no_go_zone
+        )
 
     def __adjust_position(self, x, y):
 
