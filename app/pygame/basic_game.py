@@ -1,5 +1,4 @@
 import pygame
-import pytmx
 import sys
 
 from app.pygame.config import Config
