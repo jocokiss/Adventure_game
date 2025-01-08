@@ -1,9 +1,18 @@
 # CHANGELOG
 
 
+## v0.2.1 (2025-01-08)
+
+### Unknown
+
+* Merge remote-tracking branch 'origin/main' ([`e88ba91`](https://github.com/jocokiss/Adventure_game/commit/e88ba917601f5cf8e79fef89dcdf705915dbf331))
+
+
 ## v0.2.0 (2025-01-08)
 
 ### Bug Fixes
+
+* fix(workflows): Add debug section to workflow to better understand issues ([`afde0fc`](https://github.com/jocokiss/Adventure_game/commit/afde0fca5add640b5630d9f0225bfef991a3c6f7))
 
 * fix(asd): fix actino ([`580e00f`](https://github.com/jocokiss/Adventure_game/commit/580e00fd53b8dbbd420863def99045e9b54dcdbd))
 
