@@ -1,18 +1,35 @@
 import pygame
 
+from app.utilities.constants import OPPOSITE_DIRECTION
+
 
 class MovementHandler:
     def __init__(self, config, character):
         self.config = config
         self.character = character
 
-    def __check_collision(self, move_x: int = 0, move_y: int = 0) -> bool:
-        new_x, new_y = move_x // self.config.tile_size, move_y // self.config.tile_size
+    def tile_has_border(self, tile_position, direction):
+        """Return True if tile at tile_position has a border in the given direction."""
+        return (
+                tile_position in self.config.border_tiles
+                and direction in self.config.border_tiles[tile_position]
+        )
 
-        current_x, current_y = self.character.coordinate.x, self.character.coordinate.y
-        if ((current_x + new_x), (current_y + new_y)) in self.config.no_go_zone:
-            return True
-        return False
+    def __check_collision(self, move_x: int = 0, move_y: int = 0) -> bool:
+        current_position = (self.character.coordinate.x, self.character.coordinate.y)
+        future_position = (
+            current_position[0] + move_x // self.config.tile_size,
+            current_position[1] + move_y // self.config.tile_size
+        )
+
+        facing_direction = self.character.current_direction
+        opposite_direction = OPPOSITE_DIRECTION[facing_direction]
+
+        return (
+                self.tile_has_border(current_position, facing_direction) or
+                self.tile_has_border(future_position, opposite_direction) or
+                future_position in self.config.no_go_zone
+        )
 
     def __adjust_position(self, x, y):
 
@@ -40,11 +57,11 @@ class MovementHandler:
             else:
                 setattr(self.config.map_center, axis, map_center + move // self.config.tile_size)
 
-    def process_movement(self, keys, dt):
+    def process_movement(self, keys):
         move_x, move_y = 0, 0
         moving = False
 
-        self.config.move_timer += dt
+        self.config.move_timer += self.config.dt
 
         direction_map = {
             pygame.K_LEFT: ('left', -self.config.tile_size, 0),
@@ -62,13 +79,11 @@ class MovementHandler:
                 self.character.current_direction = direction
                 break
 
-        if moving and not self.__check_collision(move_x, move_y):
-            self.__adjust_position(move_x, move_y)
-            # Handle animation
-            self.character.frame_timer += 1
-            if self.character.frame_timer >= 7:
-                self.character.frame_timer = 0
-                self.character.current_frame = (self.character.current_frame + 1) % len(
-                    self.character.character_frames[self.character.current_direction]["1"])
+        if moving:
+            if not self.__check_collision(move_x, move_y):
+                self.__adjust_position(move_x, move_y)
+            self.character.walking_animation()
+
         else:
+            # No movement key is pressed; reset animation
             self.character.current_frame = 0

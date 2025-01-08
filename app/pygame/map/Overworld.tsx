@@ -155,8 +155,11 @@
  <tile id="202" type="grass"/>
  <tile id="242" type="grass"/>
  <tile id="243" type="grass">
+  <properties>
+   <property name="has_border" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="-0.0952919" y="11.004" width="16.0523" height="5.02247"/>
+   <object id="2" template="bottom_border_collision.tx" x="0" y="12"/>
   </objectgroup>
  </tile>
  <tile id="244" type="grass">
@@ -177,8 +180,11 @@
  <tile id="259" type="water"/>
  <tile id="260" type="water"/>
  <tile id="282" type="grass">
+  <properties>
+   <property name="has_border" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="2" x="10.9806" y="1.77636e-15" width="4.97326" height="15.9538"/>
+   <object id="1" template="right_border_collision.tx" x="12" y="0"/>
   </objectgroup>
  </tile>
  <tile id="283" type="water">
@@ -187,8 +193,11 @@
   </objectgroup>
  </tile>
  <tile id="284" type="grass">
+  <properties>
+   <property name="has_border" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="2" x="-2.22045e-16" y="1.77636e-15" width="4.97326" height="16.0031"/>
+   <object id="3" template="left_border_collision.tx" name="left_border" x="0" y="0" visible="1"/>
   </objectgroup>
  </tile>
  <tile id="298" type="water">
@@ -209,8 +218,11 @@
   </objectgroup>
  </tile>
  <tile id="323" type="grass">
+  <properties>
+   <property name="has_border" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="-0.0492338" y="0.0246359" width="16.0523" height="5.02247"/>
+   <object id="2" template="top_border_collision.tx" x="0" y="0"/>
   </objectgroup>
  </tile>
  <tile id="324" type="grass">
@@ -233,20 +245,40 @@
  <tile id="360" type="grass"/>
  <tile id="361" type="grass"/>
  <tile id="362">
+  <properties>
+   <property name="border" value="left,up"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="-0.0246186" y="0.0246064" width="5.07174" height="16.0031"/>
-   <object id="2" x="-0.0492338" y="1.39104e-06" width="16.0523" height="5.0225"/>
+   <object id="2" template="top_border_collision.tx" x="0" y="0"/>
+   <object id="5" template="left_border_collision.tx" name="left_border" x="0" y="0" visible="1"/>
   </objectgroup>
  </tile>
  <tile id="363">
+  <properties>
+   <property name="border" value="right,up"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="-0.0492402" y="0" width="16.0523" height="5.0225"/>
-   <object id="2" x="11.0791" y="-0.0492402" width="4.92402" height="16.0031"/>
+   <object id="1" template="top_border_collision.tx" x="0" y="0"/>
+   <object id="2" template="right_border_collision.tx" x="12" y="0"/>
   </objectgroup>
  </tile>
- <tile id="364" type="grass"/>
+ <tile id="364" type="grass">
+  <properties>
+   <property name="border" value="left"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="left_border_collision.tx" name="left_border" x="0" y="0" visible="1"/>
+  </objectgroup>
+ </tile>
  <tile id="365" type="grass"/>
- <tile id="366" type="grass"/>
+ <tile id="366" type="grass">
+  <properties>
+   <property name="border" value="right"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="right_border_collision.tx" x="12" y="0"/>
+  </objectgroup>
+ </tile>
  <tile id="367" type="grass"/>
  <tile id="368" type="grass"/>
  <tile id="377" type="water">
@@ -282,28 +314,71 @@
  <tile id="400" type="grass"/>
  <tile id="401" type="grass"/>
  <tile id="402">
+  <properties>
+   <property name="border" value="left,down"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="0.0246216" y="-0.0246338" width="5.07174" height="16.0031"/>
-   <object id="2" x="-0.0492338" y="10.9806" width="16.0523" height="5.0225"/>
+   <object id="3" template="left_border_collision.tx" name="left_border" x="0" y="0" visible="1"/>
+   <object id="4" template="bottom_border_collision.tx" x="0" y="12"/>
   </objectgroup>
  </tile>
  <tile id="403">
+  <properties>
+   <property name="border" value="right,down"/>
+  </properties>
   <objectgroup draworder="index" id="2">
-   <object id="1" x="-2.36934e-05" y="10.9559" width="16.0523" height="5.0225"/>
-   <object id="2" x="11.0298" y="-0.0246338" width="5.07174" height="16.0031"/>
+   <object id="3" template="bottom_border_collision.tx" x="0" y="12"/>
+   <object id="4" template="right_border_collision.tx" x="12" y="0"/>
   </objectgroup>
  </tile>
- <tile id="404" type="grass"/>
+ <tile id="404" type="grass">
+  <properties>
+   <property name="border" value="left"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="left_border_collision.tx" name="left_border" x="0" y="0" visible="1"/>
+  </objectgroup>
+ </tile>
  <tile id="405" type="grass"/>
- <tile id="406" type="grass"/>
+ <tile id="406" type="grass">
+  <properties>
+   <property name="border" value="right"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="right_border_collision.tx" x="12" y="0"/>
+  </objectgroup>
+ </tile>
  <tile id="407" type="grass"/>
  <tile id="408" type="grass"/>
  <tile id="417" type="water"/>
  <tile id="418" type="water"/>
  <tile id="419" type="water"/>
- <tile id="444" type="grass"/>
- <tile id="445" type="grass"/>
- <tile id="446" type="grass"/>
+ <tile id="444" type="grass">
+  <properties>
+   <property name="border" value="left,down"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="bottom_border_collision.tx" x="0" y="12"/>
+   <object id="2" template="left_border_collision.tx" name="left_border" x="0" y="0" visible="1"/>
+  </objectgroup>
+ </tile>
+ <tile id="445" type="grass">
+  <properties>
+   <property name="border" value="down"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="bottom_border_collision.tx" x="0" y="12"/>
+  </objectgroup>
+ </tile>
+ <tile id="446" type="grass">
+  <properties>
+   <property name="border" value="right,down"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="right_border_collision.tx" x="12" y="0"/>
+   <object id="2" template="bottom_border_collision.tx" x="0" y="12"/>
+  </objectgroup>
+ </tile>
  <tile id="447" type="rock"/>
  <tile id="448" type="rock"/>
  <tile id="458" type="water"/>
@@ -324,6 +399,24 @@
  <tile id="612" type="rock"/>
  <tile id="651" type="rock"/>
  <tile id="652" type="rock"/>
+ <tile id="689">
+  <properties>
+   <property name="border" value="right,down"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="right_border_collision.tx" x="12" y="0"/>
+   <object id="2" template="bottom_border_collision.tx" x="0" y="12"/>
+  </objectgroup>
+ </tile>
+ <tile id="690">
+  <properties>
+   <property name="border" value="left,down"/>
+  </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="left_border_collision.tx" name="left_border" x="0" y="0" visible="1"/>
+   <object id="2" template="bottom_border_collision.tx" x="0" y="12"/>
+  </objectgroup>
+ </tile>
  <tile id="728" type="rock"/>
  <tile id="729" type="rock"/>
  <tile id="730" type="rock"/>
