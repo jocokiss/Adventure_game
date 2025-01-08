@@ -1,6 +1,15 @@
 # CHANGELOG
 
 
+## v0.3.0 (2025-01-08)
+
+### Features
+
+* feat(gameplay): add main menu to the game
+
+Main menu has been added to the game. Now it is possible to start a new game, load game(not functioning yet) and go back to the main menu, which is effectively restarts the gaming session so you can either start a new game or load a saved one. ([`84c5574`](https://github.com/jocokiss/Adventure_game/commit/84c5574284cedc55f4aef3d891e6c6b39ce46f06))
+
+
 ## v0.2.2 (2025-01-08)
 
 ### Bug Fixes
