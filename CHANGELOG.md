@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.2.2 (2025-01-08)
+
+### Bug Fixes
+
+* fix(pyproject.toml): remove old instances of changelog entry ([`61ccb3b`](https://github.com/jocokiss/Adventure_game/commit/61ccb3b88c8d27cc8a6a46152a99d31577c7464e))
+
+
 ## v0.2.1 (2025-01-08)
 
 ### Unknown
