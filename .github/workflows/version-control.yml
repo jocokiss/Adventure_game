@@ -27,15 +27,6 @@ jobs:
       - name: Setup | Force correct release branch on workflow sha
         run: |
           git checkout -B ${{ github.ref_name }} ${{ github.sha }}
-          
-
-      - name: Debug | Verify File Paths
-        run: |
-          echo "Current Directory: $(pwd)"
-          ls -la
-          cat pyproject.toml
-          test -f CHANGELOG.md && echo "CHANGELOG.md exists" || echo "CHANGELOG.md missing"
-
 
       - name: Action | Semantic Version Release
         id: release
@@ -45,7 +36,6 @@ jobs:
           github_token: ${{ secrets.GH_TOKEN }}
           git_committer_name: "github-actions"
           git_committer_email: "actions@users.noreply.github.com"
-
 
       - name: Publish | Upload to GitHub Release Assets
         uses: python-semantic-release/publish-action@v9.8.9

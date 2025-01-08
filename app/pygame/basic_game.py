@@ -1,5 +1,4 @@
 import pygame
-import sys
 
 from app.pygame.config import Config
 from app.pygame.character import Sprites
