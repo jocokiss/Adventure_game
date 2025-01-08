@@ -65,3 +65,6 @@ insecure = false
 dist_glob_patterns = ["dist/*"]
 upload_to_vcs_release = true
 
+[semantic_release.remote.token]
+env = "GH_TOKEN"
+
