@@ -1,22 +1,40 @@
 {
+    "activeFile": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/NPC.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3.4319
+        },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx": {
             "scaleInDock": 1.4291,
-            "scaleInEditor": 4.51
+            "scaleInEditor": 3.53
+        },
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Pawn_Red.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 3.53
         },
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/custom character.tsx": {
+            "scaleInDock": 2.2866,
+            "scaleInEditor": 2.6429
+        },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx": {
-            "scale": 2.5299,
-            "selectedLayer": 0,
+            "scale": 4.195,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 237.16352424997035,
-                "y": 262.8562393770505
+                "x": 350.7747318235995,
+                "y": 292.25268176400476
             }
+        },
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/log.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 2.8587
         },
         "Overworld.tsx": {
             "scaleInDock": 2,
@@ -39,18 +57,26 @@
             "scaleInEditor": 2
         }
     },
+    "last.imagePath": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/tileset",
     "openFiles": [
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx",
-        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx"
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/log.tsx"
     ],
+    "project": "",
     "recentFiles": [
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/log.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/NPC.tsx",
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/custom character.tsx",
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Pawn_Red.tsx",
         "game_map.tmx",
         "character.tsx",
         "Overworld.tsx",
         "objects.tsx"
-    ]
+    ],
+    "tileset.lastUsedFormat": "tsx"
 }

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="2">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="64" height="48" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="3">
  <tileset firstgid="1" source="Overworld.tsx"/>
  <tileset firstgid="1441" source="character.tsx"/>
+ <tileset firstgid="1713" source="log.tsx"/>
  <layer id="1" name="Base" width="64" height="48">
   <properties>
    <property name="Position" value="background"/>
@@ -222,8 +223,12 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="2" name="Spawn point" visible="0">
+ <objectgroup id="6" name="Npc"/>
+ <objectgroup id="2" name="Spawn point">
   <object id="1" name="Spawn" x="368.168" y="256.157" width="15.6117" height="15.6117">
+   <ellipse/>
+  </object>
+  <object id="2" name="Npc" x="304" y="272" width="16" height="16">
    <ellipse/>
   </object>
  </objectgroup>

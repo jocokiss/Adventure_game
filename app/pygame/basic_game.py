@@ -1,7 +1,7 @@
 import pygame
 
 from app.pygame.config import Config
-from app.pygame.character import Sprites
+from app.pygame.character import PlayerSprite, NPCSprite
 from app.pygame.map import Map
 from app.pygame.movement import MovementHandler
 from app.pygame.menu import Menu
@@ -10,7 +10,8 @@ from app.pygame.menu import Menu
 class BasicGame:
     def __init__(self):
         self.config = Config()
-        self.character = Sprites(self.config)
+        self.character = PlayerSprite(self.config)
+        self.npc = NPCSprite(self.config)
         self.movement = MovementHandler(self.config, self.character)
         self.map = Map(self.config)
         self.menu = Menu(self.config)
@@ -89,8 +90,10 @@ class BasicGame:
             self.config.calculate_offsets()
 
             self.map.render_background()
+
             self.character.update()
             self.character.draw()
+
             self.map.render_foreground()
 
             pygame.display.flip()
