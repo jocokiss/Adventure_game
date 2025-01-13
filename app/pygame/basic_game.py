@@ -1,7 +1,7 @@
 import pygame
 
 from app.pygame.config import Config
-from app.pygame.character import PlayerSprite, NPCSprite
+from app.pygame.sprites import PlayerSprite, NPCSprite
 from app.pygame.map import Map
 from app.pygame.movement import MovementHandler
 from app.pygame.menu import Menu
@@ -11,9 +11,16 @@ class BasicGame:
     def __init__(self):
         self.config = Config()
         self.character = PlayerSprite(self.config)
-        self.npc = NPCSprite(self.config)
+
+        self.npc = npc = NPCSprite(self.config, initial_position=(19, 17))
+        self.npc.patrol_path = [(19, 16), (19, 15), (19, 14), (19, 15)]
+        self.npc.is_random_movement = False  # Enable patrolling
+
         self.movement = MovementHandler(self.config, self.character)
         self.map = Map(self.config)
+
+        self.map.add_npc(npc)
+
         self.menu = Menu(self.config)
 
         # Game States
@@ -86,13 +93,16 @@ class BasicGame:
                     self.state = "PAUSE"
 
             keys = pygame.key.get_pressed()
+
             self.movement.process_movement(keys)
             self.config.calculate_offsets()
+            self.map.update_npcs()
 
             self.map.render_background()
 
             self.character.update()
             self.character.draw()
+            self.map.draw_npcs()
 
             self.map.render_foreground()
 

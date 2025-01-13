@@ -3,6 +3,7 @@
  <image source="tileset/log.png" width="192" height="128"/>
  <tile id="0">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="down"/>
    <property name="Part" value="1"/>
   </properties>
@@ -15,6 +16,7 @@
  </tile>
  <tile id="1">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="down"/>
    <property name="Part" value="2"/>
   </properties>
@@ -35,6 +37,7 @@
  </tile>
  <tile id="12">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="down"/>
    <property name="Part" value="3"/>
   </properties>
@@ -47,6 +50,7 @@
  </tile>
  <tile id="13">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="down"/>
    <property name="Part" value="4"/>
   </properties>
@@ -59,6 +63,7 @@
  </tile>
  <tile id="24">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="up"/>
    <property name="Part" value="1"/>
   </properties>
@@ -71,6 +76,7 @@
  </tile>
  <tile id="25">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="up"/>
    <property name="Part" value="2"/>
   </properties>
@@ -83,6 +89,7 @@
  </tile>
  <tile id="36">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="up"/>
    <property name="Part" value="3"/>
   </properties>
@@ -95,6 +102,7 @@
  </tile>
  <tile id="37">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="up"/>
    <property name="Part" value="4"/>
   </properties>
@@ -107,6 +115,7 @@
  </tile>
  <tile id="48">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="left"/>
    <property name="Part" value="1"/>
   </properties>
@@ -119,6 +128,7 @@
  </tile>
  <tile id="49">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="left"/>
    <property name="Part" value="2"/>
   </properties>
@@ -131,6 +141,7 @@
  </tile>
  <tile id="60">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="left"/>
    <property name="Part" value="3"/>
   </properties>
@@ -143,6 +154,7 @@
  </tile>
  <tile id="61">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="left"/>
    <property name="Part" value="4"/>
   </properties>
@@ -155,6 +167,7 @@
  </tile>
  <tile id="72">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="right"/>
    <property name="Part" value="1"/>
   </properties>
@@ -167,6 +180,7 @@
  </tile>
  <tile id="73">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="right"/>
    <property name="Part" value="2"/>
   </properties>
@@ -179,6 +193,7 @@
  </tile>
  <tile id="84">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="right"/>
    <property name="Part" value="3"/>
   </properties>
@@ -191,6 +206,7 @@
  </tile>
  <tile id="85">
   <properties>
+   <property name="Action" value="walk"/>
    <property name="Direction" value="right"/>
    <property name="Part" value="4"/>
   </properties>

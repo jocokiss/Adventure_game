@@ -4,6 +4,22 @@
 class Map:
     def __init__(self, config):
         self.config = config
+        self.npcs = []
+
+    def add_npc(self, npc):
+        """Add an NPC to the map."""
+        self.npcs.append(npc)
+
+    def update_npcs(self):
+        """Update all NPCs on the map."""
+        for npc in self.npcs:
+            npc.update_movement()
+            npc.update()
+
+    def draw_npcs(self):
+        """Draw all NPCs on the screen."""
+        for npc in self.npcs:
+            npc.draw()
 
     def __draw_tiles(self, layers: set):
 

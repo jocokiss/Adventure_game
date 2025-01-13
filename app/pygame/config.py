@@ -1,6 +1,8 @@
 import pygame
 import pytmx
 
+import xml.etree.ElementTree as ET
+
 from app.utilities.arg_parser import ArgParser
 from app.utilities.common_utils import half_coordinates
 from app.utilities.dataclasses import Coordinates
@@ -10,6 +12,7 @@ class Config:
     def __init__(self):
         self.args = ArgParser().run()
 
+        self.base_tile_size = int(self.args.tile_size)
         self.zoom_factor = int(self.args.zoom_factor)
         self.tile_size = int(self.args.tile_size) * self.zoom_factor
 
