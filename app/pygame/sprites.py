@@ -27,8 +27,8 @@ class BaseSprite(pygame.sprite.Sprite, ABC):
         self.head_rect = pygame.Rect(0, 0, 0, 0)
 
         self.image: Optional[pygame.Surface] = Field(default=None)
-        self.current_action: str = 'walk'
-        self.current_direction: str = "down"
+        self.state: str = 'WALK'
+        self.current_direction: str = "DOWN"
         self.current_frame: int = 0
         self.frame_timer: int = 0
         self.move_timer: int = 0
@@ -204,8 +204,8 @@ class PlayerSprite(BaseSprite):
     def update(self):
         """Update the current body and head images based on the animation and direction."""
         # Get frames for the current direction and part
-        body_frames = self.frames.get_frames(self.current_action, self.current_direction, "2")
-        head_frames = self.frames.get_frames(self.current_action, self.current_direction, "1")
+        body_frames = self.frames.get_frames(self.state, self.current_direction, "2")
+        head_frames = self.frames.get_frames(self.state, self.current_direction, "1")
 
         if not body_frames or not head_frames:
             raise ValueError(f"No frames found for direction {self.current_direction}")
@@ -238,14 +238,14 @@ class PlayerSprite(BaseSprite):
         self.config.screen.blit(self.image, self.body_rect.topleft)
 
         # Draw the head using head_rect
-        head_frames = self.frames.get_frames(self.current_action, self.current_direction, "1")
+        head_frames = self.frames.get_frames(self.state, self.current_direction, "1")
         if head_frames:
             self.config.screen.blit(head_frames[self.current_frame].image, self.head_rect.topleft)
 
     def walking_animation(self):
         """Increment frame timers and cycle through animation frames."""
         self.frame_timer += 1
-        body_frames = self.frames.get_frames(self.current_action, self.current_direction, "2")
+        body_frames = self.frames.get_frames(self.state, self.current_direction, "2")
         if not body_frames:
             return  # No frames available for this animation
 
@@ -265,10 +265,14 @@ class NPCSprite(BaseSprite):
         self.position = pygame.Vector2(initial_position)  # Map position (in tiles)
         self.previous_position = self.position.copy()
 
+        self.state = "ASLEEP"  # Initial state
+        self.interaction_range = 2  # Distance at which the NPC can be interacted with
+        self.sleeping_timer = 0  # Timer for the sleeping animation
+
         self.movement_timer = 0  # Tracks time between movement steps
         self.patrol_path = []  # List of positions for patrolling
         self.current_patrol_index = 0
-        self.is_random_movement = True  # Toggle for random vs. patrolling
+        self.is_random_movement = False  # Static by default in sleeping state
 
     @property
     def coordinate(self):
@@ -292,17 +296,40 @@ class NPCSprite(BaseSprite):
         elif dy < 0:
             self.current_direction = "up"
 
+    def interact(self, player_position):
+        """Handle interaction with the NPC."""
+        distance = self.position.distance_to(player_position)
+        if distance <= self.interaction_range and self.state == "ASLEEP":
+            self.state = "IDLE"  # Transition to awake state
+            self.current_frame = 0  # Reset animation frame for waking animation
+
     def update(self):
         """Update the NPC's image and position on the map."""
+
+        if self.state == "ASLEEP":
+            self.update_sleeping()
+        elif self.state == "IDLE":
+            self.update_idle()
+        elif self.state == "ACTIVE":
+            self.update_active()
+
+            # Determine direction for animation if moving
+            self.determine_direction()
+
+            # Default to "down" if the current direction has no frames for this state
+        direction_to_use = self.current_direction
+        if self.state in ["ASLEEP", "IDLE"] and self.current_direction not in ["DOWN"]:
+            direction_to_use = "DOWN"
+
         # Get frames for the current direction and all parts
-        top_left_frames = self.frames.get_frames(self.current_action, self.current_direction, "1")
-        top_right_frames = self.frames.get_frames(self.current_action, self.current_direction, "2")
-        bottom_left_frames = self.frames.get_frames(self.current_action, self.current_direction, "3")
-        bottom_right_frames = self.frames.get_frames(self.current_action, self.current_direction, "4")
+        top_left_frames = self.frames.get_frames(self.state, direction_to_use, "1")
+        top_right_frames = self.frames.get_frames(self.state, direction_to_use, "2")
+        bottom_left_frames = self.frames.get_frames(self.state, direction_to_use, "3")
+        bottom_right_frames = self.frames.get_frames(self.state, direction_to_use, "4")
 
         # Ensure all required frames are available
         if not (top_left_frames and top_right_frames and bottom_left_frames and bottom_right_frames):
-            raise ValueError(f"Missing frames for direction {self.current_direction} in action {self.current_action}")
+            raise ValueError(f"Missing frames for direction {direction_to_use} in action {self.state}")
 
         # Get the current frame for each part
         current_top_left = top_left_frames[self.current_frame]
@@ -331,6 +358,32 @@ class NPCSprite(BaseSprite):
         # Update the NPC's position on the screen relative to the map and camera offset
         self.body_rect.x = int(self.position.x * self.config.tile_size - self.config.offset.x)
         self.body_rect.y = int(self.position.y * self.config.tile_size - self.config.offset.y)
+
+    def update_sleeping(self):
+        """Update the NPC's sleeping behavior."""
+        self.sleeping_timer += self.config.dt
+        if self.sleeping_timer >= 250:  # Adjust frame speed for sleep animation
+            self.sleeping_timer = 0
+            self.current_frame = (self.current_frame + 1) % len(
+                self.frames.get_frames("ASLEEP", "DOWN", "1")
+            )
+
+    def update_idle(self):
+        """Handle the idle animation."""
+        # Get the idle frames for the "DOWN" direction
+        idle_frames = self.frames.get_frames("IDLE", "DOWN", "1")
+        if not idle_frames:
+            raise ValueError("No idle frames found for direction DOWN.")
+
+        # Increment the timer for animation
+        self.sleeping_timer += self.config.dt
+        if self.sleeping_timer >= 250:  # Idle animation frame speed
+            self.sleeping_timer = 0  # Reset the timer
+            self.current_frame = (self.current_frame + 1) % len(idle_frames)  # Loop through frames
+
+    def update_active(self):
+        """Update NPC's movement and active behavior."""
+        self.update_movement()
 
     def move_randomly(self):
         """Move the NPC randomly on the map."""
@@ -361,11 +414,11 @@ class NPCSprite(BaseSprite):
     def walking_animation(self):
         """Increment frame timers and cycle through frames."""
         self.frame_timer += self.config.dt
-        body_frames = self.frames.get_frames(self.current_action, self.current_direction, "2")
+        body_frames = self.frames.get_frames(self.state, self.current_direction, "2")
         if not body_frames:
             return  # No frames available for this animation
 
-        if self.frame_timer >= 250:  # Adjust timer threshold as needed
+        if self.frame_timer >= 500:  # Adjust timer threshold as needed
             self.frame_timer = 0
             self.current_frame = (self.current_frame + 1) % len(body_frames)
 
@@ -386,4 +439,7 @@ class NPCSprite(BaseSprite):
         """Draw the NPC on the screen."""
         screen_x = self.position.x * self.config.tile_size - self.config.offset.x
         screen_y = self.position.y * self.config.tile_size - self.config.offset.y
+
+        screen_y += 20
+
         self.config.screen.blit(self.image, (screen_x, screen_y))

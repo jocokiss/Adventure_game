@@ -64,10 +64,10 @@ class MovementHandler:
         self.config.move_timer += self.config.dt
 
         direction_map = {
-            pygame.K_LEFT: ('left', -self.config.tile_size, 0),
-            pygame.K_RIGHT: ('right', self.config.tile_size, 0),
-            pygame.K_UP: ('up', 0, -self.config.tile_size),
-            pygame.K_DOWN: ('down', 0, self.config.tile_size)
+            pygame.K_LEFT: ('LEFT', -self.config.tile_size, 0),
+            pygame.K_RIGHT: ('RIGHT', self.config.tile_size, 0),
+            pygame.K_UP: ('UP', 0, -self.config.tile_size),
+            pygame.K_DOWN: ('DOWN', 0, self.config.tile_size)
         }
 
         for key, (direction, dx, dy) in direction_map.items():

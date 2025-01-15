@@ -3,8 +3,8 @@
  <image source="tileset/character.png" width="272" height="256"/>
  <tile id="0">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="down"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="DOWN"/>
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
@@ -31,8 +31,8 @@
  </tile>
  <tile id="17">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="down"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="DOWN"/>
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>
@@ -59,8 +59,8 @@
  </tile>
  <tile id="34">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="right"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="RIGHT"/>
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
@@ -87,8 +87,8 @@
  </tile>
  <tile id="51">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="right"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="RIGHT"/>
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>
@@ -115,8 +115,8 @@
  </tile>
  <tile id="68">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="up"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="UP"/>
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
@@ -143,8 +143,8 @@
  </tile>
  <tile id="85">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="up"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="UP"/>
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>
@@ -171,8 +171,8 @@
  </tile>
  <tile id="102">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="left"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="LEFT"/>
    <property name="Part" type="int" value="1"/>
   </properties>
   <animation>
@@ -199,8 +199,8 @@
  </tile>
  <tile id="119">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="left"/>
+   <property name="Action" value="WALK"/>
+   <property name="Direction" value="LEFT"/>
    <property name="Part" type="int" value="2"/>
   </properties>
   <animation>

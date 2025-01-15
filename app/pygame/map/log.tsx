@@ -3,8 +3,8 @@
  <image source="tileset/log.png" width="192" height="128"/>
  <tile id="0">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="down"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="DOWN"/>
    <property name="Part" value="1"/>
   </properties>
   <animation>
@@ -16,8 +16,8 @@
  </tile>
  <tile id="1">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="down"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="DOWN"/>
    <property name="Part" value="2"/>
   </properties>
   <animation>
@@ -35,10 +35,60 @@
    <frame tileid="6" duration="100"/>
   </animation>
  </tile>
+ <tile id="8">
+  <properties>
+   <property name="Action" value="ASLEEP"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="1"/>
+  </properties>
+  <animation>
+   <frame tileid="8" duration="100"/>
+   <frame tileid="32" duration="100"/>
+   <frame tileid="56" duration="100"/>
+   <frame tileid="80" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="9">
+  <properties>
+   <property name="Action" value="ASLEEP"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="2"/>
+  </properties>
+  <animation>
+   <frame tileid="9" duration="100"/>
+   <frame tileid="33" duration="100"/>
+   <frame tileid="57" duration="100"/>
+   <frame tileid="81" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="10">
+  <properties>
+   <property name="Action" value="IDLE"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="1"/>
+  </properties>
+  <animation>
+   <frame tileid="10" duration="100"/>
+   <frame tileid="34" duration="100"/>
+   <frame tileid="58" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="11">
+  <properties>
+   <property name="Action" value="IDLE"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="2"/>
+  </properties>
+  <animation>
+   <frame tileid="11" duration="100"/>
+   <frame tileid="35" duration="100"/>
+   <frame tileid="59" duration="100"/>
+  </animation>
+ </tile>
  <tile id="12">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="down"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="DOWN"/>
    <property name="Part" value="3"/>
   </properties>
   <animation>
@@ -50,8 +100,8 @@
  </tile>
  <tile id="13">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="down"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="DOWN"/>
    <property name="Part" value="4"/>
   </properties>
   <animation>
@@ -61,10 +111,60 @@
    <frame tileid="19" duration="100"/>
   </animation>
  </tile>
+ <tile id="20">
+  <properties>
+   <property name="Action" value="ASLEEP"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="3"/>
+  </properties>
+  <animation>
+   <frame tileid="20" duration="100"/>
+   <frame tileid="44" duration="100"/>
+   <frame tileid="68" duration="100"/>
+   <frame tileid="92" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="21">
+  <properties>
+   <property name="Action" value="ASLEEP"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="4"/>
+  </properties>
+  <animation>
+   <frame tileid="21" duration="100"/>
+   <frame tileid="45" duration="100"/>
+   <frame tileid="69" duration="100"/>
+   <frame tileid="93" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="22">
+  <properties>
+   <property name="Action" value="IDLE"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="3"/>
+  </properties>
+  <animation>
+   <frame tileid="22" duration="100"/>
+   <frame tileid="46" duration="100"/>
+   <frame tileid="70" duration="100"/>
+  </animation>
+ </tile>
+ <tile id="23">
+  <properties>
+   <property name="Action" value="IDLE"/>
+   <property name="Direction" value="DOWN"/>
+   <property name="Part" value="4"/>
+  </properties>
+  <animation>
+   <frame tileid="23" duration="100"/>
+   <frame tileid="47" duration="100"/>
+   <frame tileid="71" duration="100"/>
+  </animation>
+ </tile>
  <tile id="24">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="up"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="UP"/>
    <property name="Part" value="1"/>
   </properties>
   <animation>
@@ -76,8 +176,8 @@
  </tile>
  <tile id="25">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="up"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="UP"/>
    <property name="Part" value="2"/>
   </properties>
   <animation>
@@ -89,8 +189,8 @@
  </tile>
  <tile id="36">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="up"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="UP"/>
    <property name="Part" value="3"/>
   </properties>
   <animation>
@@ -102,8 +202,8 @@
  </tile>
  <tile id="37">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="up"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="UP"/>
    <property name="Part" value="4"/>
   </properties>
   <animation>
@@ -115,8 +215,8 @@
  </tile>
  <tile id="48">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="left"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="LEFT"/>
    <property name="Part" value="1"/>
   </properties>
   <animation>
@@ -128,8 +228,8 @@
  </tile>
  <tile id="49">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="left"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="LEFT"/>
    <property name="Part" value="2"/>
   </properties>
   <animation>
@@ -141,8 +241,8 @@
  </tile>
  <tile id="60">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="left"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="LEFT"/>
    <property name="Part" value="3"/>
   </properties>
   <animation>
@@ -154,8 +254,8 @@
  </tile>
  <tile id="61">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="left"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="LEFT"/>
    <property name="Part" value="4"/>
   </properties>
   <animation>
@@ -167,8 +267,8 @@
  </tile>
  <tile id="72">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="right"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="RIGHT"/>
    <property name="Part" value="1"/>
   </properties>
   <animation>
@@ -180,8 +280,8 @@
  </tile>
  <tile id="73">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="right"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="RIGHT"/>
    <property name="Part" value="2"/>
   </properties>
   <animation>
@@ -193,8 +293,8 @@
  </tile>
  <tile id="84">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="right"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="RIGHT"/>
    <property name="Part" value="3"/>
   </properties>
   <animation>
@@ -206,8 +306,8 @@
  </tile>
  <tile id="85">
   <properties>
-   <property name="Action" value="walk"/>
-   <property name="Direction" value="right"/>
+   <property name="Action" value="ACTIVE"/>
+   <property name="Direction" value="RIGHT"/>
    <property name="Part" value="4"/>
   </properties>
   <animation>

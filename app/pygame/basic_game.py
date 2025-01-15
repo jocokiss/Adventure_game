@@ -13,7 +13,7 @@ class BasicGame:
         self.character = PlayerSprite(self.config)
 
         self.npc = npc = NPCSprite(self.config, initial_position=(19, 17))
-        self.npc.patrol_path = [(19, 16), (19, 15), (19, 14), (19, 15)]
+        self.npc.patrol_path = []
         self.npc.is_random_movement = False  # Enable patrolling
 
         self.movement = MovementHandler(self.config, self.character)
@@ -91,6 +91,16 @@ class BasicGame:
                     self.running = False
                 if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                     self.state = "PAUSE"
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_e:  # Example: 'E' key for interaction
+                        for npc in self.map.npcs:  # Iterate through all NPCs on the map
+                            npc.interact(
+                                pygame.Vector2(
+                                    self.character.coordinate.x,
+                                    self.character.coordinate.y
+                                )
+                            )  # Pass the player's position
 
             keys = pygame.key.get_pressed()
 
