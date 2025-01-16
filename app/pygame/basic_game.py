@@ -1,10 +1,12 @@
 import pygame
 
 from app.pygame.config import Config
-from app.pygame.sprites import PlayerSprite, NPCSprite
 from app.pygame.map import Map
 from app.pygame.movement import MovementHandler
 from app.pygame.menu import Menu
+
+from app.sprites.characters.player_sprite import PlayerSprite
+from app.sprites.npcs.npc_sprites import NPCSprite
 
 
 class BasicGame:
@@ -33,6 +35,8 @@ class BasicGame:
                 self.__run_menu()
             elif self.state == "GAME":
                 self.__run_game()
+            elif self.state == "COMBAT":
+                self.__run_combat()
             elif self.state == "PAUSE":
                 self.__run_pause()
 
@@ -80,6 +84,37 @@ class BasicGame:
                 self.state = "EXIT"
                 self.running = False
 
+    def __run_combat(self):
+        """Combat loop."""
+        combat_running = True
+        while combat_running:
+            self.config.dt = pygame.time.Clock().tick(60)
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.state = "EXIT"
+                    combat_running = False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        self.state = "GAME"
+                        combat_running = False
+
+            # Draw combat screen
+            self.config.screen.fill((0, 0, 0))  # Black background
+            self.draw_combat_ui()
+
+            pygame.display.flip()
+
+    def draw_combat_ui(self):
+        """Draw the combat UI."""
+        # Draw player and enemy health bars
+        pygame.draw.rect(self.config.screen, (255, 0, 0), (50, 50, 200, 20))  # Player HP bar
+        pygame.draw.rect(self.config.screen, (255, 0, 0), (400, 50, 200, 20))  # NPC HP bar
+
+        # Draw placeholders for the player and NPC
+        pygame.draw.rect(self.config.screen, (0, 255, 0), (50, 100, 50, 50))  # Player
+        pygame.draw.rect(self.config.screen, (0, 0, 255), (400, 100, 50, 50))  # NPC
+
     def __run_game(self):
         """Game State."""
         while self.state == "GAME":
@@ -101,6 +136,7 @@ class BasicGame:
                                     self.character.coordinate.y
                                 )
                             )  # Pass the player's position
+                        self.state = "COMBAT"
 
             keys = pygame.key.get_pressed()
 

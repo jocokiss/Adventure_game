@@ -111,8 +111,6 @@ class Config:
                     borders = {side.strip() for side in props["border"].split(",")}
                     self.border_tiles[(x, y)] = borders
 
-        print(self.border_tiles)
-
     def __set_coordinates(self):
         self.screen_size.x, self.screen_size.y = int(self.args.screen_width), int(self.args.screen_height)
         self.map_size.x, self.map_size.y = ((self.map_data.width * self.tile_size),

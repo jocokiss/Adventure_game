@@ -1,4 +1,8 @@
 {
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
     "activeFile": "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx",
     "expandedProjectPaths": [
     ],
@@ -22,6 +26,10 @@
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/custom character.tsx": {
             "scaleInDock": 2.2866,
             "scaleInEditor": 2.6429
+        },
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/font.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2.4942
         },
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/game_map.tmx": {
             "scale": 4.195,
@@ -66,6 +74,7 @@
     ],
     "project": "",
     "recentFiles": [
+        "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/font.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/log.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/Overworld.tsx",
         "/Users/jocokiss/Projects/Personal/Adventure_game/app/pygame/map/character.tsx",
@@ -78,5 +87,9 @@
         "Overworld.tsx",
         "objects.tsx"
     ],
-    "tileset.lastUsedFormat": "tsx"
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
 }
