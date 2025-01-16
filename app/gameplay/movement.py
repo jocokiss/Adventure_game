@@ -6,7 +6,7 @@ from app.utilities.constants import OPPOSITE_DIRECTION
 class MovementHandler:
     def __init__(self, config, character):
         self.config = config
-        self.character = character
+        self.character = character.sprite
 
     def tile_has_border(self, tile_position, direction):
         """Return True if tile at tile_position has a border in the given direction."""

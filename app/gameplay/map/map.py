@@ -13,13 +13,13 @@ class Map:
     def update_npcs(self):
         """Update all NPCs on the map."""
         for npc in self.npcs:
-            npc.update_movement()
-            npc.update()
+            npc.sprite.update_movement()
+            npc.sprite.update()
 
     def draw_npcs(self):
         """Draw all NPCs on the screen."""
         for npc in self.npcs:
-            npc.draw()
+            npc.sprite.draw()
 
     def __draw_tiles(self, layers: set):
 

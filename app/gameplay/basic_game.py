@@ -1,24 +1,28 @@
+import random
+import sys
+
 import pygame
 
+from app.characters.non_playable.tree_trunk import TreeTrunk
+from app.characters.playable.rogue import Rogue
+
 from app.gameplay.config import Config
-from app.gameplay.map import Map
+from app.gameplay.map.map import Map
 from app.gameplay.movement import MovementHandler
 from app.gameplay.menu import Menu
-
-from app.sprites.characters.player_sprite import PlayerSprite
-from app.sprites.npc.npc_sprites import NPCSprite
 
 
 class BasicGame:
     def __init__(self):
         self.config = Config()
-        self.character = PlayerSprite(self.config)
 
-        self.npc = npc = NPCSprite(self.config, initial_position=(19, 17))
+        self.player = Rogue(self.config)
+        self.npc = npc = TreeTrunk(self.config, initial_position=(19, 17))
+
         self.npc.patrol_path = []
         self.npc.is_random_movement = False  # Enable patrolling
 
-        self.movement = MovementHandler(self.config, self.character)
+        self.movement = MovementHandler(self.config, self.player)
         self.map = Map(self.config)
 
         self.map.add_npc(npc)
@@ -29,6 +33,8 @@ class BasicGame:
         self.state = "MENU"  # Possible states: MENU, GAME, PAUSE, EXIT
         self.running = True
 
+        self.player_turn = None
+
     def run(self):
         while self.running:
             if self.state == "MENU":
@@ -36,7 +42,7 @@ class BasicGame:
             elif self.state == "GAME":
                 self.__run_game()
             elif self.state == "COMBAT":
-                self.__run_combat()
+                self.__run_combat(self.npc)     # TODO: find the npc near the player
             elif self.state == "PAUSE":
                 self.__run_pause()
 
@@ -66,6 +72,7 @@ class BasicGame:
 
         while self.state == "PAUSE":
             # Render semi-transparent overlay
+            # TODO: This is not semi transparent
             overlay = pygame.Surface(self.config.screen.get_size(), pygame.SRCALPHA)
             overlay.fill((0, 0, 0, 180))  # Black with 180 alpha for transparency
             self.config.screen.blit(overlay, (0, 0))
@@ -84,36 +91,103 @@ class BasicGame:
                 self.state = "EXIT"
                 self.running = False
 
-    def __run_combat(self):
-        """Combat loop."""
-        combat_running = True
-        while combat_running:
-            self.config.dt = pygame.time.Clock().tick(60)
+    def __run_combat(self, npc):
+        """Run the combat loop."""
+        self.combat_active = True  # Explicit variable for combat state
 
-            for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    self.state = "EXIT"
-                    combat_running = False
-                elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.K_ESCAPE:
-                        self.state = "GAME"
-                        combat_running = False
+        while self.combat_active:
 
-            # Draw combat screen
-            self.config.screen.fill((0, 0, 0))  # Black background
-            self.draw_combat_ui()
+            # Debugging: Print current health
+            print(f"Player Health: {self.player.combat.health}, NPC Health: {npc.combat.health}")
 
+            # Check for player or NPC defeat
+            if self.player.combat.health <= 0:
+                print("You have been defeated!")
+                self.combat_active = False  # End combat
+                break  # Explicitly break the loop
+            elif npc.combat.health <= 0:
+                print(f"You defeated {npc.name}!")
+                self.combat_active = False  # End combat
+                break  # Explicitly break the loop
+
+            # Handle player and NPC turns
+            if self.player_turn:
+                self.handle_player_turn(npc)
+            else:
+                self.handle_npc_turn(npc)
+
+            # Draw combat UI
+            self.draw_combat_ui(npc)
             pygame.display.flip()
 
-    def draw_combat_ui(self):
-        """Draw the combat UI."""
-        # Draw player and enemy health bars
-        pygame.draw.rect(self.config.screen, (255, 0, 0), (50, 50, 200, 20))  # Player HP bar
-        pygame.draw.rect(self.config.screen, (255, 0, 0), (400, 50, 200, 20))  # NPC HP bar
+        # Debugging: Print message after loop ends
+        print("Combat loop exited.")
+        self.state = "GAME"
 
-        # Draw placeholders for the player and NPC
-        pygame.draw.rect(self.config.screen, (0, 255, 0), (50, 100, 50, 50))  # Player
-        pygame.draw.rect(self.config.screen, (0, 0, 255), (400, 100, 50, 50))  # NPC
+    def handle_player_turn(self, npc):
+        """Handle the player's turn."""
+        print("Player's Turn!")
+        action_taken = False
+        skill_keys = {pygame.K_1 + i: i for i in range(len(self.player.combat.skills))}
+
+        while not action_taken:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
+                elif event.type == pygame.KEYDOWN:
+                    # Check if the pressed key corresponds to a skill
+                    if event.key in skill_keys:
+                        skill_index = skill_keys[event.key]
+                        skill = self.player.combat.skills[skill_index]
+                        if skill.use(self.player.combat, npc.combat):  # Use skill on NPC
+                            print(f"Player used {skill.name}!")
+                            action_taken = True
+                            self.player_turn = False  # End player's turn
+
+    def handle_npc_turn(self, npc):
+        """Handle the NPC's turn."""
+        print(f"{npc.name}'s Turn!")
+        # NPC performs an action (e.g., attack)
+        if npc.combat.skills:
+            skill = random.choice(npc.combat.skills)
+            if skill.use(npc.combat, self.player.combat):
+                print(f"{npc.name} used {skill.name}!")
+        else:
+            # Default attack if no skills are defined
+            self.player.combat.take_damage(10)
+            print(f"{npc.name} attacks the player!")
+
+        # End NPC's turn
+        self.player_turn = True
+
+    def draw_combat_ui(self, npc):
+        """Draw the combat UI."""
+        self.config.screen.fill((0, 0, 0))  # Black background
+
+        # Display Player and NPC Health
+        font = pygame.font.Font(None, 36)
+        player_health_text = font.render(f"Player HP: {self.player.combat.health}", True, (255, 255, 255))
+        npc_health_text = font.render(f"{npc.name} HP: {npc.combat.health}", True, (255, 255, 255))
+
+        self.config.screen.blit(player_health_text, (50, 50))
+        self.config.screen.blit(npc_health_text, (50, 100))
+
+        # Optionally, show skills on the UI
+        skill_menu_y = 200
+        for index, skill in enumerate(self.player.combat.skills):
+            skill_text = font.render(f"{index + 1}: {skill.name}", True, (255, 255, 255))
+            self.config.screen.blit(skill_text, (50, skill_menu_y))
+            skill_menu_y += 40
+
+    def display_skill_menu(self):
+        """Display the skill menu and handle player input."""
+        keys = pygame.key.get_pressed()
+        for index in range(len(self.player.combat.skills)):
+            # Map skill keys to numbers (e.g., 1, 2, 3)
+            if keys[pygame.K_1 + index]:  # Adjust for number keys
+                return index
+        return None
 
     def __run_game(self):
         """Game State."""
@@ -130,10 +204,10 @@ class BasicGame:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_e:  # Example: 'E' key for interaction
                         for npc in self.map.npcs:  # Iterate through all NPCs on the map
-                            npc.interact(
+                            npc.sprite.interact(
                                 pygame.Vector2(
-                                    self.character.coordinate.x,
-                                    self.character.coordinate.y
+                                    self.player.sprite.coordinate.x,
+                                    self.player.sprite.coordinate.y
                                 )
                             )  # Pass the player's position
                         self.state = "COMBAT"
@@ -146,8 +220,8 @@ class BasicGame:
 
             self.map.render_background()
 
-            self.character.update()
-            self.character.draw()
+            self.player.sprite.update()
+            self.player.sprite.draw()
             self.map.draw_npcs()
 
             self.map.render_foreground()

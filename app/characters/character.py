@@ -1,12 +1,13 @@
 from abc import ABC
 
+from app.gameplay.combat.combat_attr import CombatAttributes
 from app.sprites.player.player_sprite import PlayerSprite
 
 
-class Player(ABC):
+class Character(ABC):
     def __init__(self, config):
         self.sprite = PlayerSprite(config)  # Handles rendering
-        self.combat = CombatAttributes()   # Handles combat
+        self.combat = CombatAttributes()  # Handles combat
 
     def use_skill(self, skill_index, target):
         """Use a skill on a target."""
