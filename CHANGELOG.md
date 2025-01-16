@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v0.5.0 (2025-01-16)
+
+### Code Style
+
+* style(gitignore): Update .gitignore ([`9b6ca1b`](https://github.com/jocokiss/Adventure_game/commit/9b6ca1bcaa8c2b4a1fcadae4955bf893f2be5839))
+
+### Features
+
+* feat(COMBAT): Add combat to the game. It is primitive but working ([`542d42e`](https://github.com/jocokiss/Adventure_game/commit/542d42e2643e6fb4a467ec77715e08a91394984a))
+
+### Refactoring
+
+* refactor(Architecture): Restructure codebase to make it more readable ([`ecab5e5`](https://github.com/jocokiss/Adventure_game/commit/ecab5e527ffa0d74a57097736394e65673275e47))
+
+### Unknown
+
+* Merge branch 'feature/restructure' ([`f17b76f`](https://github.com/jocokiss/Adventure_game/commit/f17b76f7ff7684b1b13074779f81dfdac4728851))
+
+
 ## v0.4.0 (2025-01-16)
 
 ### Features
