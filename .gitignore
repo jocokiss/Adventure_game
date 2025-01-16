@@ -1,4 +1,5 @@
 .idea/
 .python-version
 __pycache__/
-.DS_Store
+.DS_Store!/
+map/adventure_game_map.tiled-session
