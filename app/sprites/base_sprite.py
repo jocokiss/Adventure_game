@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 
 from pydantic import Field
 
-from app.pygame.config import Config
+from app.gameplay.config import Config
 from app.utilities.dataclasses import Coordinates, AnimationFrame, NPCAttributes
 
 

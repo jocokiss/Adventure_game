@@ -1,12 +1,12 @@
 import pygame
 
-from app.pygame.config import Config
-from app.pygame.map import Map
-from app.pygame.movement import MovementHandler
-from app.pygame.menu import Menu
+from app.gameplay.config import Config
+from app.gameplay.map import Map
+from app.gameplay.movement import MovementHandler
+from app.gameplay.menu import Menu
 
 from app.sprites.characters.player_sprite import PlayerSprite
-from app.sprites.npcs.npc_sprites import NPCSprite
+from app.sprites.npc.npc_sprites import NPCSprite
 
 
 class BasicGame:
