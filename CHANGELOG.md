@@ -1,6 +1,23 @@
 # CHANGELOG
 
 
+## v0.4.0 (2025-01-16)
+
+### Features
+
+* feat(COMBAT): Add combat state to the game, rearrange structure for better understanding ([`0559dab`](https://github.com/jocokiss/Adventure_game/commit/0559dab70d799ee29ae42abe1890e6775fb6a9df))
+
+* feat(NPC): Add IDLE animation to NPC, also when in range make the NPC interactable ([`0216b49`](https://github.com/jocokiss/Adventure_game/commit/0216b49c928a5b99bbc8eb02c88cfaaa2b742a97))
+
+* feat(NPC): Add NPC to the game, render it on the map and make it move ([`cd0010a`](https://github.com/jocokiss/Adventure_game/commit/cd0010ab6def7e6a43f368f4c2290e169ed1097e))
+
+* feat(NPC-class): Create abstract class from Sprites. From the abstract class create Player and NPC classes. ([`930b6c6`](https://github.com/jocokiss/Adventure_game/commit/930b6c62be752be4f056afb7b2330b478ac1e403))
+
+### Refactoring
+
+* refactor(version-control,-basic-game): remove redundant import from basic_game.py  and redundant section from workflow ([`f0566d6`](https://github.com/jocokiss/Adventure_game/commit/f0566d6133ba7fd39ee2bc063e53b7aadbd60948))
+
+
 ## v0.3.0 (2025-01-08)
 
 ### Features
