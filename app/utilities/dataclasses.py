@@ -17,6 +17,15 @@ class AnimationFrame(BaseModel):
         arbitrary_types_allowed = True
 
 
+class ObjectFrame(BaseModel):
+    """Represents a single frame of an object."""
+    image: pygame.Surface = None  # The scaled tile image
+    part: str   # The part identifier (e.g., "top", "bottom")
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
 class NPCAttributes(BaseModel):
     state: str = "ASLEEP"
     interaction_range: int = 2

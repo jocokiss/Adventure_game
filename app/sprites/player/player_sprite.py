@@ -2,16 +2,14 @@ import pygame
 
 from app.sprites.base_sprite import BaseSprite
 from app.utilities.dataclasses import Coordinates
+from app.utilities.tiled import Tiled
 
 
 class PlayerSprite(BaseSprite):
     def __init__(self, config):
         super().__init__(config)
-
-        self.tsx_location = self.config.args.character_location
-        self.png_location = self.config.args.character_png_location
-
-        self.load_character_from_file()
+        self.tiled = Tiled.from_tileset(self.config, "character")
+        self.tiled.load()
         self.update()
 
         # Position the body (rect_A) based on the screen
@@ -32,8 +30,8 @@ class PlayerSprite(BaseSprite):
     def update(self):
         """Update the current body and head images based on the animation and direction."""
         # Get frames for the current direction and part
-        body_frames = self.frames.get_frames(self.state, self.current_direction, "2")
-        head_frames = self.frames.get_frames(self.state, self.current_direction, "1")
+        body_frames = self.tiled.animated_frames.get_frames(self.state, self.current_direction, "2")
+        head_frames = self.tiled.animated_frames.get_frames(self.state, self.current_direction, "1")
 
         if not body_frames or not head_frames:
             raise ValueError(f"No frames found for direction {self.current_direction}")
@@ -66,14 +64,14 @@ class PlayerSprite(BaseSprite):
         self.config.screen.blit(self.image, self.body_rect.topleft)
 
         # Draw the head using head_rect
-        head_frames = self.frames.get_frames(self.state, self.current_direction, "1")
+        head_frames = self.tiled.animated_frames.get_frames(self.state, self.current_direction, "1")
         if head_frames:
             self.config.screen.blit(head_frames[self.current_frame].image, self.head_rect.topleft)
 
     def walking_animation(self):
         """Increment frame timers and cycle through animation frames."""
         self.frame_timer += 1
-        body_frames = self.frames.get_frames(self.state, self.current_direction, "2")
+        body_frames = self.tiled.animated_frames.get_frames(self.state, self.current_direction, "2")
         if not body_frames:
             return  # No frames available for this animation
 

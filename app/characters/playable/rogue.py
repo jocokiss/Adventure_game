@@ -34,3 +34,4 @@ class Rogue(Character):
     def __init__(self, config):
         super().__init__(config)
         self.combat.skills = [fireball, heal, slash, stun]
+        self.gold = "12"

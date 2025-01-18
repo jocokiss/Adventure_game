@@ -7,6 +7,7 @@ from app.characters.non_playable.tree_trunk import TreeTrunk
 from app.characters.playable.rogue import Rogue
 
 from app.gameplay.config import Config
+from app.gameplay.game_ui import GameUI
 from app.gameplay.map.map import Map
 from app.gameplay.movement import MovementHandler
 from app.gameplay.menu import Menu
@@ -21,6 +22,8 @@ class BasicGame:
 
         self.npc.patrol_path = []
         self.npc.is_random_movement = False  # Enable patrolling
+
+        self.ui = GameUI(self.config)
 
         self.movement = MovementHandler(self.config, self.player)
         self.map = Map(self.config)
@@ -97,16 +100,11 @@ class BasicGame:
 
         while self.combat_active:
 
-            # Debugging: Print current health
-            print(f"Player Health: {self.player.combat.health}, NPC Health: {npc.combat.health}")
-
             # Check for player or NPC defeat
             if self.player.combat.health <= 0:
-                print("You have been defeated!")
                 self.combat_active = False  # End combat
                 break  # Explicitly break the loop
             elif npc.combat.health <= 0:
-                print(f"You defeated {npc.name}!")
                 self.combat_active = False  # End combat
                 break  # Explicitly break the loop
 
@@ -120,13 +118,10 @@ class BasicGame:
             self.draw_combat_ui(npc)
             pygame.display.flip()
 
-        # Debugging: Print message after loop ends
-        print("Combat loop exited.")
         self.state = "GAME"
 
     def handle_player_turn(self, npc):
         """Handle the player's turn."""
-        print("Player's Turn!")
         action_taken = False
         skill_keys = {pygame.K_1 + i: i for i in range(len(self.player.combat.skills))}
 
@@ -141,22 +136,19 @@ class BasicGame:
                         skill_index = skill_keys[event.key]
                         skill = self.player.combat.skills[skill_index]
                         if skill.use(self.player.combat, npc.combat):  # Use skill on NPC
-                            print(f"Player used {skill.name}!")
                             action_taken = True
                             self.player_turn = False  # End player's turn
 
     def handle_npc_turn(self, npc):
         """Handle the NPC's turn."""
-        print(f"{npc.name}'s Turn!")
         # NPC performs an action (e.g., attack)
         if npc.combat.skills:
             skill = random.choice(npc.combat.skills)
-            if skill.use(npc.combat, self.player.combat):
-                print(f"{npc.name} used {skill.name}!")
+            # if skill.use(npc.combat, self.player.combat):
+            #     print(f"{npc.name} used {skill.name}!")
         else:
             # Default attack if no skills are defined
             self.player.combat.take_damage(10)
-            print(f"{npc.name} attacks the player!")
 
         # End NPC's turn
         self.player_turn = True
