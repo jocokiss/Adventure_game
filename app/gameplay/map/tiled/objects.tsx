@@ -1,18 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.11.0" name="objects" tilewidth="16" tileheight="16" tilecount="660" columns="33">
  <image source="tileset/objects.png" width="528" height="320"/>
- <tile id="4">
-  <animation>
-   <frame tileid="4" duration="100"/>
-   <frame tileid="5" duration="100"/>
-   <frame tileid="6" duration="100"/>
-   <frame tileid="7" duration="100"/>
-   <frame tileid="8" duration="100"/>
-  </animation>
- </tile>
- <tile id="5">
+ <tile id="4" type="Object">
   <properties>
-   <property name="UIElement" value="heart"/>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="1"/>
+   <property name="UIElement" value="health"/>
+   <property name="Width" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="5" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="2"/>
+   <property name="UIElement" value="health"/>
+   <property name="Width" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="6" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="3"/>
+   <property name="UIElement" value="health"/>
+   <property name="Width" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="7" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="4"/>
+   <property name="UIElement" value="health"/>
+   <property name="Width" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="8" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="5"/>
+   <property name="UIElement" value="health"/>
+   <property name="Width" type="int" value="1"/>
   </properties>
  </tile>
  <tile id="462" type="Object">

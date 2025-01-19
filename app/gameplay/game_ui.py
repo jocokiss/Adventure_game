@@ -1,5 +1,4 @@
 import pygame
-import xml.etree.ElementTree as ET
 
 from app.utilities.tiled import Tiled
 
@@ -13,6 +12,38 @@ class GameUI:
 
         self.tiled = Tiled.from_tileset(self.config, "objects")
         self.tiled.load()
+
+    def render_health(self):
+        hearts = self.tiled.static_frames.get_objects_by_size(1, 1).get("health", None)
+        if not hearts:
+            print(f"Numbers with key '{hearts}' not found!")
+            return
+
+        twentyfive = next((tile for tile in hearts if tile.part == "1"), None)
+        twenty = next((tile for tile in hearts if tile.part == "2"), None)
+        fifteen = next((tile for tile in hearts if tile.part == "3"), None)
+        ten = next((tile for tile in hearts if tile.part == "4"), None)
+        five = next((tile for tile in hearts if tile.part == "5"), None)
+
+        scaled_width = int(twentyfive.image.get_width() * 0.5)
+        scaled_height = int(twentyfive.image.get_height() * 0.5)
+
+        scaled_twentyfive = pygame.transform.scale(twentyfive.image, (scaled_width, scaled_height))
+        scaled_twenty = pygame.transform.scale(twenty.image, (scaled_width, scaled_height))
+        scaled_fifteen = pygame.transform.scale(fifteen.image, (scaled_width, scaled_height))
+        scaled_ten = pygame.transform.scale(ten.image, (scaled_width, scaled_height))
+        scaled_five = pygame.transform.scale(five.image, (scaled_width, scaled_height))
+
+        health_percentage = 100
+
+        positions = {(115 + 35*space, 110) for space in range(0, 4)}
+
+        if health_percentage == 100:
+            # Calculate the position
+            # Render the tile
+
+            for position in positions:
+                self.screen.blit(scaled_twentyfive, position)
 
     def __render_level(self):
         numbers = self.tiled.static_frames.get_objects_by_size(1, 1).get("numbers", None)
@@ -91,3 +122,4 @@ class GameUI:
         # Draw the level bar
         self.__level_plate()
         self.__render_level()
+        self.render_health()
