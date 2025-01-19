@@ -108,7 +108,7 @@ class Config:
                     self.no_go_zone.add((x, y))
 
                 if props.get("border"):
-                    borders = {side.strip() for side in props["border"].split(",")}
+                    borders = {side.strip().upper() for side in props["border"].split(",")}
                     self.border_tiles[(x, y)] = borders
 
     def __set_coordinates(self):
