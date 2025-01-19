@@ -218,6 +218,8 @@ class BasicGame:
 
             self.map.render_foreground()
 
+            self.ui.draw()
+
             pygame.display.flip()
 
 

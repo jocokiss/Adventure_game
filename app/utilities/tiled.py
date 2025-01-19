@@ -177,6 +177,17 @@ class StaticObjects:
         """
         return self.objects[(width, height)]
 
+    def __repr__(self):
+        """
+        Returns a string representation of the stored objects, organized by size and name.
+        """
+        repr_str = "StaticObjects:\n"
+        for size, objects in self.objects.items():
+            repr_str += f"  Size {size}:\n"
+            for obj_name, frames in objects.items():
+                repr_str += f"    {obj_name}: {len(frames)} frame(s)\n"
+        return repr_str
+
 
 class AnimatedObjects:
     """Manages sprite animations, organizing frames by animation, direction, and part."""

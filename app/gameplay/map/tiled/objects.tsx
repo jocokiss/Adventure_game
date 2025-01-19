@@ -15,7 +15,7 @@
    <property name="UIElement" value="heart"/>
   </properties>
  </tile>
- <tile id="462" type="Static">
+ <tile id="462" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="1"/>
@@ -23,7 +23,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="463" type="Static">
+ <tile id="463" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="2"/>
@@ -31,7 +31,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="464" type="Static">
+ <tile id="464" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="3"/>
@@ -39,7 +39,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="465" type="Static">
+ <tile id="465" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="4"/>
@@ -47,7 +47,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="466" type="Static">
+ <tile id="466" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="5"/>
@@ -55,7 +55,39 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="495" type="Static">
+ <tile id="467" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="1"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="468" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="2"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="469" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="3"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="470" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="4"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="495" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="6"/>
@@ -63,7 +95,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="496" type="Static">
+ <tile id="496" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="7"/>
@@ -71,7 +103,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="497" type="Static">
+ <tile id="497" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="8"/>
@@ -79,7 +111,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="498" type="Static">
+ <tile id="498" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="9"/>
@@ -87,7 +119,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="499" type="Static">
+ <tile id="499" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="10"/>
@@ -95,7 +127,39 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="528" type="Static">
+ <tile id="500" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="5"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="501" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="6"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="502" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="7"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="503" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="8"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="528" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="11"/>
@@ -103,7 +167,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="529" type="Static">
+ <tile id="529" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="12"/>
@@ -111,7 +175,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="530" type="Static">
+ <tile id="530" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="13"/>
@@ -119,7 +183,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="531" type="Static">
+ <tile id="531" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="14"/>
@@ -127,7 +191,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="532" type="Static">
+ <tile id="532" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="15"/>
@@ -135,7 +199,23 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="561" type="Static">
+ <tile id="533" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="9"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="534" type="Object">
+  <properties>
+   <property name="Height" value="1"/>
+   <property name="Part" type="int" value="0"/>
+   <property name="UIElement" value="numbers"/>
+   <property name="Width" value="1"/>
+  </properties>
+ </tile>
+ <tile id="561" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="16"/>
@@ -143,7 +223,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="562" type="Static">
+ <tile id="562" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="17"/>
@@ -151,7 +231,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="563" type="Static">
+ <tile id="563" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="18"/>
@@ -159,7 +239,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="564" type="Static">
+ <tile id="564" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="19"/>
@@ -167,7 +247,7 @@
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
- <tile id="565" type="Static">
+ <tile id="565" type="Object">
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="20"/>
