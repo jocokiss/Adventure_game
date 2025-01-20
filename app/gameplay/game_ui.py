@@ -13,7 +13,7 @@ class GameUI:
         self.tiled = Tiled.from_tileset(self.config, "objects")
         self.tiled.load()
 
-    def render_health(self):
+    def __render_health(self):
         hearts = self.tiled.static_frames.get_objects_by_size(1, 1).get("health", None)
         if not hearts:
             print("Numbers with key 'health' not found!")
@@ -135,7 +135,7 @@ class GameUI:
         # Draw the level bar
         self.__level_plate()
         self.__render_level()
-        self.render_health()
+        self.__render_health()
 
 
 class Heart:
