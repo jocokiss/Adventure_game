@@ -13,7 +13,7 @@ class GameUI:
         self.tiled = Tiled.from_tileset(self.config, "objects")
         self.tiled.load()
 
-    def __render_health(self):
+    def __render_health(self) -> None:
         hearts = self.tiled.static_frames.get_objects_by_size(1, 1).get("health", None)
         if not hearts:
             print("Numbers with key 'health' not found!")
@@ -58,7 +58,7 @@ class GameUI:
             )
             self.screen.blit(scaled_images[partial_part], pos)
 
-    def __render_level(self):
+    def __render_level(self) -> None:
         numbers = self.tiled.static_frames.get_objects_by_size(1, 1).get("numbers", None)
         if not numbers:
             print(f"Numbers with key '{numbers}' not found!")
@@ -85,9 +85,9 @@ class GameUI:
             # Render the tile
             self.screen.blit(scaled_tile, (x, y))
 
-    def __level_plate(
+    def __render_plate(
             self, bar_key="lvl_bar", parts_count=20, tiles_per_row=5, start_x=20, start_y=20
-    ):
+    ) -> None:
         """
         Render the XP bar by assembling tiles dynamically based on the PART attribute.
 
@@ -132,14 +132,7 @@ class GameUI:
 
     def draw(self):
         """Draw the UI elements."""
-        # Draw the level bar
-        self.__level_plate()
+        self.__render_plate()
         self.__render_level()
         self.__render_health()
-
-
-class Heart:
-    x: int = 0
-    y: int = 0
-    tile_image: pygame.Surface = None
     
