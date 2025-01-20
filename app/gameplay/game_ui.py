@@ -16,34 +16,47 @@ class GameUI:
     def render_health(self):
         hearts = self.tiled.static_frames.get_objects_by_size(1, 1).get("health", None)
         if not hearts:
-            print(f"Numbers with key '{hearts}' not found!")
+            print("Numbers with key 'health' not found!")
             return
 
-        twentyfive = next((tile for tile in hearts if tile.part == "1"), None)
-        twenty = next((tile for tile in hearts if tile.part == "2"), None)
-        fifteen = next((tile for tile in hearts if tile.part == "3"), None)
-        ten = next((tile for tile in hearts if tile.part == "4"), None)
-        five = next((tile for tile in hearts if tile.part == "5"), None)
+        # Map parts to tile images
+        part_to_tile = {tile.part: tile.image for tile in hearts}
+        if not all(key in part_to_tile for key in ["1", "2", "3", "4", "5"]):
+            print("One or more heart parts are missing!")
+            return
 
-        scaled_width = int(twentyfive.image.get_width() * 0.5)
-        scaled_height = int(twentyfive.image.get_height() * 0.5)
+        # Pre-scale the images
+        scaled_images = {
+            part: pygame.transform.scale(image, (int(image.get_width() * 0.5), int(image.get_height() * 0.5)))
+            for part, image in part_to_tile.items()
+        }
 
-        scaled_twentyfive = pygame.transform.scale(twentyfive.image, (scaled_width, scaled_height))
-        scaled_twenty = pygame.transform.scale(twenty.image, (scaled_width, scaled_height))
-        scaled_fifteen = pygame.transform.scale(fifteen.image, (scaled_width, scaled_height))
-        scaled_ten = pygame.transform.scale(ten.image, (scaled_width, scaled_height))
-        scaled_five = pygame.transform.scale(five.image, (scaled_width, scaled_height))
+        # Define heart positions
+        positions = [(115 + 35 * space, 110) for space in range(4)]
 
-        health_percentage = 100
+        # Render empty hearts as the background
+        for position in positions:
+            self.screen.blit(scaled_images["5"], position)
 
-        positions = {(115 + 35*space, 110) for space in range(0, 4)}
+        # Calculate the number of full and partial hearts
+        health_percentage = 25    # TODO: Swap for actual data
 
-        if health_percentage == 100:
-            # Calculate the position
-            # Render the tile
+        full_hearts = health_percentage // 25
+        remainder = health_percentage % 25
 
-            for position in positions:
-                self.screen.blit(scaled_twentyfive, position)
+        # Render full hearts
+        for i in range(full_hearts):
+            self.screen.blit(scaled_images["1"], positions[i])
+
+        # Render partial heart, if applicable
+        if remainder > 0 and full_hearts < len(positions):
+            pos = positions[full_hearts]
+            partial_part = (
+                "4" if remainder <= 25 / 3 else
+                "3" if remainder <= (25 / 3) * 2 else
+                "2"
+            )
+            self.screen.blit(scaled_images[partial_part], pos)
 
     def __render_level(self):
         numbers = self.tiled.static_frames.get_objects_by_size(1, 1).get("numbers", None)
@@ -123,3 +136,10 @@ class GameUI:
         self.__level_plate()
         self.__render_level()
         self.render_health()
+
+
+class Heart:
+    x: int = 0
+    y: int = 0
+    tile_image: pygame.Surface = None
+    
