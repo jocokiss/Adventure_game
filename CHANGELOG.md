@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.5.1 (2025-01-20)
+
+### Bug Fixes
+
+* fix(COLLISION): Fix issue where tile borders wont count as collision ([`4c477a3`](https://github.com/jocokiss/Adventure_game/commit/4c477a3cccae4bec3955e21b8361ad1e2d155057))
+
+
 ## v0.5.0 (2025-01-16)
 
 ### Code Style
