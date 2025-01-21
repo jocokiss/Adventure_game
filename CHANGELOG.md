@@ -1,6 +1,47 @@
 # CHANGELOG
 
 
+## v0.6.0 (2025-01-21)
+
+### Code Style
+
+* style(CONFIG): Change the way coordinates are set ([`642117f`](https://github.com/jocokiss/Adventure_game/commit/642117f4c2d6ecdf99ed3a435fb8a34c5202a26d))
+
+* style(RENDER_HEALTH): Maka the render_health method a private method ([`118b7eb`](https://github.com/jocokiss/Adventure_game/commit/118b7eb9f70c3f26d759bdd109b45779f5abaeb9))
+
+### Features
+
+* feat(GAME-UI): Add xp bar and streamline processes
+
+Add xp bar. Change the way coordinates are saved. Change the way tiles are loaded. Load real player stats. ([`fb81673`](https://github.com/jocokiss/Adventure_game/commit/fb81673f23fac1fb44403110b8c2f82d4aa84390))
+
+* feat(DATACLASSES): Add simple way to initialize the Coordinates dataclass ([`2f7afe6`](https://github.com/jocokiss/Adventure_game/commit/2f7afe6b6cf21bd85196fcc1924740461b6e0e34))
+
+* feat(COMBAT): Add more logic to combat attributes
+
+Add properties for valuable data. Add mechanism to gain xp and lvl up. ([`12764da`](https://github.com/jocokiss/Adventure_game/commit/12764da79d3229f973a2c7d2d5e3ef486c7967fd))
+
+* feat(HEALTH-BAR): Implement health bar for UI. Hearts dinamically change with health percentage ([`45a70ca`](https://github.com/jocokiss/Adventure_game/commit/45a70ca497194b9ac732dd15c271cb4914407d12))
+
+* feat(HEALTH-BAR): Add health bar. Still need to handle the different percentages of health ([`1dc039d`](https://github.com/jocokiss/Adventure_game/commit/1dc039df04aca8f36b01b4dca6e0f5846f5b5a13))
+
+* feat(LVL-BAR,-LVL): Add level bar and lvl indicator to UI ([`9ab3b1e`](https://github.com/jocokiss/Adventure_game/commit/9ab3b1e4f97a3b61e7959e7267919e6996f2e60a))
+
+### Refactoring
+
+* refactor(TILED): Change the way StaticObjects store data ([`8215165`](https://github.com/jocokiss/Adventure_game/commit/8215165f8db24a93c89bca0e9b9e0c34a684fb43))
+
+* refactor(GAME-UI): Rename some functions, remove some comments ([`f3868d1`](https://github.com/jocokiss/Adventure_game/commit/f3868d1446f8074d921075553fc2175393d3fe0a))
+
+* refactor(LOAD-FROM-TILESET): Refactor the way tilesets are loaded from file ([`f48a538`](https://github.com/jocokiss/Adventure_game/commit/f48a538c3f2622fd5636258324da4731831c955e))
+
+### Unknown
+
+* Merge pull request #5 from jocokiss/feature/ui
+
+Feature/UI ([`ebaf29f`](https://github.com/jocokiss/Adventure_game/commit/ebaf29fac990e35d3a44f89746a3b2655fe3002f))
+
+
 ## v0.5.1 (2025-01-20)
 
 ### Bug Fixes
