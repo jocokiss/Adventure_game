@@ -104,8 +104,6 @@ class Tiled:
         scaled_tile_image = self.__extract_tile_image(tile_id)
 
         self.static_frames.add_frame(
-            width=width,
-            height=height,
             object_name=name,
             frame=ObjectFrame(image=scaled_tile_image, part=part)
         )
@@ -122,70 +120,50 @@ class Tiled:
 
 
 class StaticObjects:
-    """Manages object frames, organizing them by size and name."""
+    """Manages object frames, organizing them by name."""
 
     def __init__(self):
         """
         Initializes the storage for object frames.
 
         Attributes:
-            objects (defaultdict): Nested dictionary structure where:
-                - Outer key: Tuple of dimensions (width, height) (e.g., (2, 2), (1, 5)).
-                - Inner key: Object name (e.g., "house", "tree").
+            objects (defaultdict): Dictionary structure where:
+                - Key: Object name (e.g., "house", "tree").
                 - Value: List of ObjectFrame instances for that object.
         """
-        self.objects: Dict[Tuple[int, int], Dict[str, List[ObjectFrame]]] = defaultdict(
-            lambda: defaultdict(list)
-        )
+        self.objects: Dict[str, List[ObjectFrame]] = defaultdict(list)
 
-    def add_frame(self, width: int, height: int, object_name: str, frame: ObjectFrame):
+    def add_frame(self, object_name: str, frame: ObjectFrame):
         """
-        Adds a frame to the storage, categorized by object dimensions.
+        Adds a frame to the storage, categorized by object name.
 
         Args:
-            width (int): Width of the object in tiles.
-            height (int): Height of the object in tiles.
             object_name (str): Name of the object (e.g., "house").
             frame (ObjectFrame): The frame to add.
         """
-        self.objects[(width, height)][object_name].append(frame)
+        self.objects[object_name].append(frame)
 
-    def get_frames(self, width: int, height: int, object_name: str) -> List[ObjectFrame]:
+    def get_frames(self, object_name: str) -> List[ObjectFrame]:
         """
-        Retrieves all frames for a specific object by its dimensions and name.
+        Retrieves all frames for a specific object by its name.
 
         Args:
-            width (int): Width of the object in tiles.
-            height (int): Height of the object in tiles.
             object_name (str): Name of the object (e.g., "house").
 
         Returns:
             List[ObjectFrame]: List of frames for the specified object.
         """
-        return self.objects[(width, height)][object_name]
-
-    def get_objects_by_size(self, width: int, height: int) -> Dict[str, List[ObjectFrame]]:
-        """
-        Retrieves all objects with a specific size.
-
-        Args:
-            width (int): Width of the objects in tiles.
-            height (int): Height of the objects in tiles.
-
-        Returns:
-            Dict[str, List[ObjectFrame]]: A dictionary of object names and their associated frames.
-        """
-        return self.objects[(width, height)]
+        return self.objects[object_name] \
+            if self.objects[object_name] \
+            else print(f"Frames for key '{object_name}' not found!")
 
     def __repr__(self):
         """
-        Returns a string representation of the stored objects, organized by size and name.
+        Returns a string representation of the stored objects, organized by name.
         """
         repr_str = "StaticObjects:\n"
-        for size, objects in self.objects.items():
-            repr_str += f"  Size {size}:\n"
-            for obj_name, frames in objects.items():
-                repr_str += f"    {obj_name}: {len(frames)} frame(s)\n"
+        for obj_name, frames in self.objects.items():
+            repr_str += f"  {obj_name}: {len(frames)} frame(s)\n"
         return repr_str
 
 
