@@ -45,7 +45,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="1"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -53,7 +53,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="2"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -61,7 +61,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="3"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -69,7 +69,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="4"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -77,7 +77,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="5"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -117,7 +117,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="6"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -125,7 +125,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="7"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -133,7 +133,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="8"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -141,7 +141,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="9"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -149,7 +149,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="10"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -189,7 +189,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="11"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -197,7 +197,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="12"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -205,7 +205,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="13"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -213,7 +213,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="14"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -221,7 +221,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="15"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -245,7 +245,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="16"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -253,7 +253,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="17"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -261,7 +261,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="18"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -269,7 +269,7 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="19"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
   </properties>
  </tile>
@@ -277,8 +277,40 @@
   <properties>
    <property name="Height" type="int" value="4"/>
    <property name="Part" value="20"/>
-   <property name="UIElement" value="lvl_bar"/>
+   <property name="UIElement" value="level_bar"/>
    <property name="Width" type="int" value="5"/>
+  </properties>
+ </tile>
+ <tile id="594" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="1"/>
+   <property name="UIElement" value="xp_bar"/>
+   <property name="Width" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="595" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="2"/>
+   <property name="UIElement" value="xp_bar"/>
+   <property name="Width" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="596" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="3"/>
+   <property name="UIElement" value="xp_bar"/>
+   <property name="Width" type="int" value="1"/>
+  </properties>
+ </tile>
+ <tile id="597" type="Object">
+  <properties>
+   <property name="Height" type="int" value="1"/>
+   <property name="Part" type="int" value="4"/>
+   <property name="UIElement" value="xp_bar"/>
+   <property name="Width" type="int" value="1"/>
   </properties>
  </tile>
  <tile id="598">

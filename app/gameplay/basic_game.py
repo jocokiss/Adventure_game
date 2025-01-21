@@ -23,7 +23,7 @@ class BasicGame:
         self.npc.patrol_path = []
         self.npc.is_random_movement = False  # Enable patrolling
 
-        self.ui = GameUI(self.config)
+        self.ui = GameUI(self.config, self.player.combat)
 
         self.movement = MovementHandler(self.config, self.player)
         self.map = Map(self.config)
