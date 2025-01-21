@@ -112,16 +112,35 @@ class Config:
                     self.border_tiles[(x, y)] = borders
 
     def __set_coordinates(self):
-        self.screen_size.x, self.screen_size.y = int(self.args.screen_width), int(self.args.screen_height)
-        self.map_size.x, self.map_size.y = ((self.map_data.width * self.tile_size),
-                                            (self.map_data.height * self.tile_size))
+        self.screen_size = Coordinates(
+            (
+                int(self.args.screen_width),
+                int(self.args.screen_height)
+            )
+        )
 
-        self.map_center.x, self.map_center.y = self.rect.x // self.tile_size, self.rect.y // self.tile_size
+        self.map_size = Coordinates(
+            (
+                (self.map_data.width * self.tile_size),
+                (self.map_data.height * self.tile_size)
+            )
+        )
+
+        self.map_center = Coordinates(
+            (
+                self.rect.x // self.tile_size,
+                self.rect.y // self.tile_size
+            )
+        )
 
     def calculate_offsets(self):
         # Calculate the offsets to center a specific tile
-        self.offset.x = (self.map_center.x * self.tile_size) - (self.screen_size.x // 2) + (self.tile_size // 2)
-        self.offset.y = (self.map_center.y * self.tile_size) - (self.screen_size.y // 2) + (self.tile_size // 2)
+        self.offset = Coordinates(
+            (
+                (self.map_center.x * self.tile_size) - (self.screen_size.x // 2) + (self.tile_size // 2),
+                (self.map_center.y * self.tile_size) - (self.screen_size.y // 2) + (self.tile_size // 2)
+            )
+        )
 
     def calculate_positions(self):
         hx, hy = half_coordinates(self.screen_size, self.tile_size)
