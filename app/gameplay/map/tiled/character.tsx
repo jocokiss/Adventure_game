@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.11.0" name="character" tilewidth="16" tileheight="16" tilecount="272" columns="17">
  <image source="tileset/character.png" width="272" height="256"/>
- <tile id="0">
+ <tile id="0" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="DOWN"/>
@@ -14,22 +14,31 @@
    <frame tileid="3" duration="100"/>
   </animation>
  </tile>
- <tile id="1">
+ <tile id="1" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="2">
+ <tile id="2" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="3">
+ <tile id="3" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="17">
+ <tile id="5" type="Sprite"/>
+ <tile id="6" type="Sprite"/>
+ <tile id="7" type="Sprite"/>
+ <tile id="9" type="Sprite"/>
+ <tile id="10" type="Sprite"/>
+ <tile id="11" type="Sprite"/>
+ <tile id="12" type="Sprite"/>
+ <tile id="13" type="Sprite"/>
+ <tile id="14" type="Sprite"/>
+ <tile id="17" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="DOWN"/>
@@ -42,22 +51,31 @@
    <frame tileid="20" duration="100"/>
   </animation>
  </tile>
- <tile id="18">
+ <tile id="18" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="19">
+ <tile id="19" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="20">
+ <tile id="20" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="34">
+ <tile id="22" type="Sprite"/>
+ <tile id="23" type="Sprite"/>
+ <tile id="24" type="Sprite"/>
+ <tile id="26" type="Sprite"/>
+ <tile id="27" type="Sprite"/>
+ <tile id="28" type="Sprite"/>
+ <tile id="29" type="Sprite"/>
+ <tile id="30" type="Sprite"/>
+ <tile id="31" type="Sprite"/>
+ <tile id="34" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="RIGHT"/>
@@ -70,22 +88,29 @@
    <frame tileid="37" duration="100"/>
   </animation>
  </tile>
- <tile id="35">
+ <tile id="35" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="36">
+ <tile id="36" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="37">
+ <tile id="37" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="51">
+ <tile id="39" type="Sprite"/>
+ <tile id="40" type="Sprite"/>
+ <tile id="41" type="Sprite"/>
+ <tile id="43" type="Sprite"/>
+ <tile id="44" type="Sprite"/>
+ <tile id="45" type="Sprite"/>
+ <tile id="46" type="Sprite"/>
+ <tile id="51" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="RIGHT"/>
@@ -98,22 +123,29 @@
    <frame tileid="54" duration="100"/>
   </animation>
  </tile>
- <tile id="52">
+ <tile id="52" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="53">
+ <tile id="53" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="54">
+ <tile id="54" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="68">
+ <tile id="56" type="Sprite"/>
+ <tile id="57" type="Sprite"/>
+ <tile id="58" type="Sprite"/>
+ <tile id="60" type="Sprite"/>
+ <tile id="61" type="Sprite"/>
+ <tile id="62" type="Sprite"/>
+ <tile id="63" type="Sprite"/>
+ <tile id="68" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="UP"/>
@@ -126,22 +158,29 @@
    <frame tileid="71" duration="100"/>
   </animation>
  </tile>
- <tile id="69">
+ <tile id="69" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="70">
+ <tile id="70" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="71">
+ <tile id="71" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="85">
+ <tile id="73" type="Sprite"/>
+ <tile id="74" type="Sprite"/>
+ <tile id="75" type="Sprite"/>
+ <tile id="77" type="Sprite"/>
+ <tile id="78" type="Sprite"/>
+ <tile id="79" type="Sprite"/>
+ <tile id="80" type="Sprite"/>
+ <tile id="85" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="UP"/>
@@ -154,22 +193,29 @@
    <frame tileid="88" duration="100"/>
   </animation>
  </tile>
- <tile id="86">
+ <tile id="86" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="87">
+ <tile id="87" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="88">
+ <tile id="88" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="102">
+ <tile id="90" type="Sprite"/>
+ <tile id="91" type="Sprite"/>
+ <tile id="92" type="Sprite"/>
+ <tile id="94" type="Sprite"/>
+ <tile id="95" type="Sprite"/>
+ <tile id="96" type="Sprite"/>
+ <tile id="97" type="Sprite"/>
+ <tile id="102" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="LEFT"/>
@@ -182,22 +228,29 @@
    <frame tileid="105" duration="100"/>
   </animation>
  </tile>
- <tile id="103">
+ <tile id="103" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="104">
+ <tile id="104" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="105">
+ <tile id="105" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="119">
+ <tile id="107" type="Sprite"/>
+ <tile id="108" type="Sprite"/>
+ <tile id="109" type="Sprite"/>
+ <tile id="111" type="Sprite"/>
+ <tile id="112" type="Sprite"/>
+ <tile id="113" type="Sprite"/>
+ <tile id="114" type="Sprite"/>
+ <tile id="119" type="Sprite">
   <properties>
    <property name="Action" value="WALK"/>
    <property name="Direction" value="LEFT"/>
@@ -210,22 +263,29 @@
    <frame tileid="122" duration="100"/>
   </animation>
  </tile>
- <tile id="120">
+ <tile id="120" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="121">
+ <tile id="121" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="122">
+ <tile id="122" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="136" type="sword">
+ <tile id="124" type="Sprite"/>
+ <tile id="125" type="Sprite"/>
+ <tile id="126" type="Sprite"/>
+ <tile id="128" type="Sprite"/>
+ <tile id="129" type="Sprite"/>
+ <tile id="130" type="Sprite"/>
+ <tile id="131" type="Sprite"/>
+ <tile id="136" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="down"/>
@@ -238,7 +298,7 @@
    <frame tileid="142" duration="200"/>
   </animation>
  </tile>
- <tile id="137" type="sword">
+ <tile id="137" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="down"/>
@@ -251,37 +311,37 @@
    <frame tileid="143" duration="200"/>
   </animation>
  </tile>
- <tile id="138">
+ <tile id="138" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="139">
+ <tile id="139" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="140">
+ <tile id="140" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="141">
+ <tile id="141" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="142">
+ <tile id="142" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="143">
+ <tile id="143" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="153" type="sword">
+ <tile id="153" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="down"/>
@@ -294,7 +354,7 @@
    <frame tileid="159" duration="200"/>
   </animation>
  </tile>
- <tile id="154" type="sword">
+ <tile id="154" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="down"/>
@@ -307,37 +367,37 @@
    <frame tileid="160" duration="200"/>
   </animation>
  </tile>
- <tile id="155">
+ <tile id="155" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="156">
+ <tile id="156" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="157">
+ <tile id="157" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="158">
+ <tile id="158" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="159">
+ <tile id="159" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="160">
+ <tile id="160" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="170" type="sword">
+ <tile id="170" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="up"/>
@@ -350,7 +410,7 @@
    <frame tileid="176" duration="100"/>
   </animation>
  </tile>
- <tile id="171" type="sword">
+ <tile id="171" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="up"/>
@@ -363,37 +423,37 @@
    <frame tileid="177" duration="100"/>
   </animation>
  </tile>
- <tile id="172">
+ <tile id="172" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="173">
+ <tile id="173" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="174">
+ <tile id="174" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="175">
+ <tile id="175" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="176">
+ <tile id="176" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="177">
+ <tile id="177" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="187" type="sword">
+ <tile id="187" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="up"/>
@@ -406,7 +466,7 @@
    <frame tileid="193" duration="100"/>
   </animation>
  </tile>
- <tile id="188" type="sword">
+ <tile id="188" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="up"/>
@@ -419,37 +479,37 @@
    <frame tileid="194" duration="100"/>
   </animation>
  </tile>
- <tile id="189">
+ <tile id="189" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="190">
+ <tile id="190" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="191">
+ <tile id="191" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="192">
+ <tile id="192" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="193">
+ <tile id="193" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="194">
+ <tile id="194" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="204" type="sword">
+ <tile id="204" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="right"/>
@@ -462,7 +522,7 @@
    <frame tileid="210" duration="100"/>
   </animation>
  </tile>
- <tile id="205" type="sword">
+ <tile id="205" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="right"/>
@@ -475,37 +535,37 @@
    <frame tileid="211" duration="100"/>
   </animation>
  </tile>
- <tile id="206">
+ <tile id="206" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="207">
+ <tile id="207" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="208">
+ <tile id="208" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="209">
+ <tile id="209" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="210">
+ <tile id="210" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="211">
+ <tile id="211" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="221" type="sword">
+ <tile id="221" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="right"/>
@@ -518,7 +578,7 @@
    <frame tileid="227" duration="100"/>
   </animation>
  </tile>
- <tile id="222" type="sword">
+ <tile id="222" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="right"/>
@@ -531,37 +591,37 @@
    <frame tileid="228" duration="100"/>
   </animation>
  </tile>
- <tile id="223">
+ <tile id="223" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="224">
+ <tile id="224" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="225">
+ <tile id="225" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="226">
+ <tile id="226" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="227">
+ <tile id="227" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="228">
+ <tile id="228" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="238" type="sword">
+ <tile id="238" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="left"/>
@@ -574,7 +634,7 @@
    <frame tileid="244" duration="100"/>
   </animation>
  </tile>
- <tile id="239" type="sword">
+ <tile id="239" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="left"/>
@@ -587,37 +647,37 @@
    <frame tileid="245" duration="100"/>
   </animation>
  </tile>
- <tile id="240">
+ <tile id="240" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="241">
+ <tile id="241" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="242">
+ <tile id="242" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="243">
+ <tile id="243" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="244">
+ <tile id="244" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="245">
+ <tile id="245" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="255" type="sword">
+ <tile id="255" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="left"/>
@@ -630,7 +690,7 @@
    <frame tileid="261" duration="100"/>
   </animation>
  </tile>
- <tile id="256" type="sword">
+ <tile id="256" type="Sprite">
   <properties>
    <property name="Action" value="attack"/>
    <property name="Direction" value="left"/>
@@ -643,32 +703,32 @@
    <frame tileid="262" duration="100"/>
   </animation>
  </tile>
- <tile id="257">
+ <tile id="257" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="258">
+ <tile id="258" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="259">
+ <tile id="259" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="260">
+ <tile id="260" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="261">
+ <tile id="261" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>
  </tile>
- <tile id="262">
+ <tile id="262" type="Sprite">
   <properties>
    <property name="Action" value=""/>
   </properties>

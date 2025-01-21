@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.11.0" name="log" tilewidth="16" tileheight="16" tilecount="96" columns="12">
  <image source="tileset/log.png" width="192" height="128"/>
- <tile id="0">
+ <tile id="0" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="DOWN"/>
@@ -14,7 +14,7 @@
    <frame tileid="6" duration="100"/>
   </animation>
  </tile>
- <tile id="1">
+ <tile id="1" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="DOWN"/>
@@ -27,7 +27,11 @@
    <frame tileid="7" duration="100"/>
   </animation>
  </tile>
- <tile id="6">
+ <tile id="2" type="Sprite"/>
+ <tile id="3" type="Sprite"/>
+ <tile id="4" type="Sprite"/>
+ <tile id="5" type="Sprite"/>
+ <tile id="6" type="Sprite">
   <animation>
    <frame tileid="0" duration="100"/>
    <frame tileid="2" duration="100"/>
@@ -35,7 +39,8 @@
    <frame tileid="6" duration="100"/>
   </animation>
  </tile>
- <tile id="8">
+ <tile id="7" type="Sprite"/>
+ <tile id="8" type="Sprite">
   <properties>
    <property name="Action" value="ASLEEP"/>
    <property name="Direction" value="DOWN"/>
@@ -48,7 +53,7 @@
    <frame tileid="80" duration="100"/>
   </animation>
  </tile>
- <tile id="9">
+ <tile id="9" type="Sprite">
   <properties>
    <property name="Action" value="ASLEEP"/>
    <property name="Direction" value="DOWN"/>
@@ -61,7 +66,7 @@
    <frame tileid="81" duration="100"/>
   </animation>
  </tile>
- <tile id="10">
+ <tile id="10" type="Sprite">
   <properties>
    <property name="Action" value="IDLE"/>
    <property name="Direction" value="DOWN"/>
@@ -73,7 +78,7 @@
    <frame tileid="58" duration="100"/>
   </animation>
  </tile>
- <tile id="11">
+ <tile id="11" type="Sprite">
   <properties>
    <property name="Action" value="IDLE"/>
    <property name="Direction" value="DOWN"/>
@@ -85,7 +90,7 @@
    <frame tileid="59" duration="100"/>
   </animation>
  </tile>
- <tile id="12">
+ <tile id="12" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="DOWN"/>
@@ -98,7 +103,7 @@
    <frame tileid="18" duration="100"/>
   </animation>
  </tile>
- <tile id="13">
+ <tile id="13" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="DOWN"/>
@@ -111,7 +116,13 @@
    <frame tileid="19" duration="100"/>
   </animation>
  </tile>
- <tile id="20">
+ <tile id="14" type="Sprite"/>
+ <tile id="15" type="Sprite"/>
+ <tile id="16" type="Sprite"/>
+ <tile id="17" type="Sprite"/>
+ <tile id="18" type="Sprite"/>
+ <tile id="19" type="Sprite"/>
+ <tile id="20" type="Sprite">
   <properties>
    <property name="Action" value="ASLEEP"/>
    <property name="Direction" value="DOWN"/>
@@ -124,7 +135,7 @@
    <frame tileid="92" duration="100"/>
   </animation>
  </tile>
- <tile id="21">
+ <tile id="21" type="Sprite">
   <properties>
    <property name="Action" value="ASLEEP"/>
    <property name="Direction" value="DOWN"/>
@@ -137,7 +148,7 @@
    <frame tileid="93" duration="100"/>
   </animation>
  </tile>
- <tile id="22">
+ <tile id="22" type="Sprite">
   <properties>
    <property name="Action" value="IDLE"/>
    <property name="Direction" value="DOWN"/>
@@ -149,7 +160,7 @@
    <frame tileid="70" duration="100"/>
   </animation>
  </tile>
- <tile id="23">
+ <tile id="23" type="Sprite">
   <properties>
    <property name="Action" value="IDLE"/>
    <property name="Direction" value="DOWN"/>
@@ -161,7 +172,7 @@
    <frame tileid="71" duration="100"/>
   </animation>
  </tile>
- <tile id="24">
+ <tile id="24" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="UP"/>
@@ -174,7 +185,7 @@
    <frame tileid="30" duration="100"/>
   </animation>
  </tile>
- <tile id="25">
+ <tile id="25" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="UP"/>
@@ -187,7 +198,17 @@
    <frame tileid="31" duration="100"/>
   </animation>
  </tile>
- <tile id="36">
+ <tile id="26" type="Sprite"/>
+ <tile id="27" type="Sprite"/>
+ <tile id="28" type="Sprite"/>
+ <tile id="29" type="Sprite"/>
+ <tile id="30" type="Sprite"/>
+ <tile id="31" type="Sprite"/>
+ <tile id="32" type="Sprite"/>
+ <tile id="33" type="Sprite"/>
+ <tile id="34" type="Sprite"/>
+ <tile id="35" type="Sprite"/>
+ <tile id="36" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="UP"/>
@@ -200,7 +221,7 @@
    <frame tileid="42" duration="100"/>
   </animation>
  </tile>
- <tile id="37">
+ <tile id="37" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="UP"/>
@@ -213,7 +234,17 @@
    <frame tileid="43" duration="100"/>
   </animation>
  </tile>
- <tile id="48">
+ <tile id="38" type="Sprite"/>
+ <tile id="39" type="Sprite"/>
+ <tile id="40" type="Sprite"/>
+ <tile id="41" type="Sprite"/>
+ <tile id="42" type="Sprite"/>
+ <tile id="43" type="Sprite"/>
+ <tile id="44" type="Sprite"/>
+ <tile id="45" type="Sprite"/>
+ <tile id="46" type="Sprite"/>
+ <tile id="47" type="Sprite"/>
+ <tile id="48" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="LEFT"/>
@@ -226,7 +257,7 @@
    <frame tileid="54" duration="100"/>
   </animation>
  </tile>
- <tile id="49">
+ <tile id="49" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="LEFT"/>
@@ -239,7 +270,17 @@
    <frame tileid="55" duration="100"/>
   </animation>
  </tile>
- <tile id="60">
+ <tile id="50" type="Sprite"/>
+ <tile id="51" type="Sprite"/>
+ <tile id="52" type="Sprite"/>
+ <tile id="53" type="Sprite"/>
+ <tile id="54" type="Sprite"/>
+ <tile id="55" type="Sprite"/>
+ <tile id="56" type="Sprite"/>
+ <tile id="57" type="Sprite"/>
+ <tile id="58" type="Sprite"/>
+ <tile id="59" type="Sprite"/>
+ <tile id="60" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="LEFT"/>
@@ -252,7 +293,7 @@
    <frame tileid="66" duration="100"/>
   </animation>
  </tile>
- <tile id="61">
+ <tile id="61" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="LEFT"/>
@@ -265,7 +306,17 @@
    <frame tileid="67" duration="100"/>
   </animation>
  </tile>
- <tile id="72">
+ <tile id="62" type="Sprite"/>
+ <tile id="63" type="Sprite"/>
+ <tile id="64" type="Sprite"/>
+ <tile id="65" type="Sprite"/>
+ <tile id="66" type="Sprite"/>
+ <tile id="67" type="Sprite"/>
+ <tile id="68" type="Sprite"/>
+ <tile id="69" type="Sprite"/>
+ <tile id="70" type="Sprite"/>
+ <tile id="71" type="Sprite"/>
+ <tile id="72" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="RIGHT"/>
@@ -278,7 +329,7 @@
    <frame tileid="78" duration="100"/>
   </animation>
  </tile>
- <tile id="73">
+ <tile id="73" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="RIGHT"/>
@@ -291,7 +342,15 @@
    <frame tileid="79" duration="100"/>
   </animation>
  </tile>
- <tile id="84">
+ <tile id="74" type="Sprite"/>
+ <tile id="75" type="Sprite"/>
+ <tile id="76" type="Sprite"/>
+ <tile id="77" type="Sprite"/>
+ <tile id="78" type="Sprite"/>
+ <tile id="79" type="Sprite"/>
+ <tile id="80" type="Sprite"/>
+ <tile id="81" type="Sprite"/>
+ <tile id="84" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="RIGHT"/>
@@ -304,7 +363,7 @@
    <frame tileid="90" duration="100"/>
   </animation>
  </tile>
- <tile id="85">
+ <tile id="85" type="Sprite">
   <properties>
    <property name="Action" value="ACTIVE"/>
    <property name="Direction" value="RIGHT"/>
@@ -317,4 +376,12 @@
    <frame tileid="91" duration="100"/>
   </animation>
  </tile>
+ <tile id="86" type="Sprite"/>
+ <tile id="87" type="Sprite"/>
+ <tile id="88" type="Sprite"/>
+ <tile id="89" type="Sprite"/>
+ <tile id="90" type="Sprite"/>
+ <tile id="91" type="Sprite"/>
+ <tile id="92" type="Sprite"/>
+ <tile id="93" type="Sprite"/>
 </tileset>

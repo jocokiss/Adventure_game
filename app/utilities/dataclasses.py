@@ -8,10 +8,29 @@ class Coordinates(BaseModel):
     x: int = 0
     y: int = 0
 
+    def __init__(self, *args, **kwargs):
+        # Handle positional arguments
+        if len(args) == 1 and isinstance(args[0], tuple):
+            if len(args[0]) != 2:
+                raise ValueError("Tuple must have exactly 2 elements.")
+            kwargs["x"], kwargs["y"] = args[0]
+        elif len(args) > 0:
+            raise TypeError("Only a single tuple argument is allowed.")
+        super().__init__(**kwargs)
+
 
 class AnimationFrame(BaseModel):
     image: pygame.Surface = None
     duration: int = 0
+
+    class Config:
+        arbitrary_types_allowed = True
+
+
+class ObjectFrame(BaseModel):
+    """Represents a single frame of an object."""
+    image: pygame.Surface = None  # The scaled tile image
+    part: str   # The part identifier (e.g., "top", "bottom")
 
     class Config:
         arbitrary_types_allowed = True

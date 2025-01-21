@@ -4,15 +4,15 @@ import pygame
 
 from app.sprites.base_sprite import BaseSprite
 from app.utilities.dataclasses import Coordinates, NPCAttributes
+from app.utilities.tiled import Tiled
 
 
 class NPCSprite(BaseSprite):
     def __init__(self, config, initial_position: tuple[int, int], attributes: NPCAttributes = NPCAttributes()):
         super().__init__(config)
-        self.tsx_location = self.config.args.npc_location
-        self.png_location = self.config.args.npc_png_location
 
-        self.load_character_from_file()
+        self.tiled = Tiled.from_tileset(self.config, "log")
+        self.tiled.load()
 
         self.position = pygame.Vector2(initial_position)  # Map position (in tiles)
         self.previous_position = self.position.copy()
@@ -77,10 +77,10 @@ class NPCSprite(BaseSprite):
             direction_to_use = "DOWN"
 
         # Get frames for the current direction and all parts
-        top_left_frames = self.frames.get_frames(self.state, direction_to_use, "1")
-        top_right_frames = self.frames.get_frames(self.state, direction_to_use, "2")
-        bottom_left_frames = self.frames.get_frames(self.state, direction_to_use, "3")
-        bottom_right_frames = self.frames.get_frames(self.state, direction_to_use, "4")
+        top_left_frames = self.tiled.animated_frames.get_frames(self.state, direction_to_use, "1")
+        top_right_frames = self.tiled.animated_frames.get_frames(self.state, direction_to_use, "2")
+        bottom_left_frames = self.tiled.animated_frames.get_frames(self.state, direction_to_use, "3")
+        bottom_right_frames = self.tiled.animated_frames.get_frames(self.state, direction_to_use, "4")
 
         # Ensure all required frames are available
         if not (top_left_frames and top_right_frames and bottom_left_frames and bottom_right_frames):
@@ -120,13 +120,13 @@ class NPCSprite(BaseSprite):
         if self.sleep_timer >= 250:  # Adjust frame speed for sleep animation
             self.sleep_timer = 0
             self.current_frame = (self.current_frame + 1) % len(
-                self.frames.get_frames("ASLEEP", "DOWN", "1")
+                self.tiled.animated_frames.get_frames("ASLEEP", "DOWN", "1")
             )
 
     def update_idle(self):
         """Handle the idle animation."""
         # Get the idle frames for the "DOWN" direction
-        idle_frames = self.frames.get_frames("IDLE", "DOWN", "1")
+        idle_frames = self.tiled.animated_frames.get_frames("IDLE", "DOWN", "1")
         if not idle_frames:
             raise ValueError("No idle frames found for direction DOWN.")
 
@@ -169,7 +169,7 @@ class NPCSprite(BaseSprite):
     def walking_animation(self):
         """Increment frame timers and cycle through frames."""
         self.frame_timer += self.config.dt
-        body_frames = self.frames.get_frames(self.state, self.current_direction, "2")
+        body_frames = self.tiled.animated_frames.get_frames(self.state, self.current_direction, "2")
         if not body_frames:
             return  # No frames available for this animation
 
