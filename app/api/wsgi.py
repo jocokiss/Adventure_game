@@ -1,4 +1,8 @@
-from app.api import create_app
+try:
+    from app.api import create_app
+except ImportError:
+    import create_app
+
 
 app = create_app()
 
