@@ -1,7 +1,7 @@
 try:
-    from app.api import create_app
+    from . import create_app
 except ImportError:
-    import create_app
+    raise ImportError("Unable to import create_app from __init__.py")
 
 
 app = create_app()
