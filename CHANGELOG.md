@@ -1,7 +1,24 @@
 # CHANGELOG
 
 
+## v0.8.0 (2025-01-22)
+
+### Features
+
+* feat(API): API working as intended
+
+Save and Load game now possible through REST API ([`abab415`](https://github.com/jocokiss/Adventure_game/commit/abab415ab9d9b7c574a9f161a77aa9f04c23bd61))
+
+### Unknown
+
+* Merge remote-tracking branch 'origin/main' ([`a7edaf4`](https://github.com/jocokiss/Adventure_game/commit/a7edaf4b602135a168e7c818aaacd88067451c08))
+
+
 ## v0.7.8 (2025-01-22)
+
+### Refactoring
+
+* refactor(APP): Rename APP to SRC ([`65e1777`](https://github.com/jocokiss/Adventure_game/commit/65e1777b3f963c56d23527098994e799fafed044))
 
 ### Unknown
 
