@@ -69,11 +69,11 @@ class Config:
                     self.tiles[gid] = [pygame.transform.scale(image, (self.tile_size, self.tile_size))]
 
     def __set_spawn_point(self):
-        if spawn_obj := self.get_object("Spawn"):
+        if spawn_obj := self.__get_object("Spawn"):
             self.rect.x = (int(spawn_obj.x * self.zoom_factor) // self.tile_size) * self.tile_size
             self.rect.y = (int(spawn_obj.y * self.zoom_factor) // self.tile_size) * self.tile_size
 
-    def get_object(self, object_name: str):
+    def __get_object(self, object_name: str):
         return next((obj for obj in self.map_data.objects if obj.name == object_name), None)
 
     def get_animated_tile(self, gid, dt):
