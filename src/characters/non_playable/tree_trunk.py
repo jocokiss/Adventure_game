@@ -1,4 +1,4 @@
-from app.characters.npc import NPC
+from src.characters.npc import NPC
 
 
 class TreeTrunk(NPC):

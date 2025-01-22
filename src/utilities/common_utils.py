@@ -1,5 +1,5 @@
 """Module containing common utility functions."""
-from app.utilities.dataclasses import Coordinates
+from src.utilities.dataclasses import Coordinates
 
 
 def half_coordinates(screen_size: "Coordinates", tile_size: int) -> tuple[int, int]:

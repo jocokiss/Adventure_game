@@ -1,5 +1,5 @@
-from app.characters.character import Character
-from app.utilities.dataclasses import Skill
+from src.characters.character import Character
+from src.utilities.dataclasses import Skill
 
 fireball = Skill(
     name="Fireball",

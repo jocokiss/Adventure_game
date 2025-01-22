@@ -1,5 +1,5 @@
 from flask import Flask
-from app.api.routes import api  # Adjust the import based on your structure
+from src.api.routes import api  # Adjust the import based on your structure
 
 
 def create_app():

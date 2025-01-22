@@ -3,9 +3,9 @@ import pytmx
 
 import xml.etree.ElementTree as ET
 
-from app.utilities.arg_parser import ArgParser
-from app.utilities.common_utils import half_coordinates
-from app.utilities.dataclasses import Coordinates
+from src.utilities.arg_parser import ArgParser
+from src.utilities.common_utils import half_coordinates
+from src.utilities.dataclasses import Coordinates
 
 
 class Config:

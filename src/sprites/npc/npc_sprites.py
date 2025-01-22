@@ -2,9 +2,9 @@ import random
 
 import pygame
 
-from app.sprites.base_sprite import BaseSprite
-from app.utilities.dataclasses import Coordinates, NPCAttributes
-from app.utilities.tiled import Tiled
+from src.sprites.base_sprite import BaseSprite
+from src.utilities.dataclasses import Coordinates, NPCAttributes
+from src.utilities.tiled import Tiled
 
 
 class NPCSprite(BaseSprite):

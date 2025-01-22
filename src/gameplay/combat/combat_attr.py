@@ -1,4 +1,4 @@
-from app.utilities.common_utils import calculate_required_xp
+from src.utilities.common_utils import calculate_required_xp
 
 
 class CombatAttributes:

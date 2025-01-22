@@ -1,7 +1,7 @@
 from abc import ABC
 
-from app.gameplay.combat.combat_attr import CombatAttributes
-from app.sprites.player.player_sprite import PlayerSprite
+from src.gameplay.combat.combat_attr import CombatAttributes
+from src.sprites.player.player_sprite import PlayerSprite
 
 
 class Character(ABC):

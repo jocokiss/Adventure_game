@@ -1,10 +1,10 @@
 import pygame
 
-from app.gameplay.combat.combat_attr import CombatAttributes
-from app.gameplay.config import Config
-from app.utilities.common_utils import get_xp_level
-from app.utilities.dataclasses import Coordinates
-from app.utilities.tiled import Tiled
+from src.gameplay.combat.combat_attr import CombatAttributes
+from src.gameplay.config import Config
+from src.utilities.common_utils import get_xp_level
+from src.utilities.dataclasses import Coordinates
+from src.utilities.tiled import Tiled
 
 
 class GameUI:

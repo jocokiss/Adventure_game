@@ -1,7 +1,7 @@
 from collections import defaultdict
 from typing import Dict, List, Tuple
 
-from app.utilities.dataclasses import AnimationFrame, ObjectFrame  # Assuming you have this class
+from src.utilities.dataclasses import AnimationFrame, ObjectFrame  # Assuming you have this class
 
 import pygame
 import xml.etree.ElementTree as ET

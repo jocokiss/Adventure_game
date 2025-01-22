@@ -3,15 +3,15 @@ import sys
 
 import pygame
 
-from app.characters.non_playable.tree_trunk import TreeTrunk
-from app.characters.playable.rogue import Rogue
-from app.gameplay.api_actions import GameAPIClient
+from src.characters.non_playable.tree_trunk import TreeTrunk
+from src.characters.playable.rogue import Rogue
+from src.gameplay.api_actions import GameAPIClient
 
-from app.gameplay.config import Config
-from app.gameplay.game_ui import GameUI
-from app.gameplay.map.map import Map
-from app.gameplay.movement import MovementHandler
-from app.gameplay.menu import Menu
+from src.gameplay.config import Config
+from src.gameplay.game_ui import GameUI
+from src.gameplay.map.map import Map
+from src.gameplay.movement import MovementHandler
+from src.gameplay.menu import Menu
 
 
 class BasicGame:

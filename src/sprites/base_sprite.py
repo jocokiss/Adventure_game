@@ -8,9 +8,9 @@ import xml.etree.ElementTree as ET
 
 from pydantic import Field
 
-from app.gameplay.config import Config
-from app.utilities.dataclasses import Coordinates, AnimationFrame, NPCAttributes
-from app.utilities.tiled import Tiled
+from src.gameplay.config import Config
+from src.utilities.dataclasses import Coordinates, AnimationFrame, NPCAttributes
+from src.utilities.tiled import Tiled
 
 
 class BaseSprite(pygame.sprite.Sprite, ABC):

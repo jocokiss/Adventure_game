@@ -1,6 +1,6 @@
 import pygame
 
-from app.utilities.constants import OPPOSITE_DIRECTION
+from src.utilities.constants import OPPOSITE_DIRECTION
 
 
 class MovementHandler:
