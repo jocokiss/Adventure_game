@@ -5,6 +5,7 @@ import pygame
 
 from app.characters.non_playable.tree_trunk import TreeTrunk
 from app.characters.playable.rogue import Rogue
+from app.gameplay.api_actions import GameAPIClient
 
 from app.gameplay.config import Config
 from app.gameplay.game_ui import GameUI
@@ -16,6 +17,7 @@ from app.gameplay.menu import Menu
 class BasicGame:
     def __init__(self):
         self.config = Config()
+        self.api = GameAPIClient()
 
         self.player = Rogue(self.config)
         self.npc = npc = TreeTrunk(self.config, initial_position=(19, 17))
@@ -51,7 +53,7 @@ class BasicGame:
 
     def __run_menu(self):
         """Main Menu State."""
-        self.menu.set_options(["New Game", "Load Game", "Exit"])
+        self.menu.set_options(["New Game", "Save Game", "Load Game", "Exit"])
 
         # Isolate Menu Loop
         while self.state == "MENU":
@@ -62,8 +64,10 @@ class BasicGame:
 
             if choice == "New Game":
                 self.state = "GAME"
+            elif choice == "Save Game":
+                self.api.save_game(player_id="player_id", data={"level": 10, "xp": 500})
             elif choice == "Load Game":
-                print("Load Game - Placeholder for save file loading")
+                self.api.load_game(player_id="player_id")
                 self.state = "GAME"
             elif choice == "Exit":
                 self.running = False
