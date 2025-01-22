@@ -1,9 +1,18 @@
 # CHANGELOG
 
 
+## v0.7.6 (2025-01-22)
+
+### Unknown
+
+* Merge remote-tracking branch 'origin/main' ([`1ee9014`](https://github.com/jocokiss/Adventure_game/commit/1ee9014ae3c73b40efdbc517df6917794ada4f0c))
+
+
 ## v0.7.5 (2025-01-22)
 
 ### Bug Fixes
+
+* fix(API): fix wsgi.py ([`f27f4b7`](https://github.com/jocokiss/Adventure_game/commit/f27f4b7be1147ecc5aafa03d36774bda1a290a15))
 
 * fix(API): fix wsgi.py ([`5e084fc`](https://github.com/jocokiss/Adventure_game/commit/5e084fcd8d92b7fc2e98869fbfd938aa1856f17b))
 
