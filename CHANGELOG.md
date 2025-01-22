@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.7.1 (2025-01-22)
+
+### Bug Fixes
+
+* fix(API): Add missing requirements.txt ([`3bd6489`](https://github.com/jocokiss/Adventure_game/commit/3bd6489b16edb367f4ec972ad22bb973193fa689))
+
+
 ## v0.7.0 (2025-01-22)
 
 ### Code Style
