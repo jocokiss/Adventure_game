@@ -1,6 +1,25 @@
 # CHANGELOG
 
 
+## v0.7.0 (2025-01-22)
+
+### Code Style
+
+* style(CONFIG): Make private method from get_object() ([`06d426c`](https://github.com/jocokiss/Adventure_game/commit/06d426cc1a8cb8006a0e3ba165913b3d9700e0bf))
+
+### Features
+
+* feat(API): Introduce API ([`2838c37`](https://github.com/jocokiss/Adventure_game/commit/2838c37c5130cd8c059b722459279a020227eff8))
+
+### Unknown
+
+* Merge pull request #6 from jocokiss/feature/api
+
+feat(API): Introduce API ([`038ad2d`](https://github.com/jocokiss/Adventure_game/commit/038ad2d649c43853b41b468b1fb96f933fcc8573))
+
+* Merge branch 'refs/heads/feature/ui' ([`7a0f201`](https://github.com/jocokiss/Adventure_game/commit/7a0f2017058569b11652e14218a3d83204003d59))
+
+
 ## v0.6.0 (2025-01-21)
 
 ### Code Style
