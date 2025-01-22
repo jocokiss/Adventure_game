@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.7.5 (2025-01-22)
+
+### Bug Fixes
+
+* fix(API): fix wsgi.py ([`5e084fc`](https://github.com/jocokiss/Adventure_game/commit/5e084fcd8d92b7fc2e98869fbfd938aa1856f17b))
+
+
 ## v0.7.4 (2025-01-22)
 
 ### Unknown
