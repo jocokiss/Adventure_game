@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.7.3 (2025-01-22)
+
+### Bug Fixes
+
+* fix(API): fix deployment issue ([`2d29069`](https://github.com/jocokiss/Adventure_game/commit/2d290690ae06e1a03fb34174017edb027b76f5a3))
+
+
 ## v0.7.2 (2025-01-22)
 
 ### Unknown
