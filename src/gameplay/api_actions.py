@@ -14,7 +14,7 @@ class GameAPIClient:
         Returns:
             dict: Response from the server.
         """
-        url = "http://127.0.0.1:5000/save"
+        url = "https://adventure-game-rl72.onrender.com/save"
         response = requests.post(url, json={"player_id": player_id, **data})
         return response.json()
 
@@ -29,6 +29,7 @@ class GameAPIClient:
         Returns:
             dict: Response from the server containing the game state.
         """
-        url = "http://127.0.0.1:5000/load"
+        url = "https://adventure-game-rl72.onrender.com/load"
         response = requests.get(url, params={"player_id": player_id})
+        print(response.json())
         return response.json()
