@@ -1,9 +1,18 @@
 # CHANGELOG
 
 
+## v0.7.2 (2025-01-22)
+
+### Unknown
+
+* Merge remote-tracking branch 'origin/main' ([`f553cb6`](https://github.com/jocokiss/Adventure_game/commit/f553cb6eada7888cd19837e3e88308f390acc0d2))
+
+
 ## v0.7.1 (2025-01-22)
 
 ### Bug Fixes
+
+* fix(API): Add missing dependency ([`d70f99c`](https://github.com/jocokiss/Adventure_game/commit/d70f99c0c087a2f8012b4cf1c443a3e1aea8e019))
 
 * fix(API): Add missing requirements.txt ([`3bd6489`](https://github.com/jocokiss/Adventure_game/commit/3bd6489b16edb367f4ec972ad22bb973193fa689))
 
