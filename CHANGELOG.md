@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.10.1 (2025-01-23)
+
+### Bug Fixes
+
+* fix(API): Add missing dependency (pyJWT) ([`e8db51a`](https://github.com/jocokiss/Adventure_game/commit/e8db51a335ac38432b6e59fa2aed2d1f4ceae2f1))
+
+
 ## v0.10.0 (2025-01-23)
 
 ### Bug Fixes
