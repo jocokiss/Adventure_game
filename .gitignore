@@ -3,3 +3,4 @@
 __pycache__/
 .DS_Store!/
 map/adventure_game_map.tiled-session
+.env
