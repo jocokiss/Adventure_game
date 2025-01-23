@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.9.0 (2025-01-23)
+
+### Features
+
+* feat(MONGO-DB): Add connection string as an ENV variable to the server. Create method to fetch it ([`9296152`](https://github.com/jocokiss/Adventure_game/commit/929615274b429281ea2b3f571562607ccef628d9))
+
+
 ## v0.8.0 (2025-01-22)
 
 ### Features
