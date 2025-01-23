@@ -1,5 +1,8 @@
+import datetime
 import os
 
+import jwt
+from dotenv import load_dotenv
 from flask import Blueprint, jsonify, request
 
 api = Blueprint("api", __name__)
@@ -24,10 +27,31 @@ def load_game():
 
 
 @api.route("/mongo", methods=["GET"])
-def get_mongo_conn_string():
+def get_mongo_token():
     """
-    Return the MongoDB connection string from the server environment variables.
+    Generate a JWT containing the MongoDB connection string.
     """
-    if mongo_uri := os.getenv("MONGO"):
-        return jsonify({"mongo_uri": mongo_uri})
-    return jsonify({"error": "MongoDB connection string not found"}), 404
+    # MongoDB connection string (stored as an environment variable)
+    load_dotenv()
+    token_key = os.getenv('TOKEN_KEY')
+    mongo_uri = os.getenv("MONGO_DB")
+    if not mongo_uri:
+        return jsonify({"error": "MongoDB connection string not found"}), 404
+    if not token_key:
+        return jsonify({"error": "Token key not found"}), 404
+
+    try:
+        # Generate JWT
+        token = jwt.encode(
+            {
+                "mongo_uri": mongo_uri,  # Add connection string to the token
+                "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=10),  # Token expiration
+            },
+            token_key,
+            algorithm="HS256",
+        )
+        return jsonify({"token": token})
+    except Exception as e:
+        return jsonify({"error": "Failed to generate token", "details": str(e)}), 500
+
+

@@ -1,4 +1,8 @@
+import os
+
+import jwt
 import requests
+from dotenv import load_dotenv
 
 
 class GameAPIClient:
@@ -35,18 +39,31 @@ class GameAPIClient:
         return response.json()
 
     @staticmethod
-    def mongo_string():
+    def get_mongo_token():
         """
-        Fetch the MongoDB connection string from the server.
+        Fetch a JWT token containing the MongoDB connection string.
 
         Returns:
-            dict: A dictionary containing the MongoDB connection string.
+            str: Decoded MongoDB connection string.
         """
-        url = "https://adventure-game-rl72.onrender.com/mongo"  # Your server's route
+        url = "https://adventure-game-rl72.onrender.com/mongo"  # Your Flask API endpoint
         try:
+            # Fetch the token from the server
             response = requests.get(url)
-            response.raise_for_status()  # Raise an error for bad status codes
-            return response.json()
+            response.raise_for_status()
+            token = response.json().get("token")
+
+            # Decode the JWT
+            load_dotenv()
+            secret_key = os.getenv('TOKEN_KEY')
+            decoded = jwt.decode(token, secret_key, algorithms=["HS256"])
+            return decoded.get("mongo_uri")
         except requests.exceptions.RequestException as e:
-            print(f"Error fetching MongoDB connection string: {e}")
+            print(f"Error fetching MongoDB token: {e}")
+            return None
+        except jwt.ExpiredSignatureError:
+            print("Token has expired. Fetch a new one.")
+            return None
+        except jwt.InvalidTokenError as e:
+            print(f"Invalid token: {e}")
             return None
