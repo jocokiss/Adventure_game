@@ -1,6 +1,21 @@
 # CHANGELOG
 
 
+## v0.10.0 (2025-01-23)
+
+### Bug Fixes
+
+* fix(API): Remove print(python_path) from WSGI ([`f877cc8`](https://github.com/jocokiss/Adventure_game/commit/f877cc8ec8a249ffe7fb894bf67e624439a6ec01))
+
+### Features
+
+* feat(MONGO-DB): Create token for safe fetching of secrets ([`9347f09`](https://github.com/jocokiss/Adventure_game/commit/9347f096f7dfb51a8ef79de16b57d9dbecc71997))
+
+### Unknown
+
+* Merge branch 'refs/heads/feature/add_mongo_database' ([`39a4897`](https://github.com/jocokiss/Adventure_game/commit/39a4897f10fd762514b8471cc1d006077170a7d4))
+
+
 ## v0.9.0 (2025-01-23)
 
 ### Features
