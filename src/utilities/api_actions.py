@@ -33,3 +33,20 @@ class GameAPIClient:
         response = requests.get(url, params={"player_id": player_id})
         print(response.json())
         return response.json()
+
+    @staticmethod
+    def mongo_string():
+        """
+        Fetch the MongoDB connection string from the server.
+
+        Returns:
+            dict: A dictionary containing the MongoDB connection string.
+        """
+        url = "https://adventure-game-rl72.onrender.com/mongo"  # Your server's route
+        try:
+            response = requests.get(url)
+            response.raise_for_status()  # Raise an error for bad status codes
+            return response.json()
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching MongoDB connection string: {e}")
+            return None

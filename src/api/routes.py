@@ -1,3 +1,5 @@
+import os
+
 from flask import Blueprint, jsonify, request
 
 api = Blueprint("api", __name__)
@@ -19,3 +21,13 @@ def load_game():
     # Mock data
     data = {"player_id": player_id, "level": 10, "xp": 500}
     return jsonify(data)
+
+
+@api.route("/mongo", methods=["GET"])
+def get_mongo_conn_string():
+    """
+    Return the MongoDB connection string from the server environment variables.
+    """
+    if mongo_uri := os.getenv("MONGO"):
+        return jsonify({"mongo_uri": mongo_uri})
+    return jsonify({"error": "MongoDB connection string not found"}), 404

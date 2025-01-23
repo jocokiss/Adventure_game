@@ -5,7 +5,7 @@ import pygame
 
 from src.characters.non_playable.tree_trunk import TreeTrunk
 from src.characters.playable.rogue import Rogue
-from src.gameplay.api_actions import GameAPIClient
+from src.utilities.api_actions import GameAPIClient
 
 from src.gameplay.config import Config
 from src.gameplay.game_ui import GameUI
