@@ -9,7 +9,7 @@ try:
 except ImportError:
     pass
 
-__version__ = "0.10.3"
+__version__ = "0.10.4"
 
 setup(
     name="my-package",

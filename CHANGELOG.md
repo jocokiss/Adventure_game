@@ -1,7 +1,18 @@
 # CHANGELOG
 
 
+## v0.10.4 (2025-01-23)
+
+### Unknown
+
+* Merge remote-tracking branch 'origin/main' ([`e767e1c`](https://github.com/jocokiss/Adventure_game/commit/e767e1cbcc6d99d6088735685aa1a7409e9d1d36))
+
+
 ## v0.10.3 (2025-01-23)
+
+### Bug Fixes
+
+* fix(API): removed dotenv from server side since it's irrelevant ([`ff3ee70`](https://github.com/jocokiss/Adventure_game/commit/ff3ee70b38282a65c1f8c0125aea1c0e3a251f23))
 
 ### Unknown
 
