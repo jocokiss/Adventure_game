@@ -1,6 +1,13 @@
 # CHANGELOG
 
 
+## v0.10.2 (2025-01-23)
+
+### Bug Fixes
+
+* fix(API): rename requirements ([`a43dae4`](https://github.com/jocokiss/Adventure_game/commit/a43dae4fbb04bcf0c2e7f70133fa4c43abc8e206))
+
+
 ## v0.10.1 (2025-01-23)
 
 ### Bug Fixes
