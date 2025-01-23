@@ -1,5 +1,4 @@
 from src.api import create_app
-import sys
 
 application = create_app()
 
