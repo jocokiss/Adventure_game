@@ -1,6 +1,19 @@
 # CHANGELOG
 
 
+## v0.11.0 (2025-01-24)
+
+### Bug Fixes
+
+* fix(API): replace 'mongo' with 'secrets' int the url ([`9a84229`](https://github.com/jocokiss/Adventure_game/commit/9a84229e09a5563fceedc775ca9c181c9c97e82c))
+
+### Features
+
+* feat(MONGO-DB): create MongoDB connection
+
+Create connection and a method to insert data into the database ([`7fa733b`](https://github.com/jocokiss/Adventure_game/commit/7fa733be34bfa4dfbab9d99615bb83183d0d9f5a))
+
+
 ## v0.10.4 (2025-01-23)
 
 ### Unknown
