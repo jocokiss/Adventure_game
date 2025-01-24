@@ -46,7 +46,7 @@ class GameAPIClient:
         Returns:
             str: Decoded MongoDB connection string.
         """
-        url = "https://adventure-game-rl72.onrender.com/mongo"  # Your Flask API endpoint
+        url = "https://adventure-game-rl72.onrender.com/secrets"  # Your Flask API endpoint
         try:
             # Fetch the token from the server
             response = requests.get(url)
